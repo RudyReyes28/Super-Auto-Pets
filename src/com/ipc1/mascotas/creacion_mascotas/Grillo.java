@@ -21,7 +21,7 @@ public class Grillo extends Mascota {
         int posicion = Util.cantidadMascotas(mascotasAliadas);
         mascotasAliadas[posicion+1]=grilloZombi;
 
-        String mensajeEfecto = this.getNombre() + " invoca a un grillo zombi con vida de: "+this.getNivel()+
+        String mensajeEfecto = this.getNombre() + " invoca a un grillo zombi con vida de: "+ this.getNivel()+
                 " y ataque de: "+this.getNivel();
         Archivos.mensajeEfecto(mensajeEfecto);
     }
