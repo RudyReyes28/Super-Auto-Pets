@@ -17,7 +17,7 @@ public class HabilidadCaballo extends Habilidad {
             if(mascotasAliadas[i]!= null){
                 if(!this.getNombre().equals(mascotasAliadas[i].getNombre())){
                     mascotasAliadas[i].setAtaque(nivel);
-                    String mensajeEfecto = this.getNombre()+" otorga a" + mascotasAliadas[i].getNombre()+
+                    String mensajeEfecto = this.getNombre()+" otorga a " + mascotasAliadas[i].getNombre()+
                             " un daño de: "+nivel;
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }

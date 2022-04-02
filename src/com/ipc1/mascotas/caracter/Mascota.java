@@ -8,8 +8,9 @@ public class  Mascota {
     private String [] tipo = new String[3];
     private int nivel;
     private int exp;
+    private Habilidad habilidad;
 
-    public Mascota(String nombre, double ataque, double vida, String tipo1, String tipo2, String tipo3, int nivel, int exp) {
+    public Mascota(String nombre, double ataque, double vida, String tipo1, String tipo2, String tipo3, int nivel, int exp, Habilidad habilidad) {
         this.nombre = nombre;
         this.ataque = ataque;
         this.vida = vida;
@@ -18,6 +19,7 @@ public class  Mascota {
         this.tipo [2] = tipo3;
         this.nivel = nivel;
         this.exp = exp;
+        this.habilidad = habilidad;
     }
 
     public Mascota(Mascota mascota) {
@@ -29,6 +31,7 @@ public class  Mascota {
         this.tipo [2] =  mascota.getTipo(2);
         this.nivel = mascota.getNivel();
         this.exp = mascota.getExp();
+        this.habilidad = mascota.getHabilidad();
     }
 
     public String getNombre() {
@@ -79,14 +82,18 @@ public class  Mascota {
         this.exp = exp;
     }
 
+    public Habilidad getHabilidad(){
+        return habilidad;
+    }
+
 
     @Override
     public String toString(){
         return nombre+"("+(int)ataque+"/"+(int)vida+") ";
     }
 
-    public void habilidad(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas) {
-
+    public void activarHabilidad(Mascota [] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota[] mascotasTienda){
+        habilidad.activarHabilidad(mascotasAliadas,mascotasEnemigas,mascotasTienda,this.getNivel());
     }
 
 
