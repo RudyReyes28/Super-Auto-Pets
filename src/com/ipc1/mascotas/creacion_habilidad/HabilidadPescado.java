@@ -23,7 +23,7 @@ public class HabilidadPescado extends Habilidad {
                 if(!this.getNombre().equals(mascotasAliadas[i].getNombre())){
                     mascotasAliadas[i].setAtaque(vidadAtaque);
                     mascotasAliadas[i].setVida(vidadAtaque);
-                    String mensajeEfecto = this.getNombre()+" otorga a" + mascotasAliadas[i].getNombre()+
+                    String mensajeEfecto = this.getNombre()+" otorga a " + mascotasAliadas[i].getNombre()+
                             " vida: "+vidadAtaque+" daño: "+vidadAtaque;
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }

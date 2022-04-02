@@ -20,7 +20,7 @@ public class HabilidadHormiga extends Habilidad {
             mascotasAliadas[mascotaAleatoria].setAtaque(nivel*2);
             mascotasAliadas[mascotaAleatoria].setVida(nivel);
 
-            String mensajeEfecto = this.getNombre()+" otorga a" + mascotasAliadas[mascotaAleatoria].getNombre()+
+            String mensajeEfecto = this.getNombre()+" otorga a " + mascotasAliadas[mascotaAleatoria].getNombre()+
                     " vida: "+nivel+" daño: "+nivel*2;
 
             Archivos.mensajeEfecto(mensajeEfecto);

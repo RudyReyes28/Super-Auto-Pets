@@ -2,6 +2,18 @@ package com.ipc1.archivos;
 
 public class Archivos {
 
+    //COLORES
+    private static final String negro = "\u001B[30m";
+    private static final String rojo = "\u001B[31m";
+    private static final String verde = "\u001B[32m";
+    private static final String amarillo = "\u001B[33m";
+    private static final String azul = "\u001B[34m";
+    private static final String morado = "\u001B[35m";
+    private static final String cyan = "\u001B[36m";
+    private static final String blanco = "\u001B[37m";
+    private static final String reset = "\u001B[0m";
+
+
     private static String mensajeEntreBatallas= "";
     private static String mensajeEfectos="";
     private static String mensajeDanioRealizado="";
@@ -21,8 +33,8 @@ public class Archivos {
     }
 
     public static String MensajeEntreBatallas(){
-        mensajeEntreBatallas+= "EFECTOS PRODUCIDOS:\n"+mensajeEfectos+"DAÑO REALIZADO POR CADA MASCOTA:\n"
-                +mensajeDanioRealizado+"DAÑO RECIBIDO POR CADA MASCOTA\n"+mensajeDanioRecibido;
+        mensajeEntreBatallas+= cyan+"EFECTOS PRODUCIDOS:\n"+reset+mensajeEfectos+rojo+"\nDAÑO REALIZADO POR CADA MASCOTA:\n"
+                +reset+mensajeDanioRealizado+azul+"\nDAÑO RECIBIDO POR CADA MASCOTA\n"+reset+mensajeDanioRecibido;
 
         mensajeFinalDePartida();
 
