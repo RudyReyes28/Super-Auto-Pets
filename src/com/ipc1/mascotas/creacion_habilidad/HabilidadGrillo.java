@@ -9,8 +9,8 @@ import com.ipc1.util.Util;
 public class HabilidadGrillo extends Habilidad {
 
 
-    public HabilidadGrillo(String nombre) {
-        super(nombre);
+    public HabilidadGrillo() {
+        super("Grillo", "Zombificacion");
     }
 
     @Override
@@ -22,7 +22,7 @@ public class HabilidadGrillo extends Habilidad {
         int posicion = Util.cantidadMascotas(mascotasAliadas);
         mascotasAliadas[posicion+1]=grilloZombi;
 
-        String mensajeEfecto = this.getNombre() + " invoca a un grillo zombi con vida de: "+ nivel+
+        String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nInvoca a un grillo zombi con vida de: "+ nivel+
                 " y ataque de: "+ nivel;
         Archivos.mensajeEfecto(mensajeEfecto);
     }

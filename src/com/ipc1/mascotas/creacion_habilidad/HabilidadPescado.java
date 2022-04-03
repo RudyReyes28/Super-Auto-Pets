@@ -6,8 +6,8 @@ import com.ipc1.mascotas.caracter.Mascota;
 
 public class HabilidadPescado extends Habilidad {
 
-    public HabilidadPescado(String nombre) {
-        super(nombre);
+    public HabilidadPescado() {
+        super("Pescado", "Power-up");
     }
 
     @Override
@@ -23,7 +23,7 @@ public class HabilidadPescado extends Habilidad {
                 if(!this.getNombre().equals(mascotasAliadas[i].getNombre())){
                     mascotasAliadas[i].setAtaque(vidadAtaque);
                     mascotasAliadas[i].setVida(vidadAtaque);
-                    String mensajeEfecto = this.getNombre()+" otorga a " + mascotasAliadas[i].getNombre()+
+                    String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[i].getNombre()+
                             " vida: "+vidadAtaque+" daño: "+vidadAtaque;
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }

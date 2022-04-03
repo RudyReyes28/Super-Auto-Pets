@@ -6,7 +6,7 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadCaballo;
 
 public class Caballo extends Mascota {
     public Caballo() {
-        super("Caballo", 2, 1, "mamifero", "domestico", null, 1, 0,new HabilidadCaballo("Caballo"));
+        super("Caballo", 2, 1, "mamifero", "domestico", null, new HabilidadCaballo());
     }
 
 

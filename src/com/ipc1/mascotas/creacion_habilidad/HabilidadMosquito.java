@@ -7,8 +7,8 @@ import com.ipc1.util.Util;
 
 public class HabilidadMosquito extends Habilidad {
 
-    public HabilidadMosquito(String nombre) {
-        super(nombre);
+    public HabilidadMosquito() {
+        super("Mosquito","Piquete inicial");
     }
 
     @Override
@@ -22,14 +22,14 @@ public class HabilidadMosquito extends Habilidad {
 
                 if (nivel == 1) {
                     mascotasEnemigas[mascotaSeleccionada1].setVida(-1);
-                    String mensajeEfecto = this.getNombre()+" le quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
+                    String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nLe quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
                             " 1 de vida";
                     Archivos.mensajeEfecto(mensajeEfecto);
                 } else if (nivel == 2) {
                     mascotasEnemigas[mascotaSeleccionada1].setVida(-1);
                     mascotasEnemigas[mascotaSeleccionada2].setVida(-1);
 
-                    String mensajeEfecto = this.getNombre()+" le quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
+                    String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nLe quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
                             " y a "+ mascotasEnemigas[mascotaSeleccionada2] +" 1 de vida respectivamente";
                     Archivos.mensajeEfecto(mensajeEfecto);
 
@@ -38,7 +38,7 @@ public class HabilidadMosquito extends Habilidad {
                     mascotasEnemigas[Util.mascotaEnemigaAleatoria(mascotasEnemigas)].setVida(-1);
                     mascotasEnemigas[Util.mascotaEnemigaAleatoria(mascotasEnemigas)].setVida(-1);
 
-                    String mensajeEfecto = this.getNombre()+" le quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
+                    String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nLe quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
                             ", "+ mascotasEnemigas[mascotaSeleccionada2] +" y a "+ mascotasEnemigas[mascotaSeleccionada3]+" 1 de vida respectivamente";
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }

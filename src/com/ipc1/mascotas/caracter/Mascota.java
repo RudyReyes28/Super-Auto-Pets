@@ -10,15 +10,15 @@ public class  Mascota {
     private int exp;
     private Habilidad habilidad;
 
-    public Mascota(String nombre, double ataque, double vida, String tipo1, String tipo2, String tipo3, int nivel, int exp, Habilidad habilidad) {
+    public Mascota(String nombre, double ataque, double vida, String tipo1, String tipo2, String tipo3, Habilidad habilidad) {
         this.nombre = nombre;
         this.ataque = ataque;
         this.vida = vida;
         this.tipo [0] = tipo1;
         this.tipo [1] = tipo2;
         this.tipo [2] = tipo3;
-        this.nivel = nivel;
-        this.exp = exp;
+        this.nivel = 1;
+        this.exp = 0;
         this.habilidad = habilidad;
     }
 
@@ -71,7 +71,7 @@ public class  Mascota {
     }
 
     public void setNivel(int nivel) {
-        this.nivel += nivel;
+        this.nivel = nivel;
     }
 
     public int getExp() {

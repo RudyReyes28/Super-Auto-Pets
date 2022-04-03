@@ -33,7 +33,7 @@ public class Batallas {
 
 
         }while(Util.cantidadMascotas(jugador1.getMascotas())!=-1);*/
-        
+
         //iniciarBatalla(jugador1, jugador2);
 
 

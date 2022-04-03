@@ -9,7 +9,7 @@ public class Hormiga extends Mascota{
 
 
     public Hormiga() {
-        super("Hormiga", 2, 1, "insecto", "terrestre", null, 1, 0, new HabilidadHormiga("Hormiga"));
+        super("Hormiga", 2, 1, "insecto", "terrestre", null, new HabilidadHormiga());
     }
 
 

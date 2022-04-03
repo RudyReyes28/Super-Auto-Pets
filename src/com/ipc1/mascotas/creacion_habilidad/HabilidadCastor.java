@@ -8,9 +8,10 @@ import com.ipc1.util.Util;
 public class HabilidadCastor extends Habilidad {
 
 
-    public HabilidadCastor(String nombre) {
-        super(nombre);
+    public HabilidadCastor() {
+        super("Castor", "Represa");
     }
+
 
     @Override
     public void activarHabilidad(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota[] mascotasTienda, int nivel) {
@@ -20,7 +21,7 @@ public class HabilidadCastor extends Habilidad {
             int mascotaEscogida = Util.mascotaAleatoria(mascotasAliadas,this.getNombre());
             mascotasAliadas[mascotaEscogida].setVida(nivel);
 
-            String mensajeEfecto = this.getNombre() + " otorga a "+mascotasAliadas[mascotaEscogida].getNombre()
+            String mensajeEfecto =this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nOtorga a "+mascotasAliadas[mascotaEscogida].getNombre()
                     +" una cantidad de vida de: "+nivel;
             Archivos.mensajeEfecto(mensajeEfecto);
 
@@ -30,7 +31,7 @@ public class HabilidadCastor extends Habilidad {
             mascotasAliadas[mascotaEscogida1].setVida(nivel);
             mascotasAliadas[mascotaEscogida2].setVida(nivel);
 
-            String mensajeEfecto = this.getNombre() + " otorga a "+mascotasAliadas[mascotaEscogida1].getNombre()+
+            String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nOtorga a "+mascotasAliadas[mascotaEscogida1].getNombre()+
                     " y a "+mascotasAliadas[mascotaEscogida2].getNombre()+" una cantidad de vida de: " + nivel;
             Archivos.mensajeEfecto(mensajeEfecto);
         }

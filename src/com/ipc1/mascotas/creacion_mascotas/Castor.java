@@ -8,7 +8,7 @@ import com.ipc1.util.Util;
 public class Castor extends Mascota {
 
     public Castor() {
-        super("Castor", 2, 2, "terrestre", "acuatico", null, 1, 0, new HabilidadCastor("Castor"));
+        super("Castor", 2, 2, "terrestre", "acuatico", null, new HabilidadCastor());
     }
 
 }

@@ -87,4 +87,19 @@ public class Util {
         }
         return mascotaEscogida;
     }
+
+    public static int posicionMascota(Mascota[] mascotas, String nombreMascota){
+        int posicion=0;
+        for(int i=0; i<mascotas.length; i++){
+            if(mascotas[i]!=null){
+                if(mascotas[i].getNombre().equals(nombreMascota)){
+                    posicion=i;
+                    break;
+                }
+            }else{
+                break;
+            }
+        }
+        return posicion;
+    }
 }

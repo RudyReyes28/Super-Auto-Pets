@@ -4,9 +4,11 @@ package com.ipc1.mascotas.caracter;
 public class Habilidad {
 
     private String nombre;
+    private String nombreHabilidad;
 
-    public Habilidad(String nombre) {
+    public Habilidad(String nombre, String nombreHabilidad) {
         this.nombre = nombre;
+        this.nombreHabilidad = nombreHabilidad;
     }
 
 
@@ -20,5 +22,13 @@ public class Habilidad {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getNombreHabilidad() {
+        return nombreHabilidad;
+    }
+
+    public void setNombreHabilidad(String nombreHabilidad) {
+        this.nombreHabilidad = nombreHabilidad;
     }
 }
