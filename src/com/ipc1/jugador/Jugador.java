@@ -83,7 +83,7 @@ public class Jugador {
     public void activarHabilidad(int i, Mascota[] mascotasEnemigas){
         try {
             mascotas[i].activarHabilidad(mascotas,mascotasEnemigas,null);
-        }catch (NullPointerException e){
+        }catch (NullPointerException ignored){
 
         }
     }

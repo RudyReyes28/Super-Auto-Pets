@@ -86,6 +86,7 @@ public class  Mascota {
         return habilidad;
     }
 
+    public void setHabilidad(Habilidad habilidad){this.habilidad=habilidad;}
 
     @Override
     public String toString(){
