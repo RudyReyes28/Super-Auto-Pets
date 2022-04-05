@@ -34,9 +34,9 @@ public class HabilidadMosquito extends Habilidad {
                     Archivos.mensajeEfecto(mensajeEfecto);
 
                 } else if (nivel == 3) {
-                    mascotasEnemigas[Util.mascotaEnemigaAleatoria(mascotasEnemigas)].setVida(-1);
-                    mascotasEnemigas[Util.mascotaEnemigaAleatoria(mascotasEnemigas)].setVida(-1);
-                    mascotasEnemigas[Util.mascotaEnemigaAleatoria(mascotasEnemigas)].setVida(-1);
+                    mascotasEnemigas[mascotaSeleccionada1].setVida(-1);
+                    mascotasEnemigas[mascotaSeleccionada2].setVida(-1);
+                    mascotasEnemigas[mascotaSeleccionada3].setVida(-1);
 
                     String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nLe quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
                             ", "+ mascotasEnemigas[mascotaSeleccionada2] +" y a "+ mascotasEnemigas[mascotaSeleccionada3]+" 1 de vida respectivamente";
