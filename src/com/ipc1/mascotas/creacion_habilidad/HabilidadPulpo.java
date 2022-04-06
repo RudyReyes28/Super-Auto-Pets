@@ -30,9 +30,20 @@ public class HabilidadPulpo extends Habilidad {
 
                     mascotasAliadas[posicionPulpo].setVida(8);
                     mascotasAliadas[posicionPulpo].setAtaque(8);
-                    mascotas.getMascota(mascotaAleatoria).activarHabilidad(mascotasAliadas,mascotasEnemigas,mascotasTienda);
-                    String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nGana 8 de daño y de vida"+
-                            "Además activa la habilidad " +  mascotas.getMascota(mascotaAleatoria).getHabilidad().getNombreHabilidad();
+
+                    String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nGana 8 de daño y de vida";
+                    Habilidad copiHabilidad = null;
+
+                    if(mascotasEnemigas[mascotaAleatoria]!= null){
+                        copiHabilidad =  mascotasEnemigas[mascotaAleatoria].getHabilidad();
+                    }
+
+                    if(copiHabilidad!=null) {
+                        copiHabilidad.activarHabilidad(mascotasAliadas, mascotasEnemigas, mascotasTienda, nivel);
+                        mensajeEfecto+= " Y activa la habilidad "+copiHabilidad.getNombreHabilidad();
+                    }
+
+
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }if(nivel == 3){
                     for(int i=0; i<mascotasEnemigas.length; i++){
