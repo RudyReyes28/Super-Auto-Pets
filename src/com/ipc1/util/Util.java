@@ -1,5 +1,6 @@
 package com.ipc1.util;
 
+import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.caracter.Mascota;
 
 import java.security.SecureRandom;
@@ -10,6 +11,8 @@ public class Util {
     public static Scanner entrada = new Scanner(System.in);
 
     public static int cantidadMascotas(Mascota[] mascotas){
+        ordenarMascotas(mascotas);
+
         int cantidadDeMascotas = -1;
         for(int i=0; i<mascotas.length; i++){
             if(mascotas[i]!= null){
@@ -101,5 +104,73 @@ public class Util {
             }
         }
         return posicion;
+    }
+
+    public static void ordenarMascotas(Mascota [] mascotas){
+        Mascota aux;
+
+        for(int i=0; i<(mascotas.length-1);i++){
+            for(int j=0; j<(mascotas.length-1);j++){
+
+                if(mascotas[j]==null){
+                    aux = mascotas[j];
+                    mascotas[j] = mascotas[j+1];
+                    mascotas[j+1] = aux;
+                }
+            }
+        }
+    }
+
+    public static void mostrarMascotasBatalla(Jugador jugador1, Jugador jugador2){
+        ordenarMascotas(jugador1.getMascotas());
+
+        for(int i=0; i<jugador1.getMascotas().length;i++){
+            if(jugador1.getMascota(i)!= null){
+                System.out.print(jugador1.getMascota(i).toString()+"|");
+            }
+        }
+
+        ordenarMascotas(jugador2.getMascotas());
+        System.out.print("\t\t");
+        for(int i=(jugador2.getMascotas().length-1); i>=0 ;i--){
+            if(jugador2.getMascota(i)!= null){
+                System.out.print(jugador2.getMascota(i).toString()+"|");
+            }
+        }
+
+        System.out.println();
+    }
+
+    public static void mascotasDebilitadas(Jugador jugador){
+        int cant = cantidadMascotas(jugador.getMascotas());
+        for(int i=0; i<= cant; i++){
+            if(jugador.getMascota(i).getVida()<=0){
+                jugador.eliminarMascota(i);
+            }
+        }
+
+        ordenarMascotas(jugador.getMascotas());
+    }
+
+    public static String solicitarString(String mensaje){
+        String respuesta = "";
+        boolean hayErrorStringIngresado = false;
+
+        do {
+            System.out.print("\n"+mensaje);
+            respuesta = entrada.nextLine();
+            //scanner.nextLine();//probar
+            respuesta = respuesta.trim();
+            if (respuesta.length() >0){
+                hayErrorStringIngresado=false;
+            }
+            else{
+                hayErrorStringIngresado = true;
+                System.out.println("Ingresa un caracter como minimo.");
+            }
+
+        } while (hayErrorStringIngresado);
+
+        return respuesta;
     }
 }

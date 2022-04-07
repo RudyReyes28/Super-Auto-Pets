@@ -9,17 +9,24 @@ import com.ipc1.util.Util;
 import java.util.Scanner;
 
 public class Batallas {
-    public static Mascotas mascotas = new Mascotas();
+    /*public static Mascotas mascotas = new Mascotas();
     public static Jugador jugador1 = new Jugador("Rudy");
     public static Jugador jugador2 = new Jugador("bot");
-    public static Scanner entrada = new Scanner(System.in);
+    public static Scanner entrada = new Scanner(System.in);*/
 
     public static void main(String[] args) {
 
-        llenarMascotas(jugador1);
+        ModoArena batallaArena = new ModoArena("Rudy");
+        batallaArena.iniciarBatalla();
+
+
+
+
+
+        /*llenarMascotas(jugador1);
         llenarMascotas(jugador2);
         int opcion = 0;
-        /*do {
+        do {
             System.out.println("\n1. Eliminar Mascota, 2.Ordenar Mascota, 3.Salir");
             opcion = Util.solicitarNumero("Digite la opcion: ",1,3);
             switch (opcion){
@@ -38,7 +45,7 @@ public class Batallas {
 
 
     }
-
+/*
     public static void iniciarBatalla(Jugador jugador1, Jugador jugador2){
         int ronda = 1;
         int mascotaTurnoJugador1=0;
@@ -126,7 +133,7 @@ public class Batallas {
         if(cantidadMascotas>=0) {
 
             jugador.eliminarMascota(posicion);
-            Mascota[] mascotas= jugador.getMascotas();
+            Mascota[] mascotas = jugador.getMascotas();
 
             for(int i=posicion; i<cantidadMascotas; i++){
                 mascotas[i] = mascotas[i+1];
@@ -145,15 +152,16 @@ public class Batallas {
             }
         }
     }
-
+*/
     public static void mostrarMascotas(Jugador jugador){
         System.out.println("Mascotas del jugador: "+jugador.getNombre());
         for(int i=0; i<jugador.getMascotas().length;i++){
             if(jugador.getMascota(i)!= null){
-                System.out.print(i+jugador.getMascota(i).toString());
+                System.out.print(i+" "+jugador.getMascota(i).toString());
             }
         }
     }
+    /*
 
     public static void mostrarMascotasBatalla(Jugador jugador1, Jugador jugador2){
 
@@ -179,7 +187,7 @@ public class Batallas {
             int numero=Util.solicitarNumero("Digite la mascota a remover [0,"+cantidadMascotas+"]: ", 0, cantidadMascotas);
 
             jugador.eliminarMascota(numero);
-            Mascota [] mascotas= jugador.getMascotas();
+            Mascota [] mascotas = jugador.getMascotas();
 
             for(int i=numero; i<cantidadMascotas; i++){
                 mascotas[i] = mascotas[i+1];
@@ -227,6 +235,6 @@ public class Batallas {
         }
     }
 
-
+*/
 
 }

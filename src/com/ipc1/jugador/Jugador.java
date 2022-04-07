@@ -1,6 +1,8 @@
 package com.ipc1.jugador;
 
+import com.ipc1.archivos.Archivos;
 import com.ipc1.mascotas.caracter.Mascota;
+import com.ipc1.util.Util;
 
 public class Jugador {
 
@@ -26,7 +28,10 @@ public class Jugador {
     }
 
     public void setVida(int vida) {
-        this.vida = vida;
+        this.vida += vida;
+        if(this.vida<=0){
+            this.vida = 0;
+        }
     }
 
     public int getOro() {
@@ -34,23 +39,27 @@ public class Jugador {
     }
 
     public void setOro(int oro) {
-        this.oro = oro;
+        this.oro += oro;
+    }
+
+    public void reiniciarOro(){
+        this.oro = 10;
     }
 
     public int getVictorias() {
         return victorias;
     }
 
-    public void setVictorias(int victorias) {
-        this.victorias = victorias;
+    public void setVictorias() {
+        this.victorias ++;
     }
 
     public int getDerrotas() {
         return derrotas;
     }
 
-    public void setDerrotas(int derrotas) {
-        this.derrotas = derrotas;
+    public void setDerrotas() {
+        this.derrotas ++;
     }
 
     public String getNombre() {
@@ -58,9 +67,11 @@ public class Jugador {
     }
 
     public void setMascota(Mascota mascota){
-        if(contadorMascotas<this.mascotas.length) {
+        if(contadorMascotas<5) {
             this.mascotas[contadorMascotas] = new Mascota(mascota);
             this.contadorMascotas++;
+        }else{
+            System.out.println("Ya no se pueden añadir más mascotas");
         }
     }
 
@@ -84,6 +95,36 @@ public class Jugador {
         try {
             mascotas[i].activarHabilidad(mascotas,mascotasEnemigas,null);
         }catch (NullPointerException ignored){
+
+        }
+    }
+
+    public void pelear(Jugador enemigo){
+        int posicionMascota = Util.cantidadMascotas(this.getMascotas());
+        int posicionEnemigo = Util.cantidadMascotas(enemigo.getMascotas());
+
+        if(posicionMascota!=-1){
+            double ataque = mascotas[posicionMascota].getAtaque();
+
+            if(posicionEnemigo!=-1) {
+
+                String danioRealizadoMascotas=  "La mascota "+this.getMascota(posicionMascota).getNombre() +
+                        " del jugador "+ this.getNombre()+ " ha atacado a "+enemigo.getMascota(posicionEnemigo).getNombre()+" || Daño: "+ataque;
+
+                String danioRecibidoMascotas = "La mascota "+enemigo.getMascota(posicionEnemigo).getNombre()
+                        +" del jugador "+enemigo.getNombre()+ " recibió daño de: "+
+                        ataque+" tenia una vida de: "+enemigo.getMascota(posicionEnemigo).getVida();
+
+                enemigo.getMascota(posicionEnemigo).setVida(-ataque);
+
+                danioRecibidoMascotas += " y ahora tiene una vida de " + enemigo.getMascota(posicionEnemigo).getVida()+
+                ", la mascota "+(enemigo.getMascota(posicionEnemigo).getVida()<=0? "se ha debilitado":"aun puede pelear");
+
+
+                Archivos.mensajeDanioRealizado(danioRealizadoMascotas);
+                Archivos.mensajeDanioRecibido(danioRecibidoMascotas);
+            }
+
 
         }
     }

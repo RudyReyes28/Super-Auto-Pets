@@ -1,0 +1,117 @@
+package com.ipc1.batallas.menu_batallas;
+
+import com.ipc1.jugador.Jugador;
+import com.ipc1.mascotas.Mascotas;
+import com.ipc1.mascotas.caracter.Mascota;
+import com.ipc1.util.Util;
+
+public class CompraMascotas {
+
+    Mascotas mascotas = new Mascotas();
+
+    public void ComprarMascotas(int ronda, int tier, Mascota [] mascotasTienda, Jugador jugador){
+
+        mostrarMascotasTienda(mascotasTienda, jugador);
+
+    }
+
+    private void mostrarMascotasTienda(Mascota[] mascotasTienda, Jugador jugador) {
+
+        if (Util.cantidadMascotas(mascotasTienda) >= 0) {
+            if (jugador.getOro() >= 3) {
+
+
+                for (int i = 0; i < mascotasTienda.length; i++) {
+                    if (mascotasTienda[i] != null) {
+                        System.out.print(i + " " + mascotasTienda[i].toString());
+                    }
+                }
+
+                int opcionCompra = Util.solicitarNumero("Digite el numero de la mascota a comprar: ", 0, Util.cantidadMascotas(mascotasTienda));
+
+                jugador.setMascota(mascotasTienda[opcionCompra]);
+                jugador.setOro(-3);
+                mascotasTienda[opcionCompra] = null;
+            } else {
+                System.out.println("No tiene suficiente oro para seguir comprando mascotas");
+            }
+        } else {
+            System.out.println("Ya no se pueden comprar más mascotas en la tienda");
+        }
+    }
+
+    public  void llenarMascotasTienda(int ronda, int tier, Mascota [] mascotasTienda){
+        int animalesDisponibles = 0;
+        if(ronda <= 3){
+            animalesDisponibles = 3;
+        }else if(ronda <=6){
+            animalesDisponibles = 4;
+        }else{
+            animalesDisponibles = 5;
+        }
+
+        for(int i=0; i<animalesDisponibles; i++){
+            int mascotaAleatoria = Util.generarRandom(0,desbloqueoTier(ronda, tier));
+
+            mascotasTienda[i] = new Mascota(mascotas.getMascota(mascotaAleatoria));
+        }
+    }
+
+    public  void llenarMascotasBot(int ronda, int tier, Mascota [] mascotasBot){
+        int animalesDisponibles = 0;
+        if(ronda <= 3){
+            animalesDisponibles = 3;
+
+        }else if(ronda <=6){
+            animalesDisponibles = 4;
+        }else{
+            animalesDisponibles = 5;
+        }
+
+        for(int i=0; i<animalesDisponibles; i++){
+            int mascotaAleatoria = Util.generarRandom(0,desbloqueoTier(ronda, tier));
+
+            mascotasBot[i] = new Mascota(mascotas.getMascota(mascotaAleatoria));
+        }
+    }
+
+    private int verTier(int ronda, int tier){
+
+        if(ronda%2==0 && ronda <= 12){
+            tier++;
+        }
+
+        return tier;
+    }
+
+    private int desbloqueoTier(int ronda, int tier){
+        int desbloqueo=0;
+
+        switch (verTier(ronda, tier)){
+            case 1:
+                desbloqueo=7;
+                break;
+            case 2:
+                desbloqueo= 15;
+                break;
+            case 3:
+                desbloqueo = 26;
+                break;
+            case 4:
+                desbloqueo= 34;
+                break;
+            case 5:
+                desbloqueo= 42;
+                break;
+            case 6:
+                desbloqueo= 51;
+                break;
+            case 7:
+                desbloqueo= 53;
+                break;
+        }
+
+
+        return desbloqueo;
+    }
+}

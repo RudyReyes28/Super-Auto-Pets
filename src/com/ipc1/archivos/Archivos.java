@@ -51,4 +51,8 @@ public class Archivos {
     public static void mensajeFinalDePartida(){
         mensajeFinalDePartida+="\n"+mensajeEntreBatallas;
     }
+
+    public static String mostrarMensajeFinalDePartida(){
+        return mensajeFinalDePartida;
+    }
 }
