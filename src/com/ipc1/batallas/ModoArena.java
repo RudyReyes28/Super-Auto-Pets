@@ -2,6 +2,7 @@ package com.ipc1.batallas;
 
 import com.ipc1.archivos.Archivos;
 import com.ipc1.batallas.menu_batallas.CompraMascotas;
+import com.ipc1.batallas.menu_batallas.OrdenarVenderMascotas;
 import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.Mascotas;
 import com.ipc1.mascotas.caracter.Mascota;
@@ -16,13 +17,35 @@ public class ModoArena {
     private Jugador bot = new Jugador("Toretto");
     private Mascotas mascotas = new Mascotas();
     private Mascota [] mascotasTienda = new Mascota[5];
-    CompraMascotas compra;
+    private CompraMascotas compra;
     private int ronda = 1;
     private int tier = 1;
+    private Mascota [] copiaMascotaJugador = new Mascota[10];
 
     public ModoArena(String nombre) {
         this.jugador1 = new Jugador(nombre);
         compra = new CompraMascotas();
+    }
+
+    public void batalla(){
+        boolean batallaCompletada = true;
+        do{
+            System.out.println("\n***************** RONDA "+ronda+" *****************");
+            iniciarBatalla();
+
+            if(jugador1.getVida()<=0 || jugador1.getVictorias()>=10){
+                batallaCompletada = false;
+                if(jugador1.getVida()<=0){
+                    System.out.println("Jugador: "+jugador1.getNombre()+"\tVida: "+jugador1.getVida()+"\t\tOro: "
+                            +jugador1.getOro()+"\t\tVictorias: "+jugador1.getVictorias());
+                    System.out.println(Util.rojo+"El jugador "+jugador1.getNombre()+" ha perdido"+Util.reset);
+                }else if(jugador1.getVictorias()>=10){
+                    System.out.println("Jugador: "+jugador1.getNombre()+"\tVida: "+jugador1.getVida()+"\t\tOro: "
+                            +jugador1.getOro()+"\t\tVictorias: "+jugador1.getVictorias());
+                    System.out.println(Util.verde+"Felicidades, el jugador "+jugador1.getNombre()+" ha ganado"+Util.reset);
+                }
+            }
+        }while (batallaCompletada);
     }
 
     public void iniciarBatalla(){
@@ -54,19 +77,20 @@ public class ModoArena {
                     peleaTerminada = false;
                     ronda ++;
                     aumentarTier();
+                    jugador1.reiniciarOro();
 
                     if(Util.cantidadMascotas(jugador1.getMascotas())>=0 && Util.cantidadMascotas(bot.getMascotas())<0){
-                        System.out.println("El jugador "+ jugador1.getNombre()+ " ha ganado esta ronda\n");
+                        System.out.println("\t\tEl jugador "+ jugador1.getNombre()+ " ha ganado esta ronda\n");
                         jugador1.setVictorias();
                     }else if(Util.cantidadMascotas(jugador1.getMascotas())<0 && Util.cantidadMascotas(bot.getMascotas())>=0){
                         //GANO EL BOT
-                        System.out.println("El jugador "+ bot.getNombre()+ " ha ganado esta ronda\n");
+                        System.out.println("\t\tEl jugador "+ bot.getNombre()+ " ha ganado esta ronda\n");
                         jugadorPierde();
                     }else{
-                        System.out.println("Empate\n");
+                        System.out.println("\t\tEMPATE\n");
                     }
 
-                    System.out.println(Archivos.mostrarMensajeFinalDePartida());
+                    //System.out.println(Archivos.mostrarMensajeFinalDePartida());
                 }else{
                     Util.solicitarString("Digite cualquier letra para continuar: ");
                     pelea++;
@@ -74,39 +98,47 @@ public class ModoArena {
 
             } while (peleaTerminada);
         }else{
-            System.out.println("No tiene niguna mascota para pelear");
+            System.out.println("No tiene ninguna mascota para pelear");
         }
     }
 
     public void menuEntreBatallas(){
-        //Comprar Mascota
-        //Comprar Comida
-        //Ordenar Mascotas
-        //Fusionar Mascotas
-        //Vender Mascotas
-        //Empezar Batalla
-        //Retirarse
 
         int opcion = 0;
         compra.llenarMascotasTienda(ronda,tier,mascotasTienda);
         compra.llenarMascotasBot(ronda,tier, bot.getMascotas());
+        //VOLVEMOS A REINICIAR LAS MASCOTAS DEL JUGADOR
+        jugador1.reiniciarMascotas(copiaMascotaJugador);
 
         do{
+            System.out.println("Jugador: "+jugador1.getNombre()+"\tVida: "+jugador1.getVida()+"\t\tOro: "
+                    +jugador1.getOro()+"\t\tVictorias: "+jugador1.getVictorias());
+
             System.out.println("************* MENÚ ENTRE BATALLAS ***************");
-            System.out.println("\t1. Comprar Mascota\n\t2. Comprar Comida\n\t3.Ordenar Mascotas");
+            System.out.println("\t1. Comprar Mascota\n\t2. Comprar Comida\n\t3. Ordenar Mascotas");
             System.out.println("\t4. Fusionar Mascotas\n\t5. Vender Mascotas\n\t6. Empezar Batalla");
             opcion = Util.solicitarNumero("Digite una opcion: ",1,6);
 
             switch (opcion){
-                case 1: compra.ComprarMascotas(ronda,tier,mascotasTienda,jugador1);
+                case 1:
+                    System.out.println("Usted tiene las siguientes mascotas en su mazo: ");
+                    Util.mostrarMascotas(jugador1);
+                    compra.ComprarMascotas(ronda,tier,mascotasTienda,jugador1);
+                    copiarMascotas();
                     break;
                 case 2: //Comprar Comida
                     break;
-                case 3: //Ordenar Mascotas
+                case 3:
+                    OrdenarVenderMascotas.ordenarMascotas(jugador1);
+                    copiarMascotas();
                     break;
-                case 4: //Fusionar Mascotas
+                case 4:
+                    OrdenarVenderMascotas.fusionarMascota(jugador1,mascotasTienda);
+                    copiarMascotas();
                     break;
-                case 5: //Vender mascotas
+                case 5:
+                    OrdenarVenderMascotas.venderMascotas(jugador1);
+                    copiarMascotas();
                     break;
 
                 default:
@@ -141,67 +173,17 @@ public class ModoArena {
         }
     }
 
-    /*public void ComprarMascotas(){
-
+    public CompraMascotas getCompra() {
+        return compra;
     }
 
-    public void llenarMascotasTienda(){
-        int animalesDisponibles = 0;
-        if(ronda <= 3){
-            animalesDisponibles = 3;
-        }else if(ronda <=6){
-            animalesDisponibles = 4;
-        }else{
-            animalesDisponibles = 5;
-        }
+    public void copiarMascotas() {
 
-        for(int i=0; i<animalesDisponibles; i++){
-            int mascotaAleatoria = Util.generarRandom(0,desbloqueoTier());
-
-            mascotasTienda[i] = new Mascota(mascotas.getMascota(mascotaAleatoria));
+        for (int i = 0; i < jugador1.getMascotas().length; i++) {
+            if (jugador1.getMascota(i) != null) {
+                copiaMascotaJugador[i] = new Mascota(jugador1.getMascota(i));
+            }
         }
     }
-
-    public int verTier(){
-
-        if(ronda%2==0 && ronda <= 12){
-            tier++;
-        }
-
-        return tier;
-    }
-
-    public int desbloqueoTier(){
-        int desbloqueo=0;
-
-        switch (verTier()){
-            case 1:
-                desbloqueo=7;
-                break;
-            case 2:
-                desbloqueo= 15;
-                break;
-            case 3:
-                desbloqueo = 26;
-                break;
-            case 4:
-                desbloqueo= 34;
-                break;
-            case 5:
-                desbloqueo= 42;
-                break;
-            case 6:
-                desbloqueo= 51;
-                break;
-            case 7:
-                desbloqueo= 53;
-                break;
-        }
-
-
-        return desbloqueo;
-    }
-
-     */
 
 }

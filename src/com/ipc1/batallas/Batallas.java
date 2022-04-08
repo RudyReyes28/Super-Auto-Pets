@@ -17,7 +17,7 @@ public class Batallas {
     public static void main(String[] args) {
 
         ModoArena batallaArena = new ModoArena("Rudy");
-        batallaArena.iniciarBatalla();
+        batallaArena.batalla();
 
 
 

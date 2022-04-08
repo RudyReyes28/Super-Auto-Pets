@@ -70,8 +70,21 @@ public class Jugador {
         if(contadorMascotas<5) {
             this.mascotas[contadorMascotas] = new Mascota(mascota);
             this.contadorMascotas++;
+
         }else{
             System.out.println("Ya no se pueden añadir más mascotas");
+        }
+    }
+
+    public void setContadorMascotas(int contadorMascotas) {
+        this.contadorMascotas += contadorMascotas;
+    }
+
+    public void reiniciarMascotas(Mascota [] mascotas){
+        for(int i=0; i<mascotas.length; i++){
+            if(mascotas[i]!=null){
+                this.mascotas[i] = new Mascota(mascotas[i]);
+            }
         }
     }
 

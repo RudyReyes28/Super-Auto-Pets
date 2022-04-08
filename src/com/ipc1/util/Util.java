@@ -7,11 +7,21 @@ import java.security.SecureRandom;
 import java.util.Scanner;
 
 public class Util {
+    //COLORES
+    public static final String negro = "\u001B[30m";
+    public static final String rojo = "\u001B[31m";
+    public static final String verde = "\u001B[32m";
+    public static final String amarillo = "\u001B[33m";
+    public static final String azul = "\u001B[34m";
+    public static final String morado = "\u001B[35m";
+    public static final String cyan = "\u001B[36m";
+    public static final String blanco = "\u001B[37m";
+    public static final String reset = "\u001B[0m";
 
     public static Scanner entrada = new Scanner(System.in);
 
     public static int cantidadMascotas(Mascota[] mascotas){
-        ordenarMascotas(mascotas);
+        verificarMascotas(mascotas);
 
         int cantidadDeMascotas = -1;
         for(int i=0; i<mascotas.length; i++){
@@ -106,7 +116,7 @@ public class Util {
         return posicion;
     }
 
-    public static void ordenarMascotas(Mascota [] mascotas){
+    public static void verificarMascotas(Mascota [] mascotas){
         Mascota aux;
 
         for(int i=0; i<(mascotas.length-1);i++){
@@ -122,7 +132,7 @@ public class Util {
     }
 
     public static void mostrarMascotasBatalla(Jugador jugador1, Jugador jugador2){
-        ordenarMascotas(jugador1.getMascotas());
+        verificarMascotas(jugador1.getMascotas());
 
         for(int i=0; i<jugador1.getMascotas().length;i++){
             if(jugador1.getMascota(i)!= null){
@@ -130,7 +140,7 @@ public class Util {
             }
         }
 
-        ordenarMascotas(jugador2.getMascotas());
+        verificarMascotas(jugador2.getMascotas());
         System.out.print("\t\t");
         for(int i=(jugador2.getMascotas().length-1); i>=0 ;i--){
             if(jugador2.getMascota(i)!= null){
@@ -141,6 +151,39 @@ public class Util {
         System.out.println();
     }
 
+    public static void mostrarMascotas(Jugador jugador){
+        verificarMascotas(jugador.getMascotas());
+
+        for(int i=0; i<jugador.getMascotas().length;i++){
+            if(jugador.getMascota(i)!= null){
+                System.out.print(jugador.getMascota(i).toString()+"|");
+            }
+        }
+        System.out.println("");
+    }
+
+    public static void verMascotas(Jugador jugador){
+        verificarMascotas(jugador.getMascotas());
+        System.out.println("Mascotas del jugador: "+jugador.getNombre()+"\n");
+        for(int i=0; i<jugador.getMascotas().length;i++){
+            if(jugador.getMascota(i)!= null){
+                System.out.print(" "+i+"-"+jugador.getMascota(i).toString());
+            }
+        }
+        System.out.println("");
+    }
+
+    public static void verMascotas(Mascota [] mascotasTienda){
+        verificarMascotas(mascotasTienda);
+        System.out.println("Mascotas de la tienda \n");
+        for(int i=0; i<mascotasTienda.length;i++){
+            if(mascotasTienda[i] != null){
+                System.out.print(" "+i+"-"+mascotasTienda[i].toString());
+            }
+        }
+        System.out.println("");
+    }
+
     public static void mascotasDebilitadas(Jugador jugador){
         int cant = cantidadMascotas(jugador.getMascotas());
         for(int i=0; i<= cant; i++){
@@ -149,7 +192,7 @@ public class Util {
             }
         }
 
-        ordenarMascotas(jugador.getMascotas());
+        verificarMascotas(jugador.getMascotas());
     }
 
     public static String solicitarString(String mensaje){

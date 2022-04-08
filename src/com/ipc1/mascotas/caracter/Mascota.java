@@ -79,7 +79,18 @@ public class  Mascota {
     }
 
     public void setExp(int exp) {
-        this.exp = exp;
+        this.exp += exp;
+
+        if(nivel==1 && this.exp == 2 ){
+            this.setNivel(2);
+            this.exp = 0;
+        }else if(nivel==2 && this.exp == 3){
+            this.setNivel(3);
+            this.exp = 0;
+        }else if(nivel == 3){
+            System.out.println("Esta mascota está a nivel maximo");
+            this.exp = 0;
+        }
     }
 
     public Habilidad getHabilidad(){

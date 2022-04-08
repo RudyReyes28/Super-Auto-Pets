@@ -16,6 +16,8 @@ public class CompraMascotas {
     }
 
     private void mostrarMascotasTienda(Mascota[] mascotasTienda, Jugador jugador) {
+        System.out.println("\n\t************* BIENVENIDO A LA TIENDA DE MASCOTAS ***********");
+        System.out.println("ESTAS SON LAS MASCOTAS DISPONIBLES\n");
 
         if (Util.cantidadMascotas(mascotasTienda) >= 0) {
             if (jugador.getOro() >= 3) {
@@ -23,20 +25,29 @@ public class CompraMascotas {
 
                 for (int i = 0; i < mascotasTienda.length; i++) {
                     if (mascotasTienda[i] != null) {
-                        System.out.print(i + " " + mascotasTienda[i].toString());
+                        System.out.print(i + "-" + mascotasTienda[i].toString()+" ");
                     }
                 }
+                System.out.println("\n\t"+(Util.cantidadMascotas(mascotasTienda)+1)+". CANCELAR COMPRA");
 
-                int opcionCompra = Util.solicitarNumero("Digite el numero de la mascota a comprar: ", 0, Util.cantidadMascotas(mascotasTienda));
+                int opcionCompra = Util.solicitarNumero("Digite el numero de la mascota a comprar: ", 0, Util.cantidadMascotas(mascotasTienda)+1);
 
-                jugador.setMascota(mascotasTienda[opcionCompra]);
-                jugador.setOro(-3);
-                mascotasTienda[opcionCompra] = null;
+                if(opcionCompra!=(Util.cantidadMascotas(mascotasTienda)+1)) {
+                    if (Util.cantidadMascotas(jugador.getMascotas()) < 4) {
+                        jugador.setMascota(mascotasTienda[opcionCompra]);
+                        jugador.setOro(-3);
+                        mascotasTienda[opcionCompra] = null;
+                    } else {
+                        System.out.println("Ya no tiene espacio para mas mascotas");
+                    }
+                }else{
+                    System.out.println("Vuelva Pronto!!!\n");
+                }
             } else {
-                System.out.println("No tiene suficiente oro para seguir comprando mascotas");
+                System.out.println("No tiene suficiente oro para seguir comprando mascotas\n");
             }
         } else {
-            System.out.println("Ya no se pueden comprar más mascotas en la tienda");
+            System.out.println("Ya no se pueden comprar más mascotas en la tienda\n");
         }
     }
 
@@ -51,7 +62,7 @@ public class CompraMascotas {
         }
 
         for(int i=0; i<animalesDisponibles; i++){
-            int mascotaAleatoria = Util.generarRandom(0,desbloqueoTier(ronda, tier));
+            int mascotaAleatoria = Util.generarRandom(0,desbloqueoTier(tier));
 
             mascotasTienda[i] = new Mascota(mascotas.getMascota(mascotaAleatoria));
         }
@@ -59,17 +70,17 @@ public class CompraMascotas {
 
     public  void llenarMascotasBot(int ronda, int tier, Mascota [] mascotasBot){
         int animalesDisponibles = 0;
-        if(ronda <= 3){
+        if(ronda <= 1){
             animalesDisponibles = 3;
 
-        }else if(ronda <=6){
+        }else if(ronda <=3){
             animalesDisponibles = 4;
         }else{
             animalesDisponibles = 5;
         }
 
         for(int i=0; i<animalesDisponibles; i++){
-            int mascotaAleatoria = Util.generarRandom(0,desbloqueoTier(ronda, tier));
+            int mascotaAleatoria = Util.generarRandom(0,desbloqueoTier(tier));
 
             mascotasBot[i] = new Mascota(mascotas.getMascota(mascotaAleatoria));
         }
@@ -84,10 +95,10 @@ public class CompraMascotas {
         return tier;
     }
 
-    private int desbloqueoTier(int ronda, int tier){
+    private int desbloqueoTier(int tier){
         int desbloqueo=0;
 
-        switch (verTier(ronda, tier)){
+        switch (tier){
             case 1:
                 desbloqueo=7;
                 break;
