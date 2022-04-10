@@ -12,7 +12,9 @@ public class Pastilla extends Comida {
 
     @Override
     public void activarEfecto(Mascota[] mascotas, int animalSeleccionado) {
+        System.out.println("La mascota "+mascotas[animalSeleccionado]+" se ha puesto a dormir");
         mascotas[animalSeleccionado] = null;
+        System.out.println("");
 
         Util.verificarMascotas(mascotas);
     }

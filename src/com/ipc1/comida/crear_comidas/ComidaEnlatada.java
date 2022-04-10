@@ -10,11 +10,11 @@ public class ComidaEnlatada extends Comida {
     }
 
     @Override
-    public void activarEfecto(Mascota[] mascotas, int animalSeleccionado) {
-        for(int i=0; i<mascotas.length; i++){
-            if(mascotas[i]!=null){
-                mascotas[i].setAtaque(2);
-                mascotas[i].setVida(1);
+    public void activarEfecto(Mascota[] mascotasTienda, int animalSeleccionado) {
+        for(int i=0; i<mascotasTienda.length; i++){
+            if(mascotasTienda[i]!=null){
+                mascotasTienda[i].setAtaque(2);
+                mascotasTienda[i].setVida(1);
             }
         }
 

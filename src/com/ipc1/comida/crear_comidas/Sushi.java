@@ -12,6 +12,7 @@ public class Sushi extends Comida {
 
     @Override
     public void activarEfecto(Mascota[] mascotas, int animalSeleccionado) {
+
         int animal1 = 0;
         int animal2 = 1;
         int animal3 = Util.generarRandom(2,4);

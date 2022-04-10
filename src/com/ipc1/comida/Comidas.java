@@ -5,7 +5,7 @@ import com.ipc1.comida.crear_comidas.*;
 
 public class Comidas {
 
-    private Comida [] comidas;
+    private Comida [] comidas = new Comida[18];
 
     public Comidas() {
 

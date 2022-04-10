@@ -1,10 +1,12 @@
 package com.ipc1.batallas;
 
 import com.ipc1.archivos.Archivos;
+import com.ipc1.batallas.menu_batallas.CompraComida;
 import com.ipc1.batallas.menu_batallas.CompraMascotas;
 import com.ipc1.batallas.menu_batallas.OrdenarVenderMascotas;
 import com.ipc1.campos.Campos;
 import com.ipc1.campos.caracter.Campo;
+import com.ipc1.comida.caracter.Comida;
 import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.Mascotas;
 import com.ipc1.mascotas.caracter.Mascota;
@@ -17,8 +19,8 @@ public class ModoArena {
     private Scanner entrada = new Scanner(System.in);
     private Jugador jugador1;
     private Jugador bot = new Jugador("Toretto");
-    private Mascotas mascotas = new Mascotas();
     private Mascota [] mascotasTienda = new Mascota[5];
+    private Comida[] comidasTienda = new Comida[2];
     private CompraMascotas compra;
     private int ronda = 1;
     private int tier = 1;
@@ -118,6 +120,7 @@ public class ModoArena {
         int opcion = 0;
         compra.llenarMascotasTienda(ronda,tier,mascotasTienda);
         compra.llenarMascotasBot(ronda,tier, bot.getMascotas());
+        CompraComida.llenarComida(comidasTienda,tier);
 
         seleccionarCampo();
         //VOLVEMOS A REINICIAR LAS MASCOTAS DEL JUGADOR
@@ -134,12 +137,11 @@ public class ModoArena {
 
             switch (opcion){
                 case 1:
-                    System.out.println("Usted tiene las siguientes mascotas en su mazo: ");
-                    Util.mostrarMascotas(jugador1);
-                    compra.ComprarMascotas(ronda,tier,mascotasTienda,jugador1);
+                    compra.ComprarMascotas(mascotasTienda,jugador1);
                     copiarMascotas();
                     break;
-                case 2: //Comprar Comida
+                case 2:
+                    CompraComida.mostrarComidaTienda(comidasTienda,jugador1,compra.mascotasDeLaTienda());
                     break;
                 case 3:
                     OrdenarVenderMascotas.ordenarMascotas(jugador1);

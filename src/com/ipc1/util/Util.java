@@ -1,5 +1,6 @@
 package com.ipc1.util;
 
+import com.ipc1.comida.caracter.Comida;
 import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.caracter.Mascota;
 
@@ -71,21 +72,38 @@ public class Util {
         SecureRandom aleatorio = new SecureRandom();
         int cantidadDeMascotas = cantidadMascotas(mascotas);
         int mascotaEscogida;
+        int mascotasRepetidas = cantidadMascotasRepetidas(mascotas,nombreMascota);
 
         if(cantidadDeMascotas<=0){
             mascotaEscogida = -1;
         }else{
             boolean correcto = true;
             mascotaEscogida = aleatorio.nextInt(cantidadDeMascotas+1);
-            do {
-                if (nombreMascota.equals(mascotas[mascotaEscogida].getNombre())) {
-                    mascotaEscogida = aleatorio.nextInt(cantidadDeMascotas+1);
-                }else{
-                    correcto = false;
-                }
-            }while(correcto);
+            if(mascotasRepetidas<=1) {
+                do {
+                    if (nombreMascota.equals(mascotas[mascotaEscogida].getNombre())) {
+                        mascotaEscogida = aleatorio.nextInt(cantidadDeMascotas + 1);
+                    } else {
+                        correcto = false;
+                    }
+                } while (correcto);
+            }
         }
         return mascotaEscogida;
+    }
+
+    public static int cantidadMascotasRepetidas(Mascota [] mascotas, String nombreMascota){
+
+        int  repetidos = 0;
+
+        for(int i=0;i<mascotas.length; i++){
+            if(mascotas[i]!=null){
+                if(mascotas[i].getNombre().equals(nombreMascota)){
+                    repetidos++;
+                }
+            }
+        }
+        return repetidos;
     }
 
     public static int mascotaEnemigaAleatoria(Mascota [] mascotas){
@@ -215,5 +233,34 @@ public class Util {
         } while (hayErrorStringIngresado);
 
         return respuesta;
+    }
+
+    public static int cantidadAlimentos(Comida [] comidas){
+        verificarAlimentos(comidas);
+
+        int cantidadDeAlimentos = -1;
+        for(int i=0; i<comidas.length; i++){
+            if(comidas[i]!= null){
+                cantidadDeAlimentos++;
+            }else{
+                break;
+            }
+        }
+        return cantidadDeAlimentos;
+    }
+
+    public static void verificarAlimentos(Comida [] comidas){
+        Comida aux;
+
+        for(int i=0; i<(comidas.length-1);i++){
+            for(int j=0; j<(comidas.length-1);j++){
+
+                if(comidas[j]==null){
+                    aux = comidas[j];
+                    comidas[j] = comidas[j+1];
+                    comidas[j+1] = aux;
+                }
+            }
+        }
     }
 }

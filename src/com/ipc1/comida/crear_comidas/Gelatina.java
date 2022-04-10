@@ -24,7 +24,7 @@ public class Gelatina extends Comida {
         String [] tipos= {"insecto","volador","acuatico","terrestre","reptil","mamifero","domestico","solitario","desertico"};
 
        for(int i=0; i< tipos.length;i++){
-           System.out.println(i+"-"+tipos[i]+" ");
+           System.out.print(i+"-"+tipos[i]+" ");
        }
 
         int seleccion = Util.solicitarNumero("Seleccione un tipo",0,tipos.length-1);

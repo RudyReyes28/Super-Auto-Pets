@@ -8,21 +8,28 @@ import com.ipc1.util.Util;
 public class CompraMascotas {
 
     Mascotas mascotas = new Mascotas();
+    Mascotas mascotasBotTienda = new Mascotas();
 
-    public void ComprarMascotas(int ronda, int tier, Mascota [] mascotasTienda, Jugador jugador){
+    public void ComprarMascotas(Mascota [] mascotasTienda, Jugador jugador){
 
         mostrarMascotasTienda(mascotasTienda, jugador);
 
     }
 
+    public Mascota [] mascotasDeLaTienda(){
+        return mascotas.getMascotas();
+    }
+
     private void mostrarMascotasTienda(Mascota[] mascotasTienda, Jugador jugador) {
+        System.out.println("Usted tiene las siguientes mascotas en su mazo: ");
+        Util.mostrarMascotas(jugador);
         System.out.println("\n\t************* BIENVENIDO A LA TIENDA DE MASCOTAS ***********");
-        System.out.println("ESTAS SON LAS MASCOTAS DISPONIBLES\n");
+
 
         if (Util.cantidadMascotas(mascotasTienda) >= 0) {
             if (jugador.getOro() >= 3) {
 
-
+                System.out.println("ESTAS SON LAS MASCOTAS DISPONIBLES\n");
                 for (int i = 0; i < mascotasTienda.length; i++) {
                     if (mascotasTienda[i] != null) {
                         System.out.print(i + "-" + mascotasTienda[i].toString()+" ");
@@ -82,7 +89,7 @@ public class CompraMascotas {
         for(int i=0; i<animalesDisponibles; i++){
             int mascotaAleatoria = Util.generarRandom(0,desbloqueoTier(tier));
 
-            mascotasBot[i] = new Mascota(mascotas.getMascota(mascotaAleatoria));
+            mascotasBot[i] = new Mascota(mascotasBotTienda.getMascota(mascotaAleatoria));
         }
     }
 

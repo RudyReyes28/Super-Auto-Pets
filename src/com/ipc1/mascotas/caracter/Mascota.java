@@ -1,5 +1,7 @@
 package com.ipc1.mascotas.caracter;
 
+import com.ipc1.comida.caracter.Comida;
+
 public class  Mascota {
 
     private String nombre;
@@ -9,6 +11,7 @@ public class  Mascota {
     private int nivel;
     private int exp;
     private Habilidad habilidad;
+    private Comida efectoComida;
 
     public Mascota(String nombre, double ataque, double vida, String tipo1, String tipo2, String tipo3, Habilidad habilidad) {
         this.nombre = nombre;
@@ -20,6 +23,7 @@ public class  Mascota {
         this.nivel = 1;
         this.exp = 0;
         this.habilidad = habilidad;
+        efectoComida = null;
     }
 
     public Mascota(Mascota mascota) {
@@ -32,6 +36,7 @@ public class  Mascota {
         this.nivel = mascota.getNivel();
         this.exp = mascota.getExp();
         this.habilidad = mascota.getHabilidad();
+        efectoComida = null;
     }
 
     public String getNombre() {
@@ -120,5 +125,11 @@ public class  Mascota {
         habilidad.activarHabilidad(mascotasAliadas,mascotasEnemigas,mascotasTienda,this.getNivel());
     }
 
+    public Comida getEfectoComida() {
+        return efectoComida;
+    }
 
+    public void setEfectoComida(Comida efectoComida) {
+        this.efectoComida = efectoComida;
+    }
 }
