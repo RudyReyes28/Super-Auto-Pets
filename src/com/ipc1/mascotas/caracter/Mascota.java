@@ -47,6 +47,14 @@ public class  Mascota {
         this.ataque += ataque;
     }
 
+    public void reiniciarVida(double vida){
+        this.vida = vida;
+    }
+
+    public void reiniciarAtaque(double ataque){
+        this.ataque = ataque;
+    }
+
     public double getVida() {
         return vida;
     }
@@ -64,6 +72,10 @@ public class  Mascota {
 
     public String[] getTipo() {
         return tipo;
+    }
+
+    public void setTipo(int posicion, String nombreTipo){
+        tipo[posicion] = nombreTipo;
     }
 
     public int getNivel() {

@@ -28,7 +28,7 @@ public class CompraMascotas {
                         System.out.print(i + "-" + mascotasTienda[i].toString()+" ");
                     }
                 }
-                System.out.println("\n\t"+(Util.cantidadMascotas(mascotasTienda)+1)+". CANCELAR COMPRA");
+                System.out.println(""+(Util.cantidadMascotas(mascotasTienda)+1)+". Cancelar compra");
 
                 int opcionCompra = Util.solicitarNumero("Digite el numero de la mascota a comprar: ", 0, Util.cantidadMascotas(mascotasTienda)+1);
 

@@ -4,15 +4,19 @@ import com.ipc1.archivos.Archivos;
 import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.Mascotas;
 import com.ipc1.mascotas.caracter.Mascota;
+import com.ipc1.mascotas.creacion_habilidad.HabilidadHormiga;
+import com.ipc1.mascotas.creacion_mascotas.Hormiga;
 import com.ipc1.util.Util;
 
 import java.util.Scanner;
 
 public class Batallas {
-    /*public static Mascotas mascotas = new Mascotas();
+/*
+    public static Mascotas mascotas = new Mascotas();
     public static Jugador jugador1 = new Jugador("Rudy");
     public static Jugador jugador2 = new Jugador("bot");
-    public static Scanner entrada = new Scanner(System.in);*/
+    public static Scanner entrada = new Scanner(System.in);
+*/
 
     public static void main(String[] args) {
 
@@ -21,10 +25,7 @@ public class Batallas {
 
 
 
-
-
-        /*llenarMascotas(jugador1);
-        llenarMascotas(jugador2);
+        /*
         int opcion = 0;
         do {
             System.out.println("\n1. Eliminar Mascota, 2.Ordenar Mascota, 3.Salir");
@@ -144,15 +145,15 @@ public class Batallas {
     }
 
     public static void llenarMascotas(Jugador jugador){
-        for(int i=0; i<mascotas.getMascotas().length; i++){
+        for(int i=0; i<5; i++){
             if(mascotas.getMascota(i)!= null){
                 jugador.setMascota(mascotas.getMascota(i));
             }else{
                 break;
             }
         }
-    }
-*/
+    }*/
+
     public static void mostrarMascotas(Jugador jugador){
         System.out.println("Mascotas del jugador: "+jugador.getNombre());
         for(int i=0; i<jugador.getMascotas().length;i++){

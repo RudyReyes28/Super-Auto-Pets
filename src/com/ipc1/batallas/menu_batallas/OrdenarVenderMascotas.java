@@ -149,7 +149,7 @@ public class OrdenarVenderMascotas {
         System.out.println("*********** VENDER MASCOTAS ****************");
         Util.verMascotas(jugador);
         int cantidadMascotas = Util.cantidadMascotas(jugador.getMascotas());
-        System.out.println("\n\t"+(cantidadMascotas+1)+". CANCELAR VENTA");
+        System.out.println(" "+(cantidadMascotas+1)+". Cancelar venta");
         if(cantidadMascotas>=0){
             int mascota1 = Util.solicitarNumero("Digite la mascota a vender: ",0,cantidadMascotas+1);
 
