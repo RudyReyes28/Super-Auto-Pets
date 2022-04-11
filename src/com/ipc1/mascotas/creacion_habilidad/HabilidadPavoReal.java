@@ -9,7 +9,7 @@ public class HabilidadPavoReal extends Habilidad {
 
 
     public HabilidadPavoReal() {
-        super("Pavo Real", "Potenciacion");
+        super("Pavoreal", "Potenciacion");
     }
 
     @Override
@@ -20,6 +20,19 @@ public class HabilidadPavoReal extends Habilidad {
             mascotasAliadas[posicionPavo].setAtaque(ataque);
             String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nE incrementa su ataque en: " +ataque;
             Archivos.mensajeEfecto(mensajeEfecto);
+        }
+    }
+
+    public void activarHabilidadPavoreal(Mascota[] mascotasAliadas, Mascota pavo){
+        int posPavo = Util.cantidadMascotas(mascotasAliadas);
+
+        if(posPavo!=-1){
+            if(mascotasAliadas[posPavo].getNombre().equals(pavo.getNombre())){
+                double ataque = mascotasAliadas[posPavo].getAtaque()*(0.5*pavo.getNivel());
+                mascotasAliadas[posPavo].setAtaque(ataque);
+                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nE incrementa su ataque en: " +ataque;
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }
         }
     }
 }

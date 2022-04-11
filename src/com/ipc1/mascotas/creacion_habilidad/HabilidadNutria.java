@@ -26,4 +26,19 @@ public class HabilidadNutria extends Habilidad {
             Archivos.mensajeEfecto(mensaje);
         }
     }
+
+    public void activarHabilidadNutria(Mascota[] mascotasAliadas, Mascota nutria){
+
+        int posMascota = Util.mascotaAleatoria(mascotasAliadas,this.getNombre());
+
+        if(posMascota!=-1){
+
+            mascotasAliadas[posMascota].setAtaque(nutria.getNivel());
+            mascotasAliadas[posMascota].setVida(nutria.getNivel());
+            String mensaje = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nOtorga a "+mascotasAliadas[posMascota].getNombre()+
+                    " Vida: "+nutria.getNivel()+" Ataque: "+nutria.getNivel();
+
+            Archivos.mensajeEfecto(mensaje);
+        }
+    }
 }

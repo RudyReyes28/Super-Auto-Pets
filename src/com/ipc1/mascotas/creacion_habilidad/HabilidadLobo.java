@@ -34,4 +34,27 @@ public class HabilidadLobo extends Habilidad {
             }
         }
     }
+
+    public void activarHabilidadLobo(Mascota [] mascotasAliadas, Mascota lobo){
+        int posicionLobo = Util.cantidadMascotas(mascotasAliadas);
+
+        if(posicionLobo==0 && mascotasAliadas[posicionLobo]!=null){
+            if(mascotasAliadas[posicionLobo].getNombre().equals("Lobo")) {
+                if (lobo.getNivel() == 1 || lobo.getNivel() == 2) {
+                    mascotasAliadas[posicionLobo].setAtaque(lobo.getNivel() + 1);
+                    mascotasAliadas[posicionLobo].setVida(lobo.getNivel() + 1);
+
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAdquiere "
+                            + " un ataque de: +" + (lobo.getNivel() + 1) + " y una vida de: +" + (lobo.getNivel() + 1);
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                } else if (lobo.getNivel() == 3) {
+                    mascotasAliadas[posicionLobo].setAtaque(5);
+                    mascotasAliadas[posicionLobo].setVida(5);
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAdquiere "
+                            + " un ataque de: +5 y una vida de: +5";
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            }
+        }
+    }
 }

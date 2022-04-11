@@ -18,7 +18,8 @@ public class Naranja extends Comida {
             danio = mascotasEnemigas[posicionEnemigo].getAtaque()*0.1;
         }
 
-        System.out.println("Se regresa "+danio+"al enemigo");
+        System.out.printf("Se regresa %.2f de daño al enemigo",danio);
+        System.out.println();
 
         return danio;
     }

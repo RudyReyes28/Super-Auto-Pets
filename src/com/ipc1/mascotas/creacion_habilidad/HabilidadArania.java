@@ -27,4 +27,25 @@ public class HabilidadArania extends Habilidad {
             Archivos.mensajeEfecto(mensajeEfecto);
         }
     }
+
+    public void activarHabilidadArania(Mascota[] mascotasAliadas, Mascota arania){
+        Mascotas mascotasInvocadas = new Mascotas();
+        int mascotaAleatoria = Util.generarRandom(0,mascotasInvocadas.getMascotas().length-1);
+        int totalMascotas = Util.cantidadMascotas(mascotasAliadas);
+
+        try {
+            if (totalMascotas != -1) {
+                if (arania.getVida() <= 0) {
+                    mascotasInvocadas.getMascota(mascotaAleatoria).setNivel(arania.getNivel());
+                    mascotasAliadas[totalMascotas + 1] = mascotasInvocadas.getMascota(mascotaAleatoria);
+
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca " + mascotasInvocadas.getMascota(mascotaAleatoria).getNombre();
+
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            }
+        }catch (ArrayIndexOutOfBoundsException ignore){
+
+        }
+    }
 }

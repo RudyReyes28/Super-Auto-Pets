@@ -6,7 +6,7 @@ import com.ipc1.mascotas.caracter.Mascota;
 
 public class HabilidadConejo extends Habilidad {
 
-    private int posicionAmigo=-1;
+
 
 
     public HabilidadConejo() {
@@ -16,21 +16,23 @@ public class HabilidadConejo extends Habilidad {
     @Override
     public void activarHabilidad(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota[] mascotasTienda, int nivel) {
 
-        if(mascotasAliadas[posicionAmigo]!=null){
+       /* if(mascotasAliadas[posicionAmigo]!=null){
             mascotasAliadas[posicionAmigo].setVida(nivel);
 
             String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[posicionAmigo].getNombre()+
                     " una vida de: "+nivel;
             Archivos.mensajeEfecto(mensajeEfecto);
+        }*/
+
+    }
+
+    public void activarHabilidadConejo(Mascota mascotaComida, Mascota conejo){
+        if(mascotaComida!=null){
+            mascotaComida.setVida(conejo.getNivel());
+
+            String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotaComida.getNombre()+
+                    " una vida de: "+conejo.getNivel();
+            Archivos.mensajeEfecto(mensajeEfecto);
         }
-
-    }
-
-    public int getPosicionAmigo() {
-        return posicionAmigo;
-    }
-
-    public void setPosicionAmigo(int posicionAmigo) {
-        this.posicionAmigo = posicionAmigo;
     }
 }

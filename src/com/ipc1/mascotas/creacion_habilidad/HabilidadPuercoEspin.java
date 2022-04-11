@@ -39,4 +39,34 @@ public class HabilidadPuercoEspin extends Habilidad {
 
         }
     }
+
+    public void activarHabilidadPuercoEspin(Mascota [] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota puercoEspin){
+        if(puercoEspin.getVida()<=0) {
+            for (int i = 0; i < mascotasAliadas.length; i++) {
+                if (mascotasAliadas[i] != null) {
+                    if (!mascotasAliadas[i].getNombre().equals(this.getNombre())) {
+                        mascotasAliadas[i].setVida(-2 * puercoEspin.getNivel());
+                        String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAtaca a aliados: " + mascotasAliadas[i].getNombre() +
+                                " quitandole una vida de: " + (2 * puercoEspin.getNivel());
+                        Archivos.mensajeEfecto(mensajeEfecto);
+                    }
+                } else {
+                    break;
+                }
+
+            }
+
+            for (int i = 0; i < mascotasEnemigas.length; i++) {
+                if (mascotasEnemigas[i] != null) {
+                    mascotasEnemigas[i].setVida(-2 * puercoEspin.getNivel());
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAtaca a enemigos: " + mascotasEnemigas[i].getNombre() +
+                            " quitandole una vida de: " + (2 * puercoEspin.getNivel());
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                } else {
+                    break;
+                }
+
+            }
+        }
+    }
 }

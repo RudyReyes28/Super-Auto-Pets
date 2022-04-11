@@ -36,4 +36,32 @@ public class HabilidadCastor extends Habilidad {
             Archivos.mensajeEfecto(mensajeEfecto);
         }
     }
+
+    public void activarHabilidadCastor(Mascota [] mascotasAliadas, Mascota castor){
+
+        try {
+            int cantidad = Util.cantidadMascotas(mascotasAliadas);
+
+            if (cantidad == 1) {
+                int mascotaEscogida = Util.mascotaAleatoria(mascotasAliadas, this.getNombre());
+                mascotasAliadas[mascotaEscogida].setVida(castor.getNivel());
+
+                String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[mascotaEscogida].getNombre()
+                        + " una cantidad de vida de: " + castor.getNivel();
+                Archivos.mensajeEfecto(mensajeEfecto);
+
+            } else if (cantidad > 1) {
+                int mascotaEscogida1 = Util.mascotaAleatoria(mascotasAliadas, this.getNombre());
+                int mascotaEscogida2 = Util.mascotaAleatoria(mascotasAliadas, this.getNombre());
+                mascotasAliadas[mascotaEscogida1].setVida(castor.getNivel());
+                mascotasAliadas[mascotaEscogida2].setVida(castor.getNivel());
+
+                String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[mascotaEscogida1].getNombre() +
+                        " y a " + mascotasAliadas[mascotaEscogida2].getNombre() + " una cantidad de vida de: " + castor.getNivel();
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
+
+        }
+    }
 }

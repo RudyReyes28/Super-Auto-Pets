@@ -1,5 +1,6 @@
 package com.ipc1.mascotas.caracter;
 
+import com.ipc1.comida.activar_efecto.AlimentosConEfecto;
 import com.ipc1.comida.caracter.Comida;
 
 public class  Mascota {
@@ -48,6 +49,15 @@ public class  Mascota {
         return ataque;
     }
 
+    public double getAtaqueEfectos(Mascota [] mascotasEnemigas){
+        double ataqueEfecto = this.getAtaque();
+        if(efectoComida!=null){
+            ataqueEfecto+= AlimentosConEfecto.activarALimentosConRetornoDanio(mascotasEnemigas,this);
+        }
+
+        return ataqueEfecto;
+    }
+
     public void setAtaque(double ataque) {
         this.ataque += ataque;
     }
@@ -68,6 +78,18 @@ public class  Mascota {
         this.vida += vida;
         if(this.vida<0){
             this.vida=0;
+        }
+    }
+
+    public void setVidaEfectos(double vida, Mascota[] mascotasAliadas,Mascota[] mascotasEnemigas) {
+        this.vida += vida;
+        if(this.vida<0){
+            this.vida=0;
+        }
+
+        if(efectoComida!=null && vida<0){
+            this.vida+= AlimentosConEfecto.activarAlimentosConRetornoVida(this,vida);
+            AlimentosConEfecto.activarAlimentosSinRetorno(mascotasAliadas,mascotasEnemigas,this);
         }
     }
 

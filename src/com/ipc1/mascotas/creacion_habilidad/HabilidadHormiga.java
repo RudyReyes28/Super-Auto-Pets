@@ -25,4 +25,19 @@ public class HabilidadHormiga extends Habilidad {
             Archivos.mensajeEfecto(mensajeEfecto);
         }
     }
+
+    public void activarHabilidadHormiga(Mascota[] mascotasAliadas, Mascota hormiga){
+        if(hormiga.getVida()<=0){
+            int mascotaAleatoria = Util.mascotaAleatoria(mascotasAliadas, this.getNombre());
+
+            if(mascotaAleatoria!=-1){
+                mascotasAliadas[mascotaAleatoria].setAtaque(hormiga.getNivel()*2);
+                mascotasAliadas[mascotaAleatoria].setVida(hormiga.getNivel());
+
+                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[mascotaAleatoria].getNombre()+
+                        " vida: +"+hormiga.getNivel()+" daño: +"+hormiga.getNivel()*2;
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }
+        }
+    }
 }

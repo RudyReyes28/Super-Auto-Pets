@@ -28,4 +28,20 @@ public class HabilidadCaracol extends Habilidad {
             }
         }
     }
+
+    public void activarHabilidadCaracol(Mascota[] mascotasAliadas, Mascota caracol){
+        for (int i = 0; i < mascotasAliadas.length; i++) {
+            if (mascotasAliadas[i] != null) {
+                if (!this.getNombre().equals(mascotasAliadas[i].getNombre())) {
+                    mascotasAliadas[i].setAtaque(caracol.getNivel());
+                    mascotasAliadas[i].setVida(caracol.getNivel());
+
+                    String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[i].getNombre()+
+                            " vida: "+caracol.getNivel()+" daño: "+caracol.getNivel();
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+
+            }
+        }
+    }
 }

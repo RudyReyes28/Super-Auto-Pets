@@ -114,10 +114,14 @@ public class OrdenarVenderMascotas {
             jugador.eliminarMascota(mascota1);
             jugador.getMascota(mascota2).setVida(1);
             jugador.getMascota(mascota2).setAtaque(1);
+
+            //int nivelAntes = getNivel;
             jugador.getMascota(mascota2).setExp(1);
 
             System.out.println("La fusion se ha completado");
             System.out.println("Nivel actual de la mascota: "+jugador.getMascota(mascota2).getNivel());
+            //int nivelDespues = getNivel;
+            //(nivelDespues>nivelAntes? activeHabilidad: ;
 
         }else if(jugador.getMascota(mascota1).getVida() < jugador.getMascota(mascota2).getVida()){
             jugador.eliminarMascota(mascota1);
@@ -158,6 +162,9 @@ public class OrdenarVenderMascotas {
 
                 System.out.println("Esta mascota ha sido vendida por " + coste + " de oro");
                 jugador.setOro(coste);
+                //AQUI IRÁ LA HABILIDADES DE MASCOTAS QUE SE VENDEN
+                //
+                //
                 jugador.eliminarMascota(mascota1);
                 jugador.setContadorMascotas(-1);
                 Util.verificarMascotas(jugador.getMascotas());

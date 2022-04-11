@@ -23,4 +23,18 @@ public class HabilidadEscarabajo extends Habilidad {
             }
         }
     }
+
+    public void activarHabilidadEscarabajo(Mascota [] mascotasTienda, Mascota escarabajo){
+        for(int i = 0; i<mascotasTienda.length; i++){
+            if(mascotasTienda[i]!= null){
+                mascotasTienda[i].setVida(escarabajo.getNivel());
+
+                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasTienda[i].getNombre()+
+                        " vida: "+escarabajo.getNivel();
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }else{
+                break;
+            }
+        }
+    }
 }

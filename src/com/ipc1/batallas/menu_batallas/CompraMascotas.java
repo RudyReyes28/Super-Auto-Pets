@@ -42,6 +42,9 @@ public class CompraMascotas {
                 if(opcionCompra!=(Util.cantidadMascotas(mascotasTienda)+1)) {
                     if (Util.cantidadMascotas(jugador.getMascotas()) < 4) {
                         jugador.setMascota(mascotasTienda[opcionCompra]);
+
+                        //AQUI IRIA LAS HABILIDADES DE COMPRA
+
                         jugador.setOro(-3);
                         mascotasTienda[opcionCompra] = null;
                     } else {

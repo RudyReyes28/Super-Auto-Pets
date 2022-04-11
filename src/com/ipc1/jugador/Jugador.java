@@ -117,7 +117,7 @@ public class Jugador {
         int posicionEnemigo = Util.cantidadMascotas(enemigo.getMascotas());
 
         if(posicionMascota!=-1){
-            double ataque = mascotas[posicionMascota].getAtaque();
+            double ataque = mascotas[posicionMascota].getAtaqueEfectos(enemigo.getMascotas());
 
             if(posicionEnemigo!=-1) {
 
@@ -128,7 +128,7 @@ public class Jugador {
                         +" del jugador "+enemigo.getNombre()+ " recibió daño de: "+
                         ataque+" tenia una vida de: "+enemigo.getMascota(posicionEnemigo).getVida();
 
-                enemigo.getMascota(posicionEnemigo).setVida(-ataque);
+                enemigo.getMascota(posicionEnemigo).setVidaEfectos(-ataque, enemigo.getMascotas(), this.getMascotas());
 
                 danioRecibidoMascotas += " y ahora tiene una vida de " + enemigo.getMascota(posicionEnemigo).getVida()+
                 ", la mascota "+(enemigo.getMascota(posicionEnemigo).getVida()<=0? "se ha debilitado":"aun puede pelear");

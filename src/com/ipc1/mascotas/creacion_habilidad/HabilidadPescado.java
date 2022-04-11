@@ -32,4 +32,26 @@ public class HabilidadPescado extends Habilidad {
             }
         }
     }
+
+    public void activarHabilidadPescado(Mascota [] mascotasAliadas, Mascota mascota){
+        int vidadAtaque = 0;
+        if(mascota.getNivel()==1){
+            vidadAtaque=1;
+        }else{
+            vidadAtaque=2;
+        }
+        for(int i=0; i<mascotasAliadas.length; i++){
+            if(mascotasAliadas[i]!= null){
+                if(!this.getNombre().equals(mascotasAliadas[i].getNombre())){
+                    mascotasAliadas[i].setAtaque(vidadAtaque);
+                    mascotasAliadas[i].setVida(vidadAtaque);
+                    String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[i].getNombre()+
+                            " vida: "+vidadAtaque+" daño: "+vidadAtaque;
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            }else{
+                break;
+            }
+        }
+    }
 }

@@ -3,6 +3,7 @@ package com.ipc1.batallas.menu_batallas;
 import com.ipc1.comida.Comidas;
 import com.ipc1.comida.activar_efecto.AlimentoSinEfecto;
 import com.ipc1.comida.caracter.Comida;
+import com.ipc1.comida.crear_comidas.*;
 import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.caracter.Mascota;
 import com.ipc1.util.Util;
@@ -31,8 +32,11 @@ public class CompraComida {
 
                     int opcionMascota = Util.solicitarNumero("Digite la mascota que le dará el alimento: ",0,Util.cantidadMascotas(jugador.getMascotas()));
 
+                    //AQUÍ IRIA LAS HABILIDADES DE COMER
+                    //TENGO QUE PEDIR EL ARREGLO DE LAS MASCOTAS DE LA TIENDA(El que pedi anteriormente era para todas las mascotas)
+
                     if(comidasTienda[opcionCompra].isTipoEfecto()){
-                        System.out.println("Aun no he hecho nada");
+                        darComidaEfecto(comidasTienda,opcionCompra,jugador,opcionMascota);
                     }else{
                         AlimentoSinEfecto.activarAlimentoSinEfecto(comidasTienda[opcionCompra], jugador.getMascotas(),opcionMascota,mascotasTienda);
                         comidasTienda[opcionCompra]=null;
@@ -59,6 +63,7 @@ public class CompraComida {
             int comidaAleatoria = Util.generarRandom(0,desbloqueoTier(tier));
 
             comidasTienda[i] = comidas.getComida(comidaAleatoria);
+
         }
     }
 
@@ -91,6 +96,59 @@ public class CompraComida {
 
 
         return desbloqueo;
+    }
+
+    private static void darComidaEfecto(Comida [] comidasTienda, int opcionComida, Jugador jugador, int opcionMascota){
+
+        if(comidasTienda[opcionComida] instanceof Naranja){
+            jugador.getMascota(opcionMascota).setEfectoComida(new Naranja());
+            comidasTienda[opcionComida] = null;
+            jugador.setOro(-3);
+
+            Util.verificarAlimentos(comidasTienda);
+        }else if(comidasTienda[opcionComida] instanceof Miel){
+            jugador.getMascota(opcionMascota).setEfectoComida(new Miel());
+            comidasTienda[opcionComida] = null;
+            jugador.setOro(-3);
+
+            Util.verificarAlimentos(comidasTienda);
+        }else if(comidasTienda[opcionComida] instanceof HuesoDeCarne){
+            jugador.getMascota(opcionMascota).setEfectoComida(new HuesoDeCarne());
+            comidasTienda[opcionComida] = null;
+            jugador.setOro(-3);
+
+            Util.verificarAlimentos(comidasTienda);
+        }else if(comidasTienda[opcionComida] instanceof Ajo){
+            jugador.getMascota(opcionMascota).setEfectoComida(new Ajo());
+            comidasTienda[opcionComida] = null;
+            jugador.setOro(-3);
+
+            Util.verificarAlimentos(comidasTienda);
+        }else if(comidasTienda[opcionComida] instanceof Chile){
+            jugador.getMascota(opcionMascota).setEfectoComida(new Chile());
+            comidasTienda[opcionComida] = null;
+            jugador.setOro(-3);
+
+            Util.verificarAlimentos(comidasTienda);
+        }else if(comidasTienda[opcionComida] instanceof Melon){
+            jugador.getMascota(opcionMascota).setEfectoComida(new Melon());
+            comidasTienda[opcionComida] = null;
+            jugador.setOro(-3);
+
+            Util.verificarAlimentos(comidasTienda);
+        }else if(comidasTienda[opcionComida] instanceof Hongo){
+            jugador.getMascota(opcionMascota).setEfectoComida(new Hongo());
+            comidasTienda[opcionComida] = null;
+            jugador.setOro(-3);
+
+            Util.verificarAlimentos(comidasTienda);
+        }else if(comidasTienda[opcionComida] instanceof Carne){
+            jugador.getMascota(opcionMascota).setEfectoComida(new Carne());
+            comidasTienda[opcionComida] = null;
+            jugador.setOro(-3);
+
+            Util.verificarAlimentos(comidasTienda);
+        }
     }
 
 }

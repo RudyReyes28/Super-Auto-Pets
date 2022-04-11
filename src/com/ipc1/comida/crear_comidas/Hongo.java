@@ -10,9 +10,12 @@ public class Hongo extends Comida {
     }
 
     public void activarHabilidad(Mascota mascota){
-        mascota.reiniciarVida(1);
-        mascota.reiniciarAtaque(1);
 
-        System.out.println("La mascota "+mascota.getNombre()+" resucita con (1/1)");
+        if(mascota.getVida()<=0) {
+            mascota.reiniciarVida(1);
+            mascota.reiniciarAtaque(1);
+
+            System.out.println("La mascota " + mascota.getNombre() + " resucita con (1/1)");
+        }
     }
 }

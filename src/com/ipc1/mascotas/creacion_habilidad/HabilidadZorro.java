@@ -43,4 +43,40 @@ public class HabilidadZorro extends Habilidad {
         }
         zorroAtaqueSeguido++;
     }
+
+    public void activarHabilidadZorro(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota zorro){
+        int posicionZorro = Util.cantidadMascotas(mascotasAliadas);
+        int posicionEnemigo = Util.cantidadMascotas(mascotasEnemigas);
+        if(posicionZorro!=-1 && posicionEnemigo!=-1) {
+
+            if(mascotasAliadas[posicionZorro].getNombre().equals(zorro.getNombre())) {
+                double ataqueZorro = mascotasAliadas[posicionZorro].getAtaque();
+                mascotasEnemigas[posicionEnemigo].setVida(-ataqueZorro);
+                String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAtaca a " + mascotasEnemigas[posicionEnemigo].getNombre() +
+                        " haciendo un daño de: " + ataqueZorro;
+
+                if (zorro.getNivel() == 1) {
+                    if (zorroAtaqueSeguido % 3 == 0) {
+                        mascotasEnemigas[posicionEnemigo].setVida(-ataqueZorro);
+                        mensajeEfecto += this.getNombre() + " ataca por segunda vez a " + mascotasEnemigas[posicionEnemigo].getNombre() +
+                                " haciendo un daño de: " + ataqueZorro;
+                    }
+                } else if (zorro.getNivel() == 2) {
+                    if (zorroAtaqueSeguido % 2 == 0) {
+                        mascotasEnemigas[posicionEnemigo].setVida(-ataqueZorro);
+                        mensajeEfecto += this.getNombre() + " ataca por segunda vez a " + mascotasEnemigas[posicionEnemigo].getNombre() +
+                                " haciendo un daño de: " + ataqueZorro;
+                    }
+                } else if (zorro.getNivel() == 3) {
+                    mascotasEnemigas[posicionEnemigo].setVida(-ataqueZorro);
+                    mensajeEfecto += this.getNombre() + " ataca por segunda vez a " + mascotasEnemigas[posicionEnemigo].getNombre() +
+                            " haciendo un daño de: " + ataqueZorro;
+                }
+                Archivos.mensajeEfecto(mensajeEfecto);
+
+                zorroAtaqueSeguido++;
+            }
+        }
+
+    }
 }

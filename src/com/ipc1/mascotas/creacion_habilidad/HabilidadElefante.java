@@ -17,11 +17,33 @@ public class HabilidadElefante extends Habilidad {
         int posicionElefante = Util.posicionMascota(mascotasAliadas,this.getNombre());
 
         for(int i=posicionElefante-1; i>=posicionElefante-nivel;i--){
-            if(mascotasAliadas[i]!=null){
-                mascotasAliadas[i].setVida(-1);
-                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nLe quita a " + mascotasAliadas[i].getNombre()+
-                        " una vida de : -1";
-                Archivos.mensajeEfecto(mensajeEfecto);
+            if(i>=0) {
+                if (mascotasAliadas[i] != null) {
+                    mascotasAliadas[i].setVida(-1);
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nLe quita a " + mascotasAliadas[i].getNombre() +
+                            " una vida de : -1";
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            }
+        }
+    }
+
+    public void activarHabilidadElefante(Mascota [] mascotasAliadas, Mascota elefante){
+        int posicionElefante = Util.cantidadMascotas(mascotasAliadas);
+        if(posicionElefante!=-1) {
+
+            if(mascotasAliadas[posicionElefante].getNombre().equals(elefante.getNombre())) {
+
+                for (int i = posicionElefante - 1; i >= posicionElefante - elefante.getNivel(); i--) {
+                    if (i >= 0) {
+                        if (mascotasAliadas[i] != null) {
+                            mascotasAliadas[i].setVida(-1);
+                            String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nLe quita a " + mascotasAliadas[i].getNombre() +
+                                    " una vida de : -1";
+                            Archivos.mensajeEfecto(mensajeEfecto);
+                        }
+                    }
+                }
             }
         }
     }
