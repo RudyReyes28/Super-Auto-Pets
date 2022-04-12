@@ -1,5 +1,7 @@
 package com.ipc1.mascotas.activacion_habilidad;
 
+import com.ipc1.comida.caracter.Comida;
+import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.caracter.Habilidad;
 import com.ipc1.mascotas.caracter.Mascota;
 import com.ipc1.mascotas.creacion_habilidad.*;;
@@ -49,32 +51,97 @@ public class ActivarHabilidades {
             }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Buey")){
                 ((HabilidadBuey)mascotasAliadas[i].getHabilidad()).activarHabilidadBuey(mascotasAliadas,mascotasAliadas[i],i);
 
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Canguro")){
+                ((HabilidadCanguro)mascotasAliadas[i].getHabilidad()).activarHabilidadCanguro(mascotasAliadas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Venado")){
+                ((HabilidadVenado)mascotasAliadas[i].getHabilidad()).activarHabilidadVenado(mascotasAliadas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Loro")){
+                ((HabilidadLoro)mascotasAliadas[i].getHabilidad()).activarHabilidadLoro(mascotasAliadas,i,mascotasEnemigas);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Hipopotamo")){
+                ((HabilidadHipopotamo)mascotasAliadas[i].getHabilidad()).activarHabilidadHipopotamo(mascotasAliadas,mascotasEnemigas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Puma")) {
+                ((HabilidadPuma)mascotasAliadas[i].getHabilidad()).activarHabilidadPuma(mascotasAliadas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Jaguar")) {
+                ((HabilidadJaguar)mascotasAliadas[i].getHabilidad()).activarHabilidadJaguar(mascotasAliadas,mascotasEnemigas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Escorpion")){
+                ((HabilidadEscorpion)mascotasAliadas[i].getHabilidad()).activarHabilidadEscorpion(mascotasAliadas,mascotasEnemigas);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Panda")){
+                ((HabilidadPanda)mascotasAliadas[i].getHabilidad()).activarHabilidadPanda(mascotasAliadas,mascotasEnemigas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Tigre")) {
+                ((HabilidadTigre)mascotasAliadas[i].getHabilidad()).activarHabilidadTigre(mascotasAliadas,mascotasEnemigas);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Serpiente")) {
+                ((HabilidadSerpiente)mascotasAliadas[i].getHabilidad()).acrivarHabilidadSerpiente(mascotasAliadas,mascotasEnemigas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Mamut")) {
+                ((HabilidadMamut)mascotasAliadas[i].getHabilidad()).activarHabilidadMamut(mascotasAliadas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Gorila")) {
+                ((HabilidadGorila)mascotasAliadas[i].getHabilidad()).activarHabilidadGorilla(mascotasAliadas,mascotasEnemigas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Mosca")) {
+                ((HabilidadMosca)mascotasAliadas[i].getHabilidad()).activarHabilidadMosca(mascotasAliadas,mascotasAliadas[i]);
             }
 
         }
     }
 
-    public static void habilidadesAlComprarse(Mascota [] mascotasAliadas){
+    public static void habilidadesAlComprarse(Mascota [] mascotasAliadas, Comida[] comidaTienda, Mascota mascotaComprada){
         for(int i=0; i<= Util.cantidadMascotas(mascotasAliadas);i++){
-            if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Nutria")){
-                ((HabilidadNutria)mascotasAliadas[i].getHabilidad()).activarHabilidadNutria(mascotasAliadas,mascotasAliadas[i]);
+            if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Nutria")) {
+                if (mascotaComprada.getNombre().equalsIgnoreCase(mascotasAliadas[i].getNombre())) {
+                    ((HabilidadNutria) mascotasAliadas[i].getHabilidad()).activarHabilidadNutria(mascotasAliadas, mascotasAliadas[i]);
 
-            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Jirafa")) {
+                }
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Vaca")) {
+                if (mascotaComprada.getNombre().equalsIgnoreCase(mascotasAliadas[i].getNombre())) {
+                    ((HabilidadVaca)mascotasAliadas[i].getHabilidad()).activarHabilidadVaca(comidaTienda,mascotasAliadas[i]);
+
+                }
+            }
+        }
+
+
+        for(int i=0; i<= Util.cantidadMascotas(mascotasAliadas);i++){
+            if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Jirafa")) {
                 ((HabilidadJirafa)mascotasAliadas[i].getHabilidad()).activarHabilidadJirafa(mascotasAliadas,mascotasAliadas[i]);
+
             }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Caracol")) {
                 ((HabilidadCaracol)mascotasAliadas[i].getHabilidad()).activarHabilidadCaracol(mascotasAliadas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Llama")) {
+                ((HabilidadLlama)mascotasAliadas[i].getHabilidad()).activarHabilidadLlama(mascotasAliadas,mascotasAliadas[i],i);
             }
         }
     }
 
-    public static void habilidadesAlComer(Mascota [] mascotasTienda, Mascota mascota, Mascota[] mascotasAliadas){
-        if(mascota.getNombre().equalsIgnoreCase("Escarabajo")){
-            ((HabilidadEscarabajo) mascota.getHabilidad()).activarHabilidadEscarabajo(mascotasTienda,mascota);
+    public static void habilidadesAlComer(Mascota [] mascotasTienda, Mascota mascotaComer, Mascota[] mascotasAliadas, Jugador jugador){
+        if(mascotaComer.getNombre().equalsIgnoreCase("Escarabajo")){
+            ((HabilidadEscarabajo) mascotaComer.getHabilidad()).activarHabilidadEscarabajo(mascotasTienda,mascotaComer);
+
+        }else if(mascotaComer.getNombre().equalsIgnoreCase("Foca")){
+            ((HabilidadFoca)mascotaComer.getHabilidad()).activarHabilidadFoca(mascotasAliadas,mascotaComer);
+
         }
 
         for(int i=0; i<=Util.cantidadMascotas(mascotasAliadas); i++){
-            if(mascota.getNombre().equalsIgnoreCase("Conejo")){
-                ((HabilidadConejo)mascotasAliadas[i].getHabilidad()).activarHabilidadConejo(mascota,mascotasAliadas[i]);
+            if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Conejo")){
+                ((HabilidadConejo)mascotasAliadas[i].getHabilidad()).activarHabilidadConejo(mascotaComer,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Ardilla")){
+                ((HabilidadArdilla)mascotasAliadas[i].getHabilidad()).activarHabilidadArdilla(mascotasAliadas[i],jugador);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Gato")){
+                ((HabilidadGato)mascotasAliadas[i].getHabilidad()).activarHabilidadGato(mascotaComer,mascotasAliadas[i]);
+
             }
         }
     }
@@ -82,6 +149,9 @@ public class ActivarHabilidades {
     public static void habilidadesAlVenderse(Mascota [] mascotasAliadas, Mascota mascotaVendida){
         if(mascotaVendida.getNombre().equalsIgnoreCase("Castor")){
             ((HabilidadCastor) mascotaVendida.getHabilidad()).activarHabilidadCastor(mascotasAliadas,mascotaVendida);
+        }else if(mascotaVendida.getNombre().equalsIgnoreCase("Buho")){
+            ((HabilidadBuho)mascotaVendida.getHabilidad()).activarHabilidadBuho(mascotasAliadas,mascotaVendida);
+
         }
     }
 
@@ -99,6 +169,33 @@ public class ActivarHabilidades {
             }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Camello")){
                 ((HabilidadCamello)mascotasAliadas[i].getHabilidad()).activarHabilidadCamello(mascotasAliadas,mascotasAliadas[i]);
 
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Delfin")){
+                ((HabilidadDelfin)mascotasAliadas[i].getHabilidad()).activarHabilidadDelfin(mascotasEnemigas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Ballena")){
+                ((HabilidadBallena)mascotasAliadas[i].getHabilidad()).activarHabilidadBallena(mascotasAliadas,mascotasAliadas[i],i);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Rinoceronte")){
+                ((HabilidadRinoceronte)mascotasAliadas[i].getHabilidad()).activarHabilidadRinoceronte(mascotasEnemigas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Mono")){
+                ((HabilidadMono)mascotasAliadas[i].getHabilidad()).activarHabilidadMono(mascotasAliadas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Cocodrilo")){
+                ((HabilidadCocodrilo)mascotasAliadas[i].getHabilidad()).activarHabilidadCocodrilo(mascotasEnemigas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Leopardo")) {
+                ((HabilidadLeopardo)mascotasAliadas[i].getHabilidad()).activarHabilidadLeopardo(mascotasEnemigas,mascotasAliadas[i].getNivel());
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Pulpo")) {
+                ((HabilidadPulpo)mascotasAliadas[i].getHabilidad()).activarHabilidadNivel3Pulpo(mascotasEnemigas,mascotasAliadas[i].getNivel());
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Quetzal")) {
+                ((HabilidadQuetzal)mascotasAliadas[i].getHabilidad()).activarHabilidadQuetzal(mascotasAliadas,mascotasAliadas[i],i);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Camaleon")) {
+                ((HabilidadCamaleon)mascotasAliadas[i].getHabilidad()).activarHabilidadCamaleon(mascotasEnemigas,mascotasAliadas[i].getNivel(),mascotasAliadas,i);
+
             }
         }
     }
@@ -106,6 +203,9 @@ public class ActivarHabilidades {
     public static void habilidadesAlSubirNivel(Mascota [] mascotasAliadas, Mascota mascota){
         if(mascota.getNombre().equalsIgnoreCase("Pescado")){
             ((HabilidadPescado)mascota.getHabilidad()).activarHabilidadPescado(mascotasAliadas,mascota);
+
+        }else if(mascota.getNombre().equalsIgnoreCase("Pulpo")){
+            ((HabilidadPulpo)mascota.getHabilidad()).activarHabilidadPulo(mascotasAliadas, mascota.getNivel());
         }
     }
 }

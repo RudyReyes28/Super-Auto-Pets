@@ -57,10 +57,50 @@ public class HabilidadPulpo extends Habilidad {
                     }
                 }
             }
-        }catch (NullPointerException ignore){
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }
+    }
 
+    public void activarHabilidadPulo(Mascota[] mascotasAliadas, int nivel){
+
+        int posicionPulpo = Util.posicionMascota(mascotasAliadas, this.getNombre());
+
+        try {
+            if (posicionPulpo != -1) {
+                if (nivel == 1) {
+                    mascotasAliadas[posicionPulpo].setVida(8);
+                    mascotasAliadas[posicionPulpo].setAtaque(8);
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nGana 8 de daño y de vida";
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+                if (nivel == 2) {
+
+                    mascotasAliadas[posicionPulpo].setVida(8);
+                    mascotasAliadas[posicionPulpo].setAtaque(8);
+
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nGana 8 de daño y de vida";
+
+
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            }
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
+
+        }
+    }
+
+    public void activarHabilidadNivel3Pulpo(Mascota[] mascotasEnemigas, int nivel){
+        if(nivel == 3){
+            for(int i=0; i<mascotasEnemigas.length; i++){
+                if(mascotasEnemigas[i]!=null){
+                    mascotasEnemigas[i].setVida(-5);
+
+                    String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nHace daño a " + mascotasEnemigas[i].getNombre()+
+                            " quitandole 5 de vida";
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            }
         }
     }
 }

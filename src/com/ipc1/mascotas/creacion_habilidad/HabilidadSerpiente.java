@@ -25,10 +25,30 @@ public class HabilidadSerpiente extends Habilidad {
 
                 Archivos.mensajeEfecto(mensajeEfecto);
             }
-        }catch (ArrayIndexOutOfBoundsException ignore){
-
-        }catch (NullPointerException ignore){
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 
         }
+    }
+    
+    public void acrivarHabilidadSerpiente(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota serpiente){
+        int enemigoAleatorio = Util.mascotaEnemigaAleatoria(mascotasEnemigas);
+        int posicionSerpiente = Util.cantidadMascotas(mascotasAliadas);
+        try{
+            if(enemigoAleatorio!=-1 && posicionSerpiente!=-1){
+
+                if(mascotasAliadas[posicionSerpiente-1].getNombre().equalsIgnoreCase(serpiente.getNombre())) {
+                    mascotasEnemigas[enemigoAleatorio].setAtaque(-5 * serpiente.getNivel());
+
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAtaca a " + mascotasEnemigas[enemigoAleatorio].getNombre() +
+                            " quitandole una vida de: -" + (5 * serpiente.getNivel());
+
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            }
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
+
+        }
+
+
     }
 }

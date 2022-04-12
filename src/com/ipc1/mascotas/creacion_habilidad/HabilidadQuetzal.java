@@ -46,9 +46,44 @@ public class HabilidadQuetzal extends Habilidad {
                 Archivos.mensajeEfecto(mensajeEfecto);
             }
 
-        } catch (NullPointerException ignore) {
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException ignore) {
 
-        } catch (ArrayIndexOutOfBoundsException ignore) {
+        }
+    }
+
+    public void activarHabilidadQuetzal(Mascota [] mascotasAliadas, Mascota quetzal, int posicionQuetzal){
+        try {
+            if (posicionQuetzal != -1) {
+                double vida = 0;
+                double danio = 0;
+                String mensajeEfecto = "";
+
+                if (quetzal.getNivel() == 1) {
+                    vida = vidaAves(mascotasAliadas);
+
+                    mascotasAliadas[posicionQuetzal].setVida(vida);
+                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida;
+                } else if (quetzal.getNivel() == 2) {
+                    vida = vidaAves(mascotasAliadas);
+                    danio = danioAves(mascotasAliadas);
+
+                    mascotasAliadas[posicionQuetzal].setVida(vida);
+                    mascotasAliadas[posicionQuetzal].setAtaque(danio);
+                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
+                            " y tambien adquiere un ataque de: +" + danio;
+                } else if (quetzal.getNivel() == 3) {
+                    vida = vidaAnimales(mascotasAliadas);
+                    danio = danioAnimales(mascotasAliadas);
+
+                    mascotasAliadas[posicionQuetzal].setVida(vida);
+                    mascotasAliadas[posicionQuetzal].setAtaque(danio);
+                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
+                            " y tambien adquiere un ataque de: +" + danio;
+                }
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }
+
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException ignore) {
 
         }
     }

@@ -52,7 +52,7 @@ public class HabilidadCamaleon extends Habilidad {
                     mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
                             " y tambien adquiere un ataque de: +" + danio;
                     if(copiHabilidad!=null) {
-                        copiHabilidad.activarHabilidad(mascotasAliadas, mascotasEnemigas, mascotasTienda, nivel);
+                        copiHabilidad.activarHabilidad(mascotasAliadas, mascotasEnemigas, null, nivel);
                         mensajeEfecto+= " Y activa la habilidad "+copiHabilidad.getNombreHabilidad();
                     }
 
@@ -60,9 +60,58 @@ public class HabilidadCamaleon extends Habilidad {
                 Archivos.mensajeEfecto(mensajeEfecto);
             }
 
-        } catch (NullPointerException ignore) {
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException ignore) {
 
-        } catch (ArrayIndexOutOfBoundsException ignore) {
+        }
+    }
+
+    public void activarHabilidadCamaleon(Mascota[] mascotasEnemigas, int nivel, Mascota [] mascotasAliadas, int posicionC){
+        try {
+            if (posicionC != -1) {
+                double vida = 0;
+                double danio = 0;
+                String mensajeEfecto = "";
+
+                if (nivel == 1) {
+                    vida = copiarVida(mascotasEnemigas);
+
+                    mascotasAliadas[posicionC].setVida(vida);
+                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida;
+                } else if (nivel == 2) {
+                    vida = copiarVida(mascotasEnemigas);
+                    danio = copiarDanio(mascotasEnemigas);
+
+                    mascotasAliadas[posicionC].setVida(vida);
+                    mascotasAliadas[posicionC].setAtaque(danio);
+                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
+                            " y tambien adquiere un ataque de: +" + danio;
+                } else if (nivel == 3) {
+
+                    vida = copiarVida(mascotasEnemigas);
+                    danio = copiarDanio(mascotasEnemigas);
+
+                    int enemigo = enemigoMasFuerte(mascotasEnemigas);
+                    Habilidad copiHabilidad = null;
+
+                    if(mascotasEnemigas[enemigo]!= null){
+                        copiHabilidad =  mascotasEnemigas[enemigo].getHabilidad();
+                    }
+
+                    mascotasAliadas[posicionC].setVida(vida);
+                    mascotasAliadas[posicionC].setAtaque(danio);
+
+                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
+                            " y tambien adquiere un ataque de: +" + danio;
+                    if(copiHabilidad!=null) {
+                        copiHabilidad.activarHabilidad(mascotasAliadas, mascotasEnemigas, null, nivel);
+                        mensajeEfecto+= " Y activa la habilidad "+copiHabilidad.getNombreHabilidad();
+                    }
+
+                }
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }
+
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException ignore) {
 
         }
     }
@@ -78,9 +127,7 @@ public class HabilidadCamaleon extends Habilidad {
                     }
                 }
             }
-        }catch (NullPointerException ignore){
-
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
         }
 
@@ -98,9 +145,7 @@ public class HabilidadCamaleon extends Habilidad {
                     }
                 }
             }
-        }catch (NullPointerException ignore){
-
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
         }
 
@@ -119,9 +164,7 @@ public class HabilidadCamaleon extends Habilidad {
                     }
                 }
             }
-        }catch (NullPointerException ignore){
-
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
         }
 

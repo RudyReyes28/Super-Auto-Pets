@@ -25,4 +25,18 @@ public class HabilidadCocodrilo extends Habilidad {
 
         }
     }
+    
+    public void activarHabilidadCocodrilo(Mascota [] mascotasEnemigas, Mascota cocodrilo){
+        try{
+            if(mascotasEnemigas[0]!= null){
+                mascotasEnemigas[0].setVida(-8*cocodrilo.getNivel());
+
+                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nAtaca a " + mascotasEnemigas[0].getNombre()+
+                        " quitandole una vida de: -"+(8*cocodrilo.getNivel());
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }
+        }catch (NullPointerException ignore){
+
+        }
+    }
 }

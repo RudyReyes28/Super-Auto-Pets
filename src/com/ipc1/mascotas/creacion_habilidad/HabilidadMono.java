@@ -26,9 +26,25 @@ public class HabilidadMono extends Habilidad {
                         " dandole una vida de: +"+(3*nivel)+ " y un ataque de: +"+(2*nivel);
                 Archivos.mensajeEfecto(mensajeEfecto);
             }
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 
-        }catch (NullPointerException ignore){
+        }
+    }
+
+    public void activarHabilidadMono(Mascota[] mascotasAliadas, Mascota mono){
+        int posicionAmigo = Util.cantidadMascotas(mascotasAliadas);
+
+        try{
+
+            if(posicionAmigo!=-1){
+                mascotasAliadas[posicionAmigo].setAtaque(2*mono.getNivel());
+                mascotasAliadas[posicionAmigo].setVida(3*mono.getNivel());
+
+                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[posicionAmigo].getNombre()+
+                        " dandole una vida de: +"+(3*mono.getNivel())+ " y un ataque de: +"+(2*mono.getNivel());
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 
         }
     }

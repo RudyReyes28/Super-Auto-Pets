@@ -30,10 +30,43 @@ public class HabilidadMosca extends Habilidad {
                 }
                 turnos++;
             }
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 
-        }catch (NullPointerException ignore){
+        }
+    }
 
+    public void activarHabilidadMosca(Mascota[] mascotasAliadas, Mascota mosca){
+        Mascota zombieFly = new Mascota("Zombie Fly",5* mosca.getNivel(),5* mosca.getNivel(),"volador","insecto",null,new Habilidad("Zombie FLy", " "));
+
+        int posicionMascota = Util.cantidadMascotas(mascotasAliadas);
+
+        try{
+            if(mosca.getVida()<=0) {
+                if (posicionMascota != -1) {
+                    mascotasAliadas[posicionMascota + 1] = zombieFly;
+
+                    activarHabilidadDeInvocados(mascotasAliadas);
+
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca a un Zombie Fly ";
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+
+            }
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
+
+        }
+    }
+
+    public void activarHabilidadDeInvocados(Mascota [] mascotasAliadas){
+
+        for(int i=0; i<=Util.cantidadMascotas(mascotasAliadas); i++) {
+            if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Caballo")){
+                ((HabilidadCaballo)mascotasAliadas[i].getHabilidad()).activarHabilidadCaballo(mascotasAliadas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Chompipe")){
+                ((HabilidadChompipe)mascotasAliadas[i].getHabilidad()).activarHabilidadChompipe(mascotasAliadas,mascotasAliadas[i]);
+
+            }
         }
     }
 }

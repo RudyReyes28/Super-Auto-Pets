@@ -30,4 +30,18 @@ public class HabilidadLoro extends Habilidad {
 
         }
     }
+
+    public void activarHabilidadLoro(Mascota[] mascotasAliadas, int posicionLoro, Mascota[] masotasEnemigas){
+
+        try {
+            if (mascotasAliadas[posicionLoro + 1] != null) {
+                mascotasAliadas[posicionLoro + 1].activarHabilidad(mascotasAliadas, masotasEnemigas, null);
+                String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nCopia la habilidad de " +
+                        mascotasAliadas[posicionLoro + 1].getNombre();
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
+
+        }
+    }
 }

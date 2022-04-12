@@ -14,7 +14,7 @@ public class HabilidadBuho extends Habilidad {
 
     @Override
     public void activarHabilidad(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota[] mascotasTienda, int nivel) {
-        int mascotaAleatoria = Util.mascotaAleatoria(mascotasAliadas,this.getNombre());
+        int mascotaAleatoria = Util.mascotaAleatoria(mascotasAliadas, this.getNombre());
 
         if(mascotasAliadas[mascotaAleatoria]!=null){
             mascotasAliadas[mascotaAleatoria].setAtaque(nivel*2);
@@ -23,6 +23,24 @@ public class HabilidadBuho extends Habilidad {
             String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[mascotaAleatoria].getNombre()+
                     " vida: +"+(nivel*2)+" ataque: +"+(nivel*2);
             Archivos.mensajeEfecto(mensajeEfecto);
+        }
+    }
+
+    public void activarHabilidadBuho(Mascota [] mascotasAliadas, Mascota buho){
+
+        int mascotaAleatoria = Util.mascotaAleatoria(mascotasAliadas, this.getNombre());
+
+        try {
+            if (mascotaAleatoria != -1) {
+                mascotasAliadas[mascotaAleatoria].setAtaque(buho.getNivel() * 2);
+                mascotasAliadas[mascotaAleatoria].setVida(buho.getNivel() * 2);
+
+                String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[mascotaAleatoria].getNombre() +
+                        " vida: +" + (buho.getNivel() * 2) + " ataque: +" + (buho.getNivel() * 2);
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }
+        }catch (NullPointerException ignore){
+
         }
     }
 }

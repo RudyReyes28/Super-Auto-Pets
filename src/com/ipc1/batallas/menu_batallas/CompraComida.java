@@ -38,9 +38,8 @@ public class CompraComida {
                     if(comidasTienda[opcionCompra].isTipoEfecto()){
                         darComidaEfecto(comidasTienda,opcionCompra,jugador,opcionMascota);
                     }else{
-                        AlimentoSinEfecto.activarAlimentoSinEfecto(comidasTienda[opcionCompra], jugador.getMascotas(),opcionMascota,mascotasTienda);
+                        AlimentoSinEfecto.activarAlimentoSinEfecto(comidasTienda[opcionCompra], jugador.getMascotas(),opcionMascota,mascotasTienda, jugador);
                         comidasTienda[opcionCompra]=null;
-                        jugador.setOro(-3);
 
                         Util.verificarAlimentos(comidasTienda);
                     }

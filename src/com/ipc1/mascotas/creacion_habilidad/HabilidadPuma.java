@@ -40,8 +40,42 @@ public class HabilidadPuma extends Habilidad {
         }catch (ArrayIndexOutOfBoundsException ignore){
 
         }
-
-
         turno++;
+    }
+
+    public void activarHabilidadPuma(Mascota[] mascotasAliadas, Mascota puma){
+        Mascota pumita = new Mascota("Pumita",1,1,"mamifero","terrestre",null,new Habilidad("Pumita"," "));
+
+        int cantidadMascota = Util.cantidadMascotas(mascotasAliadas);
+
+        if(cantidadMascota!=-1) {
+            try {
+
+                if(mascotasAliadas[cantidadMascota].getNombre().equalsIgnoreCase(puma.getNombre())) {
+
+                    if (puma.getNivel() == 1) {
+                        if (turno % 3 == 0) {
+                            mascotasAliadas[cantidadMascota + 1] = pumita;
+                            String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca un pumita";
+                            Archivos.mensajeEfecto(mensajeEfecto);
+                        }
+                    } else if (puma.getNivel() == 2) {
+                        if (turno % 2 == 0) {
+                            mascotasAliadas[cantidadMascota + 1] = pumita;
+                            String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca un pumita";
+                            Archivos.mensajeEfecto(mensajeEfecto);
+                        }
+                    } else if (puma.getNivel() == 3) {
+                        mascotasAliadas[cantidadMascota + 1] = pumita;
+                        String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca un pumita";
+                        Archivos.mensajeEfecto(mensajeEfecto);
+                    }
+                    turno++;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignore) {
+
+            }
+        }
+
     }
 }

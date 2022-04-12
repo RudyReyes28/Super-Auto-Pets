@@ -26,9 +26,27 @@ public class HabilidadTigre extends Habilidad {
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }
             }
-        }catch (NullPointerException ignore){
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }
+    }
+
+    public void activarHabilidadTigre(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas){
+        int posicionTigre = Util.cantidadMascotas(mascotasAliadas);
+
+        try{
+            if(posicionTigre!=-1) {
+                if(mascotasAliadas[posicionTigre-1].getNombre().equalsIgnoreCase("Tigre")) {
+                    if (mascotasAliadas[posicionTigre + 1] != null) {
+                        mascotasAliadas[posicionTigre + 1].activarHabilidad(mascotasAliadas, mascotasEnemigas, null);
+
+                        String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nHace que " + mascotasAliadas[posicionTigre + 1].getNombre() +
+                                " active nuevamente su habilidad";
+                        Archivos.mensajeEfecto(mensajeEfecto);
+                    }
+                }
+            }
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
         }
     }

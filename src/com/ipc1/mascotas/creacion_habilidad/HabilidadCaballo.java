@@ -35,7 +35,8 @@ public class HabilidadCaballo extends Habilidad {
                 if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Grillo Zombi") ||
                         mascotasAliadas[i].getNombre().equalsIgnoreCase("Dirty Rat") ||
                         mascotasAliadas[i].getNombre().equalsIgnoreCase("Carnero") ||
-                        mascotasAliadas[i].getNombre().equalsIgnoreCase("Abeja")){
+                        mascotasAliadas[i].getNombre().equalsIgnoreCase("Abeja")||
+                        mascotasAliadas[i].getNombre().equalsIgnoreCase("Zombie Fly")){
 
                     mascotasAliadas[i].setAtaque(caballo.getNivel());
                     String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[i].getNombre()+

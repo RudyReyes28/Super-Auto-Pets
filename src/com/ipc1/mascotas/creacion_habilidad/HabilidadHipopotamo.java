@@ -26,4 +26,27 @@ public class HabilidadHipopotamo extends Habilidad {
 
         }
     }
+
+    public void activarHabilidadHipopotamo(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota hipopotamo){
+
+        int posicionHipo = Util.cantidadMascotas(mascotasAliadas);
+        int posicionEnemigo = Util.cantidadMascotas(mascotasEnemigas);
+
+        if(posicionHipo!=-1 && posicionEnemigo!=-1) {
+
+            try {
+                if(mascotasAliadas[posicionHipo].getNombre().equalsIgnoreCase(hipopotamo.getNombre()) &&
+                mascotasEnemigas[posicionEnemigo].getVida()<=0) {
+                    mascotasAliadas[posicionHipo].setAtaque(2 * hipopotamo.getNivel());
+                    mascotasAliadas[posicionHipo].setVida(2 * hipopotamo.getNivel());
+
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAumenta " +
+                            "su vida: +" + (2 * hipopotamo.getNivel()) + " y su daño: +" + (hipopotamo.getNivel() * 2);
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            } catch (ArrayIndexOutOfBoundsException | NullPointerException ignore) {
+
+            }
+        }
+    }
 }

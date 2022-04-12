@@ -20,20 +20,43 @@ public class HabilidadMamut extends Habilidad {
             if(posicionMamut != -1){
                 if(mascotasAliadas[posicionMamut].getVida()<=0){
                     for(int i=0; i<mascotasAliadas.length; i++){
-                        if(mascotasAliadas[i]!= null && !mascotasAliadas[i].getNombre().equalsIgnoreCase(this.getNombre())){
-                            mascotasAliadas[i].setVida(2*nivel);
-                            mascotasAliadas[i].setAtaque(2*nivel);
+                        if(mascotasAliadas[i]!= null){
+                            if(!mascotasAliadas[i].getNombre().equalsIgnoreCase(this.getNombre())) {
+                                mascotasAliadas[i].setVida(2 * nivel);
+                                mascotasAliadas[i].setAtaque(2 * nivel);
 
-                            String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[i].getNombre()+
-                                    " una vida de: +"+(2*nivel)+" y un daño: +"+(nivel*2);
-                            Archivos.mensajeEfecto(mensajeEfecto);
+                                String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[i].getNombre() +
+                                        " una vida de: +" + (2 * nivel) + " y un daño: +" + (nivel * 2);
+                                Archivos.mensajeEfecto(mensajeEfecto);
+                            }
                         }
                     }
                 }
             }
-        }catch (NullPointerException ignore){
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }
+    }
+
+    public void activarHabilidadMamut(Mascota [] mascotasAliadas, Mascota mamut){
+
+        try{
+                if(mamut.getVida()<=0){
+                    for(int i=0; i<mascotasAliadas.length; i++){
+                        if(mascotasAliadas[i]!= null){
+                            if(!mascotasAliadas[i].getNombre().equalsIgnoreCase(this.getNombre())) {
+                                mascotasAliadas[i].setVida(2 * mamut.getNivel());
+                                mascotasAliadas[i].setAtaque(2 * mamut.getNivel());
+
+                                String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[i].getNombre() +
+                                        " una vida de: +" + (2 * mamut.getNivel()) + " y un daño: +" + (mamut.getNivel() * 2);
+                                Archivos.mensajeEfecto(mensajeEfecto);
+                            }
+                        }
+                    }
+                }
+
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
         }
     }

@@ -34,4 +34,24 @@ public class HabilidadLlama extends Habilidad {
 
         }
     }
+
+    public void activarHabilidadLlama(Mascota [] mascotasAliadas, Mascota llama, int posicionLlama){
+        int cantidadMascotas = Util.cantidadMascotas(mascotasAliadas);
+
+        try{
+            if(cantidadMascotas<= 4 && cantidadMascotas>=0){
+                if(mascotasAliadas[posicionLlama]!=null){
+                    mascotasAliadas[posicionLlama].setAtaque(2*llama.getNivel());
+                    mascotasAliadas[posicionLlama].setVida(2*llama.getNivel());
+
+                    String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nIncrementa su "+
+                            " vida: +"+(2*llama.getNivel())+" y ataque: +"+(llama.getNivel()*2);
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            }
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
+
+        }
+
+    }
 }

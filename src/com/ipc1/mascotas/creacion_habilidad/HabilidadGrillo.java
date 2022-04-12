@@ -57,6 +57,9 @@ public class HabilidadGrillo extends Habilidad {
             if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Caballo")){
                 ((HabilidadCaballo)mascotasAliadas[i].getHabilidad()).activarHabilidadCaballo(mascotasAliadas,mascotasAliadas[i]);
 
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Chompipe")){
+                ((HabilidadChompipe)mascotasAliadas[i].getHabilidad()).activarHabilidadChompipe(mascotasAliadas,mascotasAliadas[i]);
+
             }
         }
     }

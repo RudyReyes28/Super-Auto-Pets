@@ -25,9 +25,24 @@ public class HabilidadRinoceronte extends Habilidad {
                         " quitandole una vida de: -"+(4*nivel);
                 Archivos.mensajeEfecto(mensajeEfecto);
             }
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 
-        }catch (NullPointerException ignore){
+        }
+    }
+
+    public void activarHabilidadRinoceronte(Mascota[] mascotasEnemigas, Mascota rinoceronte){
+        int posicionEnemigo = Util.cantidadMascotas(mascotasEnemigas);
+
+        try{
+
+            if(posicionEnemigo!=-1){
+                mascotasEnemigas[posicionEnemigo].setVida(-4* rinoceronte.getNivel());
+
+                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nAtaca a " + mascotasEnemigas[posicionEnemigo].getNombre()+
+                        " quitandole una vida de: -"+(4* rinoceronte.getNivel());
+                Archivos.mensajeEfecto(mensajeEfecto);
+            }
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 
         }
     }

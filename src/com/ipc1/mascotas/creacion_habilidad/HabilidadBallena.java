@@ -30,9 +30,26 @@ public class HabilidadBallena extends Habilidad {
                 }
             }
 
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 
-        }catch (NullPointerException ignore){
+        }
+    }
+    
+    public void activarHabilidadBallena(Mascota[] mascotasAliadas, Mascota ballena, int posicionBallena){
+        try{
+            if(posicionBallena!=-1) {
+                if (mascotasAliadas[posicionBallena + 1] != null) {
+                    Mascota tmp = mascotasAliadas[posicionBallena + 1];
+                    tmp.setNivel(ballena.getNivel());
+                    mascotasAliadas[posicionBallena+1]=mascotasAliadas[posicionBallena];
+                    mascotasAliadas[posicionBallena] = tmp;
+
+                    String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad();
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            }
+
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 
         }
     }

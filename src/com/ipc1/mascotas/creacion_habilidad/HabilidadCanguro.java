@@ -25,4 +25,24 @@ public class HabilidadCanguro extends Habilidad {
             Archivos.mensajeEfecto(mensajeEfecto);
         }
     }
+
+    public void activarHabilidadCanguro(Mascota[] mascotasAliadas, Mascota canguro){
+
+        int mascotaAtacante = Util.cantidadMascotas(mascotasAliadas);
+        try {
+            if (mascotaAtacante - 1 >= 0) {
+                if (mascotasAliadas[mascotaAtacante - 1].getNombre().equals(canguro.getNombre())) {
+                    mascotasAliadas[mascotaAtacante - 1].setAtaque(canguro.getNivel() * 2);
+                    mascotasAliadas[mascotaAtacante - 1].setVida(canguro.getNivel() * 2);
+
+                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAumenta su" +
+                            " vida en: +" + (canguro.getNivel() * 2) + " y su ataque en: +" + (canguro.getNivel() * 2);
+                    Archivos.mensajeEfecto(mensajeEfecto);
+                }
+            }
+        }catch (NullPointerException ignore){
+
+        }
+
+    }
 }

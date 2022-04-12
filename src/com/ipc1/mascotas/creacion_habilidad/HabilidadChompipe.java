@@ -19,7 +19,8 @@ public class HabilidadChompipe extends Habilidad {
                 if (mascotasAliadas[i] != null) {
                     if (mascotasAliadas[i].getNombre().equalsIgnoreCase("Grillo Zombi") ||
                             mascotasAliadas[i].getNombre().equalsIgnoreCase("Dirty Rat") ||
-                            mascotasAliadas[i].getNombre().equalsIgnoreCase("Carnero")) {
+                            mascotasAliadas[i].getNombre().equalsIgnoreCase("Carnero") ||
+                    mascotasAliadas[i].getNombre().equalsIgnoreCase("Abeja")){
 
                         mascotasAliadas[i].setAtaque(3*nivel);
                         mascotasAliadas[i].setVida(3*nivel);
@@ -27,14 +28,34 @@ public class HabilidadChompipe extends Habilidad {
                         String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[i].getNombre() +
                                 " un daño de: +" + (3*nivel)+" y una vida de: +"+(3*nivel);
                         Archivos.mensajeEfecto(mensajeEfecto);
-
-                        break;
                     }
                 }
             }
         }catch (NullPointerException ignore){
 
         }
+    }
+    
+    public void activarHabilidadChompipe(Mascota [] mascotasAliadas, Mascota chompipe){
+        try {
+            for (int i = 0; i < mascotasAliadas.length; i++) {
+                if (mascotasAliadas[i] != null) {
+                    if (mascotasAliadas[i].getNombre().equalsIgnoreCase("Grillo Zombi") ||
+                            mascotasAliadas[i].getNombre().equalsIgnoreCase("Dirty Rat") ||
+                            mascotasAliadas[i].getNombre().equalsIgnoreCase("Carnero") ||
+                            mascotasAliadas[i].getNombre().equalsIgnoreCase("Abeja")||
+                            mascotasAliadas[i].getNombre().equalsIgnoreCase("Zombie Fly")){
+                        mascotasAliadas[i].setAtaque(3*chompipe.getNivel());
+                        mascotasAliadas[i].setVida(3*chompipe.getNivel());
 
+                        String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[i].getNombre() +
+                                " un daño de: +" + (3*chompipe.getNivel())+" y una vida de: +"+(3*chompipe.getNivel());
+                        Archivos.mensajeEfecto(mensajeEfecto);
+                    }
+                }
+            }
+        }catch (NullPointerException ignore){
+
+        }
     }
 }

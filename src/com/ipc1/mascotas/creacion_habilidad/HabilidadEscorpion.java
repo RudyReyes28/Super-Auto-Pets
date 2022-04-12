@@ -26,10 +26,30 @@ public class HabilidadEscorpion extends Habilidad {
                         " quitandole una vida de: -"+ataque;
                 Archivos.mensajeEfecto(mensajeEfecto);
             }
-        }catch (ArrayIndexOutOfBoundsException ignore){
-
-        }catch (NullPointerException ignore){
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 
         }
+
+    }
+
+    public void activarHabilidadEscorpion(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas){
+         int cantMasacotasAliadas = Util.cantidadMascotas(mascotasAliadas);
+         int mascotaEnemiga = Util.cantidadMascotas(mascotasEnemigas);
+
+         try {
+             if (cantMasacotasAliadas != -1 && mascotaEnemiga != -1) {
+                 if (mascotasAliadas[cantMasacotasAliadas].getNombre().equalsIgnoreCase(this.getNombre())) {
+                     double ataque = mascotasEnemigas[mascotaEnemiga].getVida();
+
+                     mascotasEnemigas[mascotaEnemiga].setVida(-ataque);
+
+                     String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAtaca a " + mascotasEnemigas[mascotaEnemiga].getNombre() +
+                             " quitandole una vida de: -" + ataque;
+                     Archivos.mensajeEfecto(mensajeEfecto);
+                 }
+             }
+         }catch (NullPointerException ignore){
+
+         }
     }
 }

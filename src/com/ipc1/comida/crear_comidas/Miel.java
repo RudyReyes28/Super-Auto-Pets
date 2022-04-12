@@ -3,6 +3,8 @@ package com.ipc1.comida.crear_comidas;
 import com.ipc1.comida.caracter.Comida;
 import com.ipc1.mascotas.caracter.Habilidad;
 import com.ipc1.mascotas.caracter.Mascota;
+import com.ipc1.mascotas.creacion_habilidad.HabilidadCaballo;
+import com.ipc1.mascotas.creacion_habilidad.HabilidadChompipe;
 import com.ipc1.util.Util;
 
 public class Miel extends Comida {
@@ -22,10 +24,27 @@ public class Miel extends Comida {
                 if (cantMascotas != -1) {
                     mascotasAliadas[cantMascotas + 1] = abeja;
                     System.out.println("Se invoca una abeja al equipo");
+
+                    activarHabilidadDeInvocados(mascotasAliadas);
                 }
             }
         }catch (NullPointerException ignore){
 
         }
     }
+
+    public void activarHabilidadDeInvocados(Mascota [] mascotasAliadas){
+
+        for(int i=0; i<=Util.cantidadMascotas(mascotasAliadas); i++) {
+            if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Caballo")){
+                ((HabilidadCaballo)mascotasAliadas[i].getHabilidad()).activarHabilidadCaballo(mascotasAliadas,mascotasAliadas[i]);
+
+            }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Chompipe")){
+                ((HabilidadChompipe)mascotasAliadas[i].getHabilidad()).activarHabilidadChompipe(mascotasAliadas,mascotasAliadas[i]);
+
+            }
+        }
+    }
+
+
 }
