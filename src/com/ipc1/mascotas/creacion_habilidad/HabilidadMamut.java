@@ -38,7 +38,7 @@ public class HabilidadMamut extends Habilidad {
         }
     }
 
-    public void activarHabilidadMamut(Mascota [] mascotasAliadas, Mascota mamut){
+    public void activarHabilidadMamut(Mascota [] mascotasAliadas, Mascota mamut, String nombreJugador){
 
         try{
                 if(mamut.getVida()<=0){
@@ -48,7 +48,8 @@ public class HabilidadMamut extends Habilidad {
                                 mascotasAliadas[i].setVida(2 * mamut.getNivel());
                                 mascotasAliadas[i].setAtaque(2 * mamut.getNivel());
 
-                                String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[i].getNombre() +
+                                String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                                        + "\n\tOtorga a " + mascotasAliadas[i].getNombre() +
                                         " una vida de: +" + (2 * mamut.getNivel()) + " y un daño: +" + (mamut.getNivel() * 2);
                                 Archivos.mensajeEfecto(mensajeEfecto);
                             }

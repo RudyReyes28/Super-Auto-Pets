@@ -26,7 +26,7 @@ public class HabilidadCamello extends Habilidad {
         }
     }
 
-    public void activarHabilidadCamello(Mascota [] mascotasAliadas, Mascota camello) {
+    public void activarHabilidadCamello(Mascota [] mascotasAliadas, Mascota camello, String nombreJugador) {
         int posicionCamello = Util.posicionMascota(mascotasAliadas, this.getNombre());
 
         if (posicionCamello > 0){
@@ -34,9 +34,10 @@ public class HabilidadCamello extends Habilidad {
                 mascotasAliadas[posicionCamello - 1].setAtaque(camello.getNivel());
                 mascotasAliadas[posicionCamello - 1].setVida(2 * camello.getNivel());
 
-                String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[posicionCamello - 1].getNombre() +
+                String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                        + "\n\tOtorga a " + mascotasAliadas[posicionCamello - 1].getNombre() +
                         " vida: " + (2 * camello.getNivel()) + " daño: " + camello.getNivel();
-                Archivos.mensajeEfecto(mensajeEfecto);
+                Archivos.mensajeEfectosInicio(mensajeEfecto);
             }
         }
     }

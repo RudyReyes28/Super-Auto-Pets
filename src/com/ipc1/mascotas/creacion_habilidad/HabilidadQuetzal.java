@@ -51,7 +51,7 @@ public class HabilidadQuetzal extends Habilidad {
         }
     }
 
-    public void activarHabilidadQuetzal(Mascota [] mascotasAliadas, Mascota quetzal, int posicionQuetzal){
+    public void activarHabilidadQuetzal(Mascota [] mascotasAliadas, Mascota quetzal, int posicionQuetzal, String nombreJugador){
         try {
             if (posicionQuetzal != -1) {
                 double vida = 0;
@@ -62,14 +62,14 @@ public class HabilidadQuetzal extends Habilidad {
                     vida = vidaAves(mascotasAliadas);
 
                     mascotasAliadas[posicionQuetzal].setVida(vida);
-                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida;
+                    mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida;
                 } else if (quetzal.getNivel() == 2) {
                     vida = vidaAves(mascotasAliadas);
                     danio = danioAves(mascotasAliadas);
 
                     mascotasAliadas[posicionQuetzal].setVida(vida);
                     mascotasAliadas[posicionQuetzal].setAtaque(danio);
-                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
+                    mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
                             " y tambien adquiere un ataque de: +" + danio;
                 } else if (quetzal.getNivel() == 3) {
                     vida = vidaAnimales(mascotasAliadas);
@@ -77,10 +77,10 @@ public class HabilidadQuetzal extends Habilidad {
 
                     mascotasAliadas[posicionQuetzal].setVida(vida);
                     mascotasAliadas[posicionQuetzal].setAtaque(danio);
-                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
+                    mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
                             " y tambien adquiere un ataque de: +" + danio;
                 }
-                Archivos.mensajeEfecto(mensajeEfecto);
+                Archivos.mensajeEfectosInicio(mensajeEfecto);
             }
 
         } catch (NullPointerException | ArrayIndexOutOfBoundsException ignore) {
@@ -105,9 +105,7 @@ public class HabilidadQuetzal extends Habilidad {
                     }
                 }
             }
-        }catch (NullPointerException ignore){
-
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
         }
 
@@ -131,9 +129,7 @@ public class HabilidadQuetzal extends Habilidad {
                     }
                 }
             }
-        }catch (NullPointerException ignore){
-
-        }catch (ArrayIndexOutOfBoundsException ignore){
+        }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
         }
 

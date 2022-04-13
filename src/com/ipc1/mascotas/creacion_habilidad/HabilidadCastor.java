@@ -37,7 +37,7 @@ public class HabilidadCastor extends Habilidad {
         }
     }
 
-    public void activarHabilidadCastor(Mascota [] mascotasAliadas, Mascota castor){
+    public void activarHabilidadCastor(Mascota [] mascotasAliadas, Mascota castor, String nombreJugador){
 
         try {
             int cantidad = Util.cantidadMascotas(mascotasAliadas);
@@ -46,9 +46,11 @@ public class HabilidadCastor extends Habilidad {
                 int mascotaEscogida = Util.mascotaAleatoria(mascotasAliadas, this.getNombre());
                 mascotasAliadas[mascotaEscogida].setVida(castor.getNivel());
 
-                String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[mascotaEscogida].getNombre()
+                String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[mascotaEscogida].getNombre()
                         + " una cantidad de vida de: " + castor.getNivel();
-                Archivos.mensajeEfecto(mensajeEfecto);
+
+                System.out.println(Util.rojo+mensajeEfecto+Util.reset);
+                //Archivos.mensajeEfecto(mensajeEfecto);
 
             } else if (cantidad > 1) {
                 int mascotaEscogida1 = Util.mascotaAleatoria(mascotasAliadas, this.getNombre());
@@ -56,9 +58,12 @@ public class HabilidadCastor extends Habilidad {
                 mascotasAliadas[mascotaEscogida1].setVida(castor.getNivel());
                 mascotasAliadas[mascotaEscogida2].setVida(castor.getNivel());
 
-                String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[mascotaEscogida1].getNombre() +
+                String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\n\tOtorga a " + mascotasAliadas[mascotaEscogida1].getNombre() +
                         " y a " + mascotasAliadas[mascotaEscogida2].getNombre() + " una cantidad de vida de: " + castor.getNivel();
-                Archivos.mensajeEfecto(mensajeEfecto);
+
+
+                System.out.println(Util.rojo+mensajeEfecto+Util.reset);
+                //Archivos.mensajeEfecto(mensajeEfecto);
             }
         }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 

@@ -40,7 +40,7 @@ public class HabilidadRata extends Habilidad{
 
     }
 
-    public void activarHabilidadRata(Mascota[] mascotasAliadas, Mascota rata){
+    public void activarHabilidadRata(Mascota[] mascotasAliadas, Mascota rata, String nombreJugador){
         Mascota rata1 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "));
         Mascota rata2 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "));
         Mascota rata3 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "));
@@ -52,20 +52,21 @@ public class HabilidadRata extends Habilidad{
                 if (posicionRata != -1) {
                     if (rata.getNivel() == 1) {
                         mascotasAliadas[posicionRata + 1] = rata1;
-                        activarHabilidadDeInvocados(mascotasAliadas);
+                        activarHabilidadDeInvocados(mascotasAliadas, nombreJugador);
 
                     } else if (rata.getNivel() == 2) {
                         mascotasAliadas[posicionRata + 1] = rata1;
                         mascotasAliadas[posicionRata + 2] = rata2;
-                        activarHabilidadDeInvocados(mascotasAliadas);
+                        activarHabilidadDeInvocados(mascotasAliadas, nombreJugador);
 
                     } else if (rata.getNivel() == 3) {
                         mascotasAliadas[posicionRata + 1] = rata1;
                         mascotasAliadas[posicionRata + 2] = rata2;
                         mascotasAliadas[posicionRata + 3] = rata3;
-                        activarHabilidadDeInvocados(mascotasAliadas);
+                        activarHabilidadDeInvocados(mascotasAliadas, nombreJugador);
                     }
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca a Dirty Rats";
+                    String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa la habilidad " + getNombreHabilidad() +
+                            "\n\tInvoca a Dirty Rats";
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }
             }
@@ -74,14 +75,14 @@ public class HabilidadRata extends Habilidad{
         }
     }
 
-    public void activarHabilidadDeInvocados(Mascota [] mascotasAliadas){
+    public void activarHabilidadDeInvocados(Mascota [] mascotasAliadas, String nombreJugador){
 
         for(int i=0; i<=Util.cantidadMascotas(mascotasAliadas); i++) {
             if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Caballo")){
-                ((HabilidadCaballo)mascotasAliadas[i].getHabilidad()).activarHabilidadCaballo(mascotasAliadas,mascotasAliadas[i]);
+                ((HabilidadCaballo)mascotasAliadas[i].getHabilidad()).activarHabilidadCaballo(mascotasAliadas,mascotasAliadas[i], nombreJugador);
 
             }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Chompipe")){
-                ((HabilidadChompipe)mascotasAliadas[i].getHabilidad()).activarHabilidadChompipe(mascotasAliadas,mascotasAliadas[i]);
+                ((HabilidadChompipe)mascotasAliadas[i].getHabilidad()).activarHabilidadChompipe(mascotasAliadas,mascotasAliadas[i], nombreJugador);
 
             }
         }

@@ -5,12 +5,13 @@ import com.ipc1.comida.activar_efecto.AlimentoSinEfecto;
 import com.ipc1.comida.caracter.Comida;
 import com.ipc1.comida.crear_comidas.*;
 import com.ipc1.jugador.Jugador;
+import com.ipc1.mascotas.activacion_habilidad.ActivarHabilidades;
 import com.ipc1.mascotas.caracter.Mascota;
 import com.ipc1.util.Util;
 
 public class CompraComida {
 
-    public static void mostrarComidaTienda(Comida [] comidasTienda, Jugador jugador, Mascota[] mascotasTienda){
+    public static void mostrarComidaTienda(Comida [] comidasTienda, Jugador jugador, Mascota[] mascotasDeTodaLaTienda, Mascota [] mascotasTienda){
         System.out.println("\n\t************* BIENVENIDO A LA TIENDA DE ALIMENTOS ***********");
 
 
@@ -35,10 +36,12 @@ public class CompraComida {
                     //AQUÍ IRIA LAS HABILIDADES DE COMER
                     //TENGO QUE PEDIR EL ARREGLO DE LAS MASCOTAS DE LA TIENDA(El que pedi anteriormente era para todas las mascotas)
 
+                    ActivarHabilidades.habilidadesAlComer(mascotasTienda,jugador.getMascota(opcionMascota), jugador.getMascotas() ,jugador);
+
                     if(comidasTienda[opcionCompra].isTipoEfecto()){
                         darComidaEfecto(comidasTienda,opcionCompra,jugador,opcionMascota);
                     }else{
-                        AlimentoSinEfecto.activarAlimentoSinEfecto(comidasTienda[opcionCompra], jugador.getMascotas(),opcionMascota,mascotasTienda, jugador);
+                        AlimentoSinEfecto.activarAlimentoSinEfecto(comidasTienda[opcionCompra], jugador.getMascotas(),opcionMascota,mascotasDeTodaLaTienda, jugador);
                         comidasTienda[opcionCompra]=null;
 
                         Util.verificarAlimentos(comidasTienda);

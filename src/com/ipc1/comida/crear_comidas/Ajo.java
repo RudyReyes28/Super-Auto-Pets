@@ -9,8 +9,8 @@ public class Ajo extends Comida {
         super("Ajo", true, 3);
     }
 
-    public double activarEfecto(Mascota mascota){
-        System.out.println("La mascota "+mascota.getNombre()+" recibe 2 de daño menos");
+    public double activarEfecto(Mascota mascota, String nombreJugador){
+        System.out.println("La mascota "+mascota.getNombre()+" del jugador "+nombreJugador+" recibe 2 de daño menos");
         return 2;
     }
 

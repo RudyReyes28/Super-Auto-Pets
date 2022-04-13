@@ -26,7 +26,7 @@ public class HabilidadCanguro extends Habilidad {
         }
     }
 
-    public void activarHabilidadCanguro(Mascota[] mascotasAliadas, Mascota canguro){
+    public void activarHabilidadCanguro(Mascota[] mascotasAliadas, Mascota canguro, String nombreJugador){
 
         int mascotaAtacante = Util.cantidadMascotas(mascotasAliadas);
         try {
@@ -35,8 +35,8 @@ public class HabilidadCanguro extends Habilidad {
                     mascotasAliadas[mascotaAtacante - 1].setAtaque(canguro.getNivel() * 2);
                     mascotasAliadas[mascotaAtacante - 1].setVida(canguro.getNivel() * 2);
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAumenta su" +
-                            " vida en: +" + (canguro.getNivel() * 2) + " y su ataque en: +" + (canguro.getNivel() * 2);
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                            + "\n\tAumenta su vida en: +" + (canguro.getNivel() * 2) + " y su ataque en: +" + (canguro.getNivel() * 2);
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }
             }

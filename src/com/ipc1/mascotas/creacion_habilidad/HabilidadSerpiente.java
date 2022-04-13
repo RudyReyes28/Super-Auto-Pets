@@ -30,7 +30,7 @@ public class HabilidadSerpiente extends Habilidad {
         }
     }
     
-    public void acrivarHabilidadSerpiente(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota serpiente){
+    public void acrivarHabilidadSerpiente(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota serpiente, String nombreJugador){
         int enemigoAleatorio = Util.mascotaEnemigaAleatoria(mascotasEnemigas);
         int posicionSerpiente = Util.cantidadMascotas(mascotasAliadas);
         try{
@@ -39,7 +39,8 @@ public class HabilidadSerpiente extends Habilidad {
                 if(mascotasAliadas[posicionSerpiente-1].getNombre().equalsIgnoreCase(serpiente.getNombre())) {
                     mascotasEnemigas[enemigoAleatorio].setAtaque(-5 * serpiente.getNivel());
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAtaca a " + mascotasEnemigas[enemigoAleatorio].getNombre() +
+                    String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                            + "\n\tAtaca a " + mascotasEnemigas[enemigoAleatorio].getNombre() +
                             " quitandole una vida de: -" + (5 * serpiente.getNivel());
 
                     Archivos.mensajeEfecto(mensajeEfecto);

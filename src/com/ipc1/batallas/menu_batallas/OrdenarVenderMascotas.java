@@ -1,6 +1,7 @@
 package com.ipc1.batallas.menu_batallas;
 
 import com.ipc1.jugador.Jugador;
+import com.ipc1.mascotas.activacion_habilidad.ActivarHabilidades;
 import com.ipc1.mascotas.caracter.Mascota;
 import com.ipc1.util.Util;
 
@@ -75,7 +76,7 @@ public class OrdenarVenderMascotas {
     private static void fusionTienda(Jugador jugador, Mascota[] mascotasTienda){
         Util.verMascotas(jugador);
         System.out.println();
-        Util.verMascotas(mascotasTienda);
+        Util.verMascotasTienda(mascotasTienda);
 
         int cantMascotasJu = Util.cantidadMascotas(jugador.getMascotas());
         int cantMascotasTi = Util.cantidadMascotas(mascotasTienda);
@@ -90,10 +91,18 @@ public class OrdenarVenderMascotas {
                     jugador.setOro(-3);
                     jugador.getMascota(mascota1).setVida(1);
                     jugador.getMascota(mascota1).setAtaque(1);
+
+                    int nivelAntes =  jugador.getMascota(mascota1).getNivel();
                     jugador.getMascota(mascota1).setExp(1);
 
                     System.out.println("La fusion se ha completado");
                     System.out.println("Nivel actual de la mascota: "+jugador.getMascota(mascota1).getNivel());
+
+                    int nivelDespues = jugador.getMascota(mascota1).getNivel();
+
+                    if(nivelDespues>nivelAntes){
+                        ActivarHabilidades.habilidadesAlSubirNivel(jugador.getMascotas(), jugador.getMascota(mascota1), jugador.getNombre());
+                    }
 
                     Util.verificarMascotas(mascotasTienda);
                     Util.verificarMascotas(jugador.getMascotas());
@@ -110,35 +119,56 @@ public class OrdenarVenderMascotas {
     }
 
     private static void realizarFusion(Jugador jugador, int mascota1, int mascota2){
-        if(jugador.getMascota(mascota1).getVida()==jugador.getMascota(mascota2).getVida()){
+        if(jugador.getMascota(mascota1).getVida() == jugador.getMascota(mascota2).getVida()){
             jugador.eliminarMascota(mascota1);
             jugador.getMascota(mascota2).setVida(1);
             jugador.getMascota(mascota2).setAtaque(1);
 
-            //int nivelAntes = getNivel;
+            int nivelAntes =  jugador.getMascota(mascota2).getNivel();
             jugador.getMascota(mascota2).setExp(1);
 
             System.out.println("La fusion se ha completado");
             System.out.println("Nivel actual de la mascota: "+jugador.getMascota(mascota2).getNivel());
-            //int nivelDespues = getNivel;
-            //(nivelDespues>nivelAntes? activeHabilidad: ;
+
+            int nivelDespues = jugador.getMascota(mascota2).getNivel();
+
+            if(nivelDespues>nivelAntes){
+                ActivarHabilidades.habilidadesAlSubirNivel(jugador.getMascotas(), jugador.getMascota(mascota2), jugador.getNombre());
+            }
 
         }else if(jugador.getMascota(mascota1).getVida() < jugador.getMascota(mascota2).getVida()){
             jugador.eliminarMascota(mascota1);
             jugador.getMascota(mascota2).setVida(1);
             jugador.getMascota(mascota2).setAtaque(1);
+
+            int nivelAntes =  jugador.getMascota(mascota2).getNivel();
+
             jugador.getMascota(mascota2).setExp(1);
 
             System.out.println("La fusion se ha completado");
             System.out.println("Nivel actual de la mascota: "+jugador.getMascota(mascota2).getNivel());
+
+            int nivelDespues = jugador.getMascota(mascota2).getNivel();
+
+            if(nivelDespues>nivelAntes){
+                ActivarHabilidades.habilidadesAlSubirNivel(jugador.getMascotas(), jugador.getMascota(mascota2), jugador.getNombre());
+            }
         }else{
             jugador.eliminarMascota(mascota2);
             jugador.getMascota(mascota1).setVida(1);
             jugador.getMascota(mascota1).setAtaque(1);
             jugador.getMascota(mascota1).setExp(1);
 
+            int nivelAntes =  jugador.getMascota(mascota1).getNivel();
+
             System.out.println("La fusion se ha completado");
             System.out.println("Nivel actual de la mascota: "+jugador.getMascota(mascota1).getNivel());
+
+            int nivelDespues = jugador.getMascota(mascota1).getNivel();
+
+            if(nivelDespues>nivelAntes){
+                ActivarHabilidades.habilidadesAlSubirNivel(jugador.getMascotas(), jugador.getMascota(mascota1), jugador.getNombre());
+            }
         }
 
 
@@ -163,8 +193,9 @@ public class OrdenarVenderMascotas {
                 System.out.println("Esta mascota ha sido vendida por " + coste + " de oro");
                 jugador.setOro(coste);
                 //AQUI IRÁ LA HABILIDADES DE MASCOTAS QUE SE VENDEN
-                //
-                //
+
+                ActivarHabilidades.habilidadesAlVenderse(jugador.getMascotas(), jugador.getMascota(mascota1), jugador.getNombre());
+
                 jugador.eliminarMascota(mascota1);
                 jugador.setContadorMascotas(-1);
                 Util.verificarMascotas(jugador.getMascotas());

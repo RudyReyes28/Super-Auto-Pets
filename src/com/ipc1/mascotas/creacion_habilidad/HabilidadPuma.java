@@ -43,7 +43,7 @@ public class HabilidadPuma extends Habilidad {
         turno++;
     }
 
-    public void activarHabilidadPuma(Mascota[] mascotasAliadas, Mascota puma){
+    public void activarHabilidadPuma(Mascota[] mascotasAliadas, Mascota puma, String nombreJugador){
         Mascota pumita = new Mascota("Pumita",1,1,"mamifero","terrestre",null,new Habilidad("Pumita"," "));
 
         int cantidadMascota = Util.cantidadMascotas(mascotasAliadas);
@@ -56,18 +56,18 @@ public class HabilidadPuma extends Habilidad {
                     if (puma.getNivel() == 1) {
                         if (turno % 3 == 0) {
                             mascotasAliadas[cantidadMascota + 1] = pumita;
-                            String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca un pumita";
+                            String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\n\tInvoca un pumita";
                             Archivos.mensajeEfecto(mensajeEfecto);
                         }
                     } else if (puma.getNivel() == 2) {
                         if (turno % 2 == 0) {
                             mascotasAliadas[cantidadMascota + 1] = pumita;
-                            String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca un pumita";
+                            String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\n\tInvoca un pumita";
                             Archivos.mensajeEfecto(mensajeEfecto);
                         }
                     } else if (puma.getNivel() == 3) {
                         mascotasAliadas[cantidadMascota + 1] = pumita;
-                        String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca un pumita";
+                        String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\n\tInvoca un pumita";
                         Archivos.mensajeEfecto(mensajeEfecto);
                     }
                     turno++;

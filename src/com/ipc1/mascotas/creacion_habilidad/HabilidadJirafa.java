@@ -25,7 +25,7 @@ public class HabilidadJirafa extends Habilidad {
         }
     }
 
-    public void activarHabilidadJirafa(Mascota[] mascotasAliadas, Mascota jirafa){
+    public void activarHabilidadJirafa(Mascota[] mascotasAliadas, Mascota jirafa, String nombreJugador){
         try {
             int posicionJirafa = Util.posicionMascota(mascotasAliadas, this.getNombre());
 
@@ -34,9 +34,12 @@ public class HabilidadJirafa extends Habilidad {
                     mascotasAliadas[i].setAtaque(1);
                     mascotasAliadas[i].setVida(1);
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[i].getNombre() +
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                            + "\n\tOtorga a " + mascotasAliadas[i].getNombre() +
                             " vida: 1 daño: 1";
-                    Archivos.mensajeEfecto(mensajeEfecto);
+
+                    System.out.println(Util.rojo+mensajeEfecto+Util.reset);
+                    //Archivos.mensajeEfecto(mensajeEfecto);
                 }
             }
         }catch (ArrayIndexOutOfBoundsException ignore){

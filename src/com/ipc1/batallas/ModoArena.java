@@ -9,6 +9,7 @@ import com.ipc1.campos.caracter.Campo;
 import com.ipc1.comida.caracter.Comida;
 import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.Mascotas;
+import com.ipc1.mascotas.activacion_habilidad.ActivarHabilidades;
 import com.ipc1.mascotas.caracter.Mascota;
 import com.ipc1.util.Util;
 
@@ -60,22 +61,43 @@ public class ModoArena {
     public void iniciarBatalla(){
         menuEntreBatallas();
 
+
+
         if(Util.cantidadMascotas(jugador1.getMascotas())>=0) {
             boolean peleaTerminada = true;
             int pelea = 1;
 
-            campoJugador.activarCampo(jugador1.getMascotas());
-            campoBot.activarCampo(bot.getMascotas());
+            campoJugador.activarCampo(jugador1.getMascotas(), jugador1.getNombre());
+            campoBot.activarCampo(bot.getMascotas(), bot.getNombre());
+
+            //MASCOTAS DEL JUGADOR 1
+            ActivarHabilidades.habilidadesAlIncioDeBatalla(jugador1.getMascotas(),bot.getMascotas(), jugador1.getNombre());
+            //MASCOTAS DEL BOT
+            ActivarHabilidades.habilidadesAlIncioDeBatalla(bot.getMascotas(),jugador1.getMascotas(), bot.getNombre());
+
+            System.out.println(Archivos.mensajeInicioDePartida());
+            Archivos.reinicarMensajeInicioDePartida();
 
             do {
                 System.out.println("\n************************* PELEA " + pelea + " *************************");
-                System.out.println(campoJugador.toString()+"\t\t"+campoBot.toString());
+                System.out.println(campoJugador.imprimirCampo(jugador1.getNombre())+"\t\t"+campoBot.imprimirCampo(bot.getNombre()));
                 Util.mostrarMascotasBatalla(jugador1, bot);
                 System.out.println("\nPelea iniciada");
                 jugador1.pelear(bot);
                 bot.pelear(jugador1);
 
                 System.out.println("Pelea finalizada\n");
+
+                //AQUI EMPIEZAN LAS HABILIDADES EN BATALLAS
+                ActivarHabilidades.habilidadesEnBatallas(jugador1.getMascotas(), bot.getMascotas(), jugador1.getNombre());
+                ActivarHabilidades.habilidadesEnBatallas(bot.getMascotas(),jugador1.getMascotas(),bot.getNombre());
+                //FIN DE LAS HABILIDADES EN BATALLAS
+
+                //HABILIDADES AL MORIR
+                ActivarHabilidades.habilidadesAlMorir(jugador1.getMascotas(), bot.getMascotas(), jugador1.getNombre());
+                ActivarHabilidades.habilidadesAlMorir(bot.getMascotas(),jugador1.getMascotas(), bot.getNombre());
+
+
                 Util.mostrarMascotasBatalla(jugador1, bot);
                 System.out.println(Archivos.MensajeEntreBatallas());
 
@@ -137,11 +159,11 @@ public class ModoArena {
 
             switch (opcion){
                 case 1:
-                    compra.ComprarMascotas(mascotasTienda,jugador1);
+                    compra.ComprarMascotas(mascotasTienda,jugador1, comidasTienda);
                     copiarMascotas();
                     break;
                 case 2:
-                    CompraComida.mostrarComidaTienda(comidasTienda,jugador1,compra.mascotasDeLaTienda());
+                    CompraComida.mostrarComidaTienda(comidasTienda,jugador1,compra.mascotasDeLaTienda(),mascotasTienda);
                     break;
                 case 3:
                     OrdenarVenderMascotas.ordenarMascotas(jugador1);

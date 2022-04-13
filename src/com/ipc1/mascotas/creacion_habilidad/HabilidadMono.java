@@ -31,7 +31,7 @@ public class HabilidadMono extends Habilidad {
         }
     }
 
-    public void activarHabilidadMono(Mascota[] mascotasAliadas, Mascota mono){
+    public void activarHabilidadMono(Mascota[] mascotasAliadas, Mascota mono, String nombreJugador){
         int posicionAmigo = Util.cantidadMascotas(mascotasAliadas);
 
         try{
@@ -40,9 +40,10 @@ public class HabilidadMono extends Habilidad {
                 mascotasAliadas[posicionAmigo].setAtaque(2*mono.getNivel());
                 mascotasAliadas[posicionAmigo].setVida(3*mono.getNivel());
 
-                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[posicionAmigo].getNombre()+
+                String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre()+" activa la habilidad "+getNombreHabilidad()
+                        +"\n\tOtorga a " + mascotasAliadas[posicionAmigo].getNombre()+
                         " dandole una vida de: +"+(3*mono.getNivel())+ " y un ataque de: +"+(2*mono.getNivel());
-                Archivos.mensajeEfecto(mensajeEfecto);
+                Archivos.mensajeEfectosInicio(mensajeEfecto);
             }
         }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 

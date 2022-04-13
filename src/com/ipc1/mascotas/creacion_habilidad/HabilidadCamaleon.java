@@ -65,7 +65,7 @@ public class HabilidadCamaleon extends Habilidad {
         }
     }
 
-    public void activarHabilidadCamaleon(Mascota[] mascotasEnemigas, int nivel, Mascota [] mascotasAliadas, int posicionC){
+    public void activarHabilidadCamaleon(Mascota[] mascotasEnemigas, int nivel, Mascota [] mascotasAliadas, int posicionC, String nombreJugador){
         try {
             if (posicionC != -1) {
                 double vida = 0;
@@ -76,14 +76,14 @@ public class HabilidadCamaleon extends Habilidad {
                     vida = copiarVida(mascotasEnemigas);
 
                     mascotasAliadas[posicionC].setVida(vida);
-                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida;
+                    mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida;
                 } else if (nivel == 2) {
                     vida = copiarVida(mascotasEnemigas);
                     danio = copiarDanio(mascotasEnemigas);
 
                     mascotasAliadas[posicionC].setVida(vida);
                     mascotasAliadas[posicionC].setAtaque(danio);
-                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
+                    mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
                             " y tambien adquiere un ataque de: +" + danio;
                 } else if (nivel == 3) {
 
@@ -100,7 +100,7 @@ public class HabilidadCamaleon extends Habilidad {
                     mascotasAliadas[posicionC].setVida(vida);
                     mascotasAliadas[posicionC].setAtaque(danio);
 
-                    mensajeEfecto = this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
+                    mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa su habilidad y adquiere una vida de: +" + vida +
                             " y tambien adquiere un ataque de: +" + danio;
                     if(copiHabilidad!=null) {
                         copiHabilidad.activarHabilidad(mascotasAliadas, mascotasEnemigas, null, nivel);
@@ -108,7 +108,7 @@ public class HabilidadCamaleon extends Habilidad {
                     }
 
                 }
-                Archivos.mensajeEfecto(mensajeEfecto);
+                Archivos.mensajeEfectosInicio(mensajeEfecto);
             }
 
         } catch (NullPointerException | ArrayIndexOutOfBoundsException ignore) {

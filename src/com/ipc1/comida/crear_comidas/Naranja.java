@@ -10,7 +10,7 @@ public class Naranja extends Comida {
         super("Naranja", true, 1);
     }
 
-    public double activarEfecto(Mascota[] mascotasEnemigas){
+    public double activarEfecto(Mascota[] mascotasEnemigas, Mascota mascota, String nombreJugador){
         double danio=0;
         int posicionEnemigo = Util.cantidadMascotas(mascotasEnemigas);
 
@@ -18,7 +18,8 @@ public class Naranja extends Comida {
             danio = mascotasEnemigas[posicionEnemigo].getAtaque()*0.1;
         }
 
-        System.out.printf("Se regresa %.2f de daño al enemigo",danio);
+        System.out.println("La mascota "+mascota.getNombre()+" del jugador "+nombreJugador+ " activa el efecto de la "+this.getNombre() );
+        System.out.printf("\tSe regresa %.2f de daño al enemigo",danio);
         System.out.println();
 
         return danio;

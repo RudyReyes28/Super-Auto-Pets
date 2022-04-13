@@ -49,10 +49,10 @@ public class  Mascota {
         return ataque;
     }
 
-    public double getAtaqueEfectos(Mascota [] mascotasEnemigas){
+    public double getAtaqueEfectos(Mascota [] mascotasEnemigas, String nombreJugador){
         double ataqueEfecto = this.getAtaque();
         if(efectoComida!=null){
-            ataqueEfecto+= AlimentosConEfecto.activarALimentosConRetornoDanio(mascotasEnemigas,this);
+            ataqueEfecto+= AlimentosConEfecto.activarALimentosConRetornoDanio(mascotasEnemigas,this, nombreJugador);
         }
 
         return ataqueEfecto;
@@ -81,15 +81,15 @@ public class  Mascota {
         }
     }
 
-    public void setVidaEfectos(double vida, Mascota[] mascotasAliadas,Mascota[] mascotasEnemigas) {
+    public void setVidaEfectos(double vida, Mascota[] mascotasAliadas,Mascota[] mascotasEnemigas, String nombreJugador) {
         this.vida += vida;
         if(this.vida<0){
             this.vida=0;
         }
 
         if(efectoComida!=null && vida<0){
-            this.vida+= AlimentosConEfecto.activarAlimentosConRetornoVida(this,vida);
-            AlimentosConEfecto.activarAlimentosSinRetorno(mascotasAliadas,mascotasEnemigas,this);
+            this.vida+= AlimentosConEfecto.activarAlimentosConRetornoVida(this,vida, nombreJugador);
+            AlimentosConEfecto.activarAlimentosSinRetorno(mascotasAliadas,mascotasEnemigas,this, nombreJugador);
         }
     }
 

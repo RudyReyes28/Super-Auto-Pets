@@ -4,6 +4,7 @@ import com.ipc1.comida.caracter.Comida;
 import com.ipc1.comida.crear_comidas.Leche;
 import com.ipc1.mascotas.caracter.Habilidad;
 import com.ipc1.mascotas.caracter.Mascota;
+import com.ipc1.util.Util;
 
 public class HabilidadVaca extends Habilidad {
 
@@ -17,10 +18,10 @@ public class HabilidadVaca extends Habilidad {
         //POR DEFINIR
     }
 
-    public void activarHabilidadVaca(Comida []  comidaTienda, Mascota vaca){
+    public void activarHabilidadVaca(Comida []  comidaTienda, Mascota vaca, String nombre){
         for(int i=0; i<comidaTienda.length; i++){
             comidaTienda[i] = new Leche(vaca.getNivel());
         }
-        System.out.println("Vaca activa su habilidad "+getNombreHabilidad()+" y reemplaza la tienda con leche gratis");
+        System.out.println(Util.rojo+"La mascota del jugador "+nombre+" ---> Vaca activa su habilidad "+getNombreHabilidad()+" \n\tY reemplaza la tienda con leche gratis"+Util.reset);
     }
 }

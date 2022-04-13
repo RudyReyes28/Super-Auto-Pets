@@ -11,7 +11,7 @@ public class Nubes extends Campo {
     }
 
     @Override
-    public void activarCampo(Mascota[] mascotas) {
+    public void activarCampo(Mascota[] mascotas, String nombreJugador) {
         for(int i=0;i<= Util.cantidadMascotas(mascotas);i++){
             for(int j=0;j<mascotas[i].getTipo().length;j++){
                 if(mascotas[i].getTipo(j)!=null) {
@@ -19,6 +19,9 @@ public class Nubes extends Campo {
 
                         mascotas[i].setAtaque(1);
                         mascotas[i].setVida(1);
+
+                        System.out.println("La mascota "+mascotas[i].getNombre()+" del jugador "+nombreJugador
+                                + " tiene un buff de +1 de ataque y de vida por estar en el campo "+this.getNombreCampo());
 
                     }
                 }

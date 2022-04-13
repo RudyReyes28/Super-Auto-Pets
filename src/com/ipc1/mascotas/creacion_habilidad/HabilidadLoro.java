@@ -31,12 +31,13 @@ public class HabilidadLoro extends Habilidad {
         }
     }
 
-    public void activarHabilidadLoro(Mascota[] mascotasAliadas, int posicionLoro, Mascota[] masotasEnemigas){
+    public void activarHabilidadLoro(Mascota[] mascotasAliadas, int posicionLoro, Mascota[] masotasEnemigas, String nombreJugador){
 
         try {
             if (mascotasAliadas[posicionLoro + 1] != null) {
                 mascotasAliadas[posicionLoro + 1].activarHabilidad(mascotasAliadas, masotasEnemigas, null);
-                String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nCopia la habilidad de " +
+                String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad() +
+                        "\n\tCopia la habilidad de " +
                         mascotasAliadas[posicionLoro + 1].getNombre();
                 Archivos.mensajeEfecto(mensajeEfecto);
             }

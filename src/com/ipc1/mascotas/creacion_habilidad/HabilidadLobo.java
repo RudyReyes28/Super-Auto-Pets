@@ -35,7 +35,7 @@ public class HabilidadLobo extends Habilidad {
         }
     }
 
-    public void activarHabilidadLobo(Mascota [] mascotasAliadas, Mascota lobo){
+    public void activarHabilidadLobo(Mascota [] mascotasAliadas, Mascota lobo, String nombreJugador){
         int posicionLobo = Util.cantidadMascotas(mascotasAliadas);
 
         if(posicionLobo==0 && mascotasAliadas[posicionLobo]!=null){
@@ -44,14 +44,14 @@ public class HabilidadLobo extends Habilidad {
                     mascotasAliadas[posicionLobo].setAtaque(lobo.getNivel() + 1);
                     mascotasAliadas[posicionLobo].setVida(lobo.getNivel() + 1);
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAdquiere "
-                            + " un ataque de: +" + (lobo.getNivel() + 1) + " y una vida de: +" + (lobo.getNivel() + 1);
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                            + "\n\tAdquiere un ataque de: +" + (lobo.getNivel() + 1) + " y una vida de: +" + (lobo.getNivel() + 1);
                     Archivos.mensajeEfecto(mensajeEfecto);
                 } else if (lobo.getNivel() == 3) {
                     mascotasAliadas[posicionLobo].setAtaque(5);
                     mascotasAliadas[posicionLobo].setVida(5);
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAdquiere "
-                            + " un ataque de: +5 y una vida de: +5";
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad() +
+                            "\nAdquiere un ataque de: +5 y una vida de: +5";
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }
             }

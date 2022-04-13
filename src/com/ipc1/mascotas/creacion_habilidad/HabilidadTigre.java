@@ -31,7 +31,7 @@ public class HabilidadTigre extends Habilidad {
         }
     }
 
-    public void activarHabilidadTigre(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas){
+    public void activarHabilidadTigre(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, String nombreJugador){
         int posicionTigre = Util.cantidadMascotas(mascotasAliadas);
 
         try{
@@ -40,7 +40,8 @@ public class HabilidadTigre extends Habilidad {
                     if (mascotasAliadas[posicionTigre + 1] != null) {
                         mascotasAliadas[posicionTigre + 1].activarHabilidad(mascotasAliadas, mascotasEnemigas, null);
 
-                        String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nHace que " + mascotasAliadas[posicionTigre + 1].getNombre() +
+                        String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                                + "\n\tHace que " + mascotasAliadas[posicionTigre + 1].getNombre() +
                                 " active nuevamente su habilidad";
                         Archivos.mensajeEfecto(mensajeEfecto);
                     }

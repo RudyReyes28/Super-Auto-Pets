@@ -39,7 +39,7 @@ public class HabilidadFoca extends Habilidad {
         }
     }
     
-    public void activarHabilidadFoca(Mascota [] mascotasAliadas, Mascota foca){
+    public void activarHabilidadFoca(Mascota [] mascotasAliadas, Mascota foca, String nombreJugador){
         int mascotaRandom1 = Util.mascotaAleatoria(mascotasAliadas,this.getNombre());
         int mascotaRandom2 = Util.mascotaAleatoria(mascotasAliadas,this.getNombre());
 
@@ -47,17 +47,19 @@ public class HabilidadFoca extends Habilidad {
             if(mascotaRandom1!=-1 && mascotaRandom2!=-1){
                 mascotasAliadas[mascotaRandom1].setAtaque(foca.getNivel());
                 mascotasAliadas[mascotaRandom1].setVida(foca.getNivel());
-                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[mascotaRandom1].getNombre()+
-                        " una vida de: +"+foca.getNivel()+" y un ataque de: +"+foca.getNivel();
+                String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad "+getNombreHabilidad()
+                        +"\n\tOtorga a " + mascotasAliadas[mascotaRandom1].getNombre()+ " una vida de: +"+foca.getNivel()+" y un ataque de: +"+foca.getNivel();
 
                 if(mascotaRandom1!=mascotaRandom2){
                     mascotasAliadas[mascotaRandom2].setAtaque(foca.getNivel());
                     mascotasAliadas[mascotaRandom2].setVida(foca.getNivel());
 
-                    mensajeEfecto += "\n"+this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[mascotaRandom2].getNombre()+
-                            " una vida de: +"+foca.getNivel()+" y un ataque de: +"+foca.getNivel();
+                    mensajeEfecto += "\nLa mascota del jugador "+nombreJugador+" ---> " +this.getNombre()+" activa la habilidad "+getNombreHabilidad()
+                            +"\n\tOtorga a " + mascotasAliadas[mascotaRandom2].getNombre()+ " una vida de: +"+foca.getNivel()+" y un ataque de: +"+foca.getNivel();
                 }
-                Archivos.mensajeEfecto(mensajeEfecto);
+
+                System.out.println(Util.rojo+mensajeEfecto+Util.reset);
+                //Archivos.mensajeEfecto(mensajeEfecto);
             }
         }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 

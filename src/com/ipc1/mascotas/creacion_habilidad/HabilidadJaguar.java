@@ -31,7 +31,7 @@ public class HabilidadJaguar extends Habilidad {
         }
     }
 
-    public void activarHabilidadJaguar(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota jaguar){
+    public void activarHabilidadJaguar(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota jaguar, String nombreJugador){
         int posicionEnemigo = Util.cantidadMascotas(mascotasEnemigas);
         int posicionAmigos = Util.cantidadMascotas(mascotasAliadas);
 
@@ -42,7 +42,8 @@ public class HabilidadJaguar extends Habilidad {
                 if(mascotasAliadas[posicionAmigos-1].getNombre().equalsIgnoreCase(jaguar.getNombre())) {
                     mascotasEnemigas[posicionEnemigo].setVida(-5 * jaguar.getNivel());
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAtaca a " + mascotasEnemigas[posicionEnemigo].getNombre() +
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                            + "\n\tAtaca a " + mascotasEnemigas[posicionEnemigo].getNombre() +
                             " quitandole una vida de: -" + (5 * jaguar.getNivel());
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }

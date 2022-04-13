@@ -14,13 +14,17 @@ public class Campo {
         this.color = color;
     }
 
-    public void activarCampo(Mascota[] mascotas){
+    public void activarCampo(Mascota[] mascotas, String nombreJugador){
 
     }
 
     @Override
     public String toString() {
        return color+"***************** Jugando en el campo: "+this.nombreCampo+"  ********************"+reset;
+    }
+
+    public String imprimirCampo(String nombreJugador) {
+        return color+"******* El jugador "+ nombreJugador+" está jugando en el campo: "+this.nombreCampo+" "+"  ********"+reset;
     }
 
     public String getNombreCampo() {

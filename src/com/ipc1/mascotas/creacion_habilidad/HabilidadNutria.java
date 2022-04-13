@@ -20,14 +20,15 @@ public class HabilidadNutria extends Habilidad {
 
             mascotasAliadas[posMascota].setAtaque(nivel);
             mascotasAliadas[posMascota].setVida(nivel);
-            String mensaje = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nOtorga a "+mascotasAliadas[posMascota].getNombre()+
+            String mensaje = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\n\tOtorga a "+mascotasAliadas[posMascota].getNombre()+
                     " Vida: "+nivel+" Ataque: "+nivel;
 
-            Archivos.mensajeEfecto(mensaje);
+            System.out.println(Util.rojo+mensaje+Util.reset);
+            //Archivos.mensajeEfecto(mensaje);
         }
     }
 
-    public void activarHabilidadNutria(Mascota[] mascotasAliadas, Mascota nutria){
+    public void activarHabilidadNutria(Mascota[] mascotasAliadas, Mascota nutria, String nombreJugador){
 
         int posMascota = Util.mascotaAleatoria(mascotasAliadas,this.getNombre());
 
@@ -35,10 +36,12 @@ public class HabilidadNutria extends Habilidad {
 
             mascotasAliadas[posMascota].setAtaque(nutria.getNivel());
             mascotasAliadas[posMascota].setVida(nutria.getNivel());
-            String mensaje = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nOtorga a "+mascotasAliadas[posMascota].getNombre()+
+            String mensaje = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad: "
+                    +getNombreHabilidad()+"\n\tOtorga a "+mascotasAliadas[posMascota].getNombre()+
                     " Vida: "+nutria.getNivel()+" Ataque: "+nutria.getNivel();
 
-            Archivos.mensajeEfecto(mensaje);
+            System.out.println(Util.rojo+mensaje+Util.reset);
+            //Archivos.mensajeEfecto(mensaje);
         }
     }
 }

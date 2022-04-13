@@ -31,7 +31,7 @@ public class HabilidadOveja extends Habilidad {
         }
     }
 
-    public void activarHabilidadOveja(Mascota[] mascotasAliadas, Mascota oveja){
+    public void activarHabilidadOveja(Mascota[] mascotasAliadas, Mascota oveja, String nombreJugador){
         if(oveja.getVida()<=0){
             Mascota carnero1 = new Mascota("Carnero",2*oveja.getNivel(),2*oveja.getNivel(),"domestico","terrestre",null,new Habilidad("Carnero"," "));
             Mascota carnero2 = new Mascota("Carnero",2*oveja.getNivel(),2*oveja.getNivel(),"domestico","terrestre",null,new Habilidad("Carnero"," "));
@@ -44,9 +44,9 @@ public class HabilidadOveja extends Habilidad {
                         mascotasAliadas[posicionOveja + 1] = carnero1;
                         mascotasAliadas[posicionOveja + 2] = carnero2;
 
-                        activarHabilidadDeInvocados(mascotasAliadas);
+                        activarHabilidadDeInvocados(mascotasAliadas, nombreJugador);
 
-                        String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca a 2 carneros";
+                        String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\n\tInvoca a 2 carneros";
                         Archivos.mensajeEfecto(mensajeEfecto);
                     }
                 }
@@ -56,14 +56,14 @@ public class HabilidadOveja extends Habilidad {
         }
     }
 
-    public void activarHabilidadDeInvocados(Mascota [] mascotasAliadas){
+    public void activarHabilidadDeInvocados(Mascota [] mascotasAliadas, String nombreJugador){
 
         for(int i=0; i<=Util.cantidadMascotas(mascotasAliadas); i++) {
             if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Caballo")){
-                ((HabilidadCaballo)mascotasAliadas[i].getHabilidad()).activarHabilidadCaballo(mascotasAliadas,mascotasAliadas[i]);
+                ((HabilidadCaballo)mascotasAliadas[i].getHabilidad()).activarHabilidadCaballo(mascotasAliadas,mascotasAliadas[i], nombreJugador);
 
             }else if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Chompipe")){
-                ((HabilidadChompipe)mascotasAliadas[i].getHabilidad()).activarHabilidadChompipe(mascotasAliadas,mascotasAliadas[i]);
+                ((HabilidadChompipe)mascotasAliadas[i].getHabilidad()).activarHabilidadChompipe(mascotasAliadas,mascotasAliadas[i], nombreJugador);
 
             }
         }

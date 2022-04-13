@@ -17,14 +17,15 @@ public class HabilidadTortuga extends Habilidad {
         //MELON ARMOR
     }
 
-    public void activarHabilidadTortuga(Mascota [] mascotasAliadas,Mascota tortuga, int posicion){
+    public void activarHabilidadTortuga(Mascota [] mascotasAliadas,Mascota tortuga, int posicion, String nombreJugador){
 
         if(tortuga.getVida()<=0) {
             for(int i=posicion-1;i>= posicion-tortuga.getNivel();i--){
                 if(i>=0){
                     if(mascotasAliadas[i]!=null){
                         mascotasAliadas[i].setEfectoComida(new Melon());
-                        String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nLe da a " + mascotasAliadas[i].getNombre() +
+                        String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                                + "\n\tLe da a " + mascotasAliadas[i].getNombre() +
                                 " Melon Armor";
                         Archivos.mensajeEfecto(mensajeEfecto);
                     }

@@ -25,7 +25,7 @@ public class HabilidadMapache extends Habilidad {
         }
     }
     
-    public void activarHabilidadMapache(Mascota[] mascotasAliadas, Mascota mapache, int posicion){
+    public void activarHabilidadMapache(Mascota[] mascotasAliadas, Mascota mapache, int posicion, String nombreJugador){
         
         if(mapache.getVida()<=0){
             if(posicion>0){
@@ -33,7 +33,8 @@ public class HabilidadMapache extends Habilidad {
                     double ataque = mascotasAliadas[posicion-1].getAtaque()*mapache.getNivel();
                     mascotasAliadas[posicion-1].setAtaque(ataque*mapache.getNivel());
 
-                    String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[posicion-1].getNombre()+
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad "+getNombreHabilidad()
+                            +"\n\tOtorga a " + mascotasAliadas[posicion-1].getNombre()+
                             " un incremento del daño en: "+ataque;
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }

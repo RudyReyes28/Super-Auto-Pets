@@ -36,7 +36,7 @@ public class HabilidadChompipe extends Habilidad {
         }
     }
     
-    public void activarHabilidadChompipe(Mascota [] mascotasAliadas, Mascota chompipe){
+    public void activarHabilidadChompipe(Mascota [] mascotasAliadas, Mascota chompipe, String nombreJugador){
         try {
             for (int i = 0; i < mascotasAliadas.length; i++) {
                 if (mascotasAliadas[i] != null) {
@@ -48,7 +48,8 @@ public class HabilidadChompipe extends Habilidad {
                         mascotasAliadas[i].setAtaque(3*chompipe.getNivel());
                         mascotasAliadas[i].setVida(3*chompipe.getNivel());
 
-                        String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[i].getNombre() +
+                        String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa la habilidad: " + getNombreHabilidad()
+                                + "\n\tOtorga a " + mascotasAliadas[i].getNombre() +
                                 " un daño de: +" + (3*chompipe.getNivel())+" y una vida de: +"+(3*chompipe.getNivel());
                         Archivos.mensajeEfecto(mensajeEfecto);
                     }

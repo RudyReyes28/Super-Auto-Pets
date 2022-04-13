@@ -29,7 +29,7 @@ public class HabilidadCaballo extends Habilidad {
         }
     }
 
-    public void activarHabilidadCaballo(Mascota[] mascotasAliadas,Mascota caballo){
+    public void activarHabilidadCaballo(Mascota[] mascotasAliadas,Mascota caballo, String nombreJugador){
         for(int i=0; i<mascotasAliadas.length; i++){
             if(mascotasAliadas[i]!= null){
                 if(mascotasAliadas[i].getNombre().equalsIgnoreCase("Grillo Zombi") ||
@@ -39,7 +39,8 @@ public class HabilidadCaballo extends Habilidad {
                         mascotasAliadas[i].getNombre().equalsIgnoreCase("Zombie Fly")){
 
                     mascotasAliadas[i].setAtaque(caballo.getNivel());
-                    String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nOtorga a " + mascotasAliadas[i].getNombre()+
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad: "+getNombreHabilidad()
+                            +"\n\tOtorga a " + mascotasAliadas[i].getNombre()+
                             " un daño de: "+caballo.getNivel();
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }

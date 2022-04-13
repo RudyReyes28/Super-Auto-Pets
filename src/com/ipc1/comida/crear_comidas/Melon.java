@@ -9,8 +9,8 @@ public class Melon extends Comida {
         super("Melon", true, 5);
     }
 
-    public double activarEfecto(double danio, Mascota mascota){
-        System.out.println("La mascota "+mascota.getNombre() + " anula el ataque recibido");
+    public double activarEfecto(double danio, Mascota mascota, String nombreJugador){
+        System.out.println("La mascota "+mascota.getNombre()+" del jugador "+nombreJugador+" anula el ataque recibido");
         return -danio;
     }
 }

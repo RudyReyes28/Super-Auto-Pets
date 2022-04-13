@@ -9,13 +9,13 @@ public class Hongo extends Comida {
         super("Hongo", true, 5);
     }
 
-    public void activarHabilidad(Mascota mascota){
+    public void activarHabilidad(Mascota mascota, String nombreJugador){
 
         if(mascota.getVida()<=0) {
             mascota.reiniciarVida(1);
             mascota.reiniciarAtaque(1);
 
-            System.out.println("La mascota " + mascota.getNombre() + " resucita con (1/1)");
+            System.out.println("La mascota "+mascota.getNombre()+" del jugador "+nombreJugador+"  resucita con (1/1)");
         }
     }
 }

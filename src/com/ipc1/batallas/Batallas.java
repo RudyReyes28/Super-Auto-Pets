@@ -19,7 +19,31 @@ public class Batallas {
 */
 
     public static void main(String[] args) {
+        int opcion = 0;
 
+        do{
+            System.out.println("************ BIENVENIDO A SUPER AUTO PETS *****************");
+            System.out.println("\t\t PUEDE JUGAR LOS SIGUIENTES MODOS DE JUEGO: ");
+            System.out.println("1. Modo Arena\t2. Modo Versus\t3. Modo Creativo\t4. Salir del juego");
+            opcion = Util.solicitarNumero("Dijite una opcion: ",1,4);
+            switch (opcion){
+                case 1:
+                    String nombreJugador = Util.solicitarString("Escriba el nombre del jugador: ");
+                    ModoArena batallaArena = new ModoArena(nombreJugador);
+                    batallaArena.batalla();
+                    break;
+                case 2:
+                    String nombreJugador1 = Util.solicitarString("Escriba el nombre del jugador 1: ");
+                    String nombreJugador2 = Util.solicitarString("Escriba el nombre del jugador 2: ");
+                    ModoVersus batallaVersus = new ModoVersus(nombreJugador1,nombreJugador2);
+                    batallaVersus.batalla();
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("VUELVA PRONTO");
+            }
+        }while(opcion!=4);
         ModoArena batallaArena = new ModoArena("Rudy");
         batallaArena.batalla();
 

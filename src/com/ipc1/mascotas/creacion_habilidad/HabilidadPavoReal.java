@@ -23,14 +23,15 @@ public class HabilidadPavoReal extends Habilidad {
         }
     }
 
-    public void activarHabilidadPavoreal(Mascota[] mascotasAliadas, Mascota pavo){
+    public void activarHabilidadPavoreal(Mascota[] mascotasAliadas, Mascota pavo, String nombreJugador){
         int posPavo = Util.cantidadMascotas(mascotasAliadas);
 
         if(posPavo!=-1){
             if(mascotasAliadas[posPavo].getNombre().equals(pavo.getNombre())){
                 double ataque = mascotasAliadas[posPavo].getAtaque()*(0.5*pavo.getNivel());
                 mascotasAliadas[posPavo].setAtaque(ataque);
-                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nE incrementa su ataque en: " +ataque;
+                String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad "+getNombreHabilidad()
+                        +"\n\tE incrementa su ataque en: " +ataque;
                 Archivos.mensajeEfecto(mensajeEfecto);
             }
         }

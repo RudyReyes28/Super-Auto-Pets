@@ -30,7 +30,7 @@ public class HabilidadRinoceronte extends Habilidad {
         }
     }
 
-    public void activarHabilidadRinoceronte(Mascota[] mascotasEnemigas, Mascota rinoceronte){
+    public void activarHabilidadRinoceronte(Mascota[] mascotasEnemigas, Mascota rinoceronte, String nombreJugador){
         int posicionEnemigo = Util.cantidadMascotas(mascotasEnemigas);
 
         try{
@@ -38,9 +38,10 @@ public class HabilidadRinoceronte extends Habilidad {
             if(posicionEnemigo!=-1){
                 mascotasEnemigas[posicionEnemigo].setVida(-4* rinoceronte.getNivel());
 
-                String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nAtaca a " + mascotasEnemigas[posicionEnemigo].getNombre()+
+                String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre()+" activa la habilidad "+getNombreHabilidad()
+                        +"\n\tAtaca a " + mascotasEnemigas[posicionEnemigo].getNombre()+
                         " quitandole una vida de: -"+(4* rinoceronte.getNivel());
-                Archivos.mensajeEfecto(mensajeEfecto);
+                Archivos.mensajeEfectosInicio(mensajeEfecto);
             }
         }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 

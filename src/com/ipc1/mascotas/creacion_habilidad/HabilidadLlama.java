@@ -28,14 +28,12 @@ public class HabilidadLlama extends Habilidad {
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }
             }
-        }catch (ArrayIndexOutOfBoundsException ignore){
-
-        }catch (NullPointerException ignore){
+        }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){
 
         }
     }
 
-    public void activarHabilidadLlama(Mascota [] mascotasAliadas, Mascota llama, int posicionLlama){
+    public void activarHabilidadLlama(Mascota [] mascotasAliadas, Mascota llama, int posicionLlama, String nombreJugador){
         int cantidadMascotas = Util.cantidadMascotas(mascotasAliadas);
 
         try{
@@ -44,9 +42,12 @@ public class HabilidadLlama extends Habilidad {
                     mascotasAliadas[posicionLlama].setAtaque(2*llama.getNivel());
                     mascotasAliadas[posicionLlama].setVida(2*llama.getNivel());
 
-                    String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nIncrementa su "+
-                            " vida: +"+(2*llama.getNivel())+" y ataque: +"+(llama.getNivel()*2);
-                    Archivos.mensajeEfecto(mensajeEfecto);
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad "+getNombreHabilidad()+
+                            "\n\tIncrementa su vida: +"+(2*llama.getNivel())+" y ataque: +"+(llama.getNivel()*2);
+
+
+                    System.out.println(Util.rojo+mensajeEfecto+Util.reset);
+                    //Archivos.mensajeEfecto(mensajeEfecto);
                 }
             }
         }catch (ArrayIndexOutOfBoundsException | NullPointerException ignore){

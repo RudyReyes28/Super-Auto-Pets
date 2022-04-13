@@ -27,7 +27,7 @@ public class HabilidadHipopotamo extends Habilidad {
         }
     }
 
-    public void activarHabilidadHipopotamo(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota hipopotamo){
+    public void activarHabilidadHipopotamo(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota hipopotamo, String nombreJugador){
 
         int posicionHipo = Util.cantidadMascotas(mascotasAliadas);
         int posicionEnemigo = Util.cantidadMascotas(mascotasEnemigas);
@@ -35,13 +35,13 @@ public class HabilidadHipopotamo extends Habilidad {
         if(posicionHipo!=-1 && posicionEnemigo!=-1) {
 
             try {
-                if(mascotasAliadas[posicionHipo].getNombre().equalsIgnoreCase(hipopotamo.getNombre()) &&
-                mascotasEnemigas[posicionEnemigo].getVida()<=0) {
+                if (mascotasAliadas[posicionHipo].getNombre().equalsIgnoreCase(hipopotamo.getNombre()) &&
+                        mascotasEnemigas[posicionEnemigo].getVida() <= 0) {
                     mascotasAliadas[posicionHipo].setAtaque(2 * hipopotamo.getNivel());
                     mascotasAliadas[posicionHipo].setVida(2 * hipopotamo.getNivel());
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAumenta " +
-                            "su vida: +" + (2 * hipopotamo.getNivel()) + " y su daño: +" + (hipopotamo.getNivel() * 2);
+                    String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                            + "\n\tAumenta su vida: +" + (2 * hipopotamo.getNivel()) + " y su daño: +" + (hipopotamo.getNivel() * 2);
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }
             } catch (ArrayIndexOutOfBoundsException | NullPointerException ignore) {

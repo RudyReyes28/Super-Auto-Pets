@@ -40,7 +40,7 @@ public class HabilidadPanda extends Habilidad {
         }
     }
 
-    public void activarHabilidadPanda(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota panda){
+    public void activarHabilidadPanda(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota panda, String nombreJugador){
         int cantMascotaEnemigas = Util.cantidadMascotas(mascotasEnemigas);
         int posicionPanda = Util.cantidadMascotas(mascotasAliadas);
         double absorber = 0.5;
@@ -57,8 +57,8 @@ public class HabilidadPanda extends Habilidad {
 
                     mascotasAliadas[posicionPanda].setVida(ataqueAbsorbido);
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nY absorbe un total " +
-                            " un daño de: +" + ataqueAbsorbido;
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad: " + getNombreHabilidad()
+                            + "\n\tY absorbe un total un daño de: +" + ataqueAbsorbido;
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }
 

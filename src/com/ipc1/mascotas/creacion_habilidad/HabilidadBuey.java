@@ -26,7 +26,7 @@ public class HabilidadBuey extends Habilidad {
         }
     }
 
-    public void activarHabilidadBuey(Mascota[] mascotasAliadas, Mascota buey, int posicionBuey){
+    public void activarHabilidadBuey(Mascota[] mascotasAliadas, Mascota buey, int posicionBuey, String nombreJugador){
 
         try {
             if (mascotasAliadas[posicionBuey + 1] != null) {
@@ -36,7 +36,8 @@ public class HabilidadBuey extends Habilidad {
 
                     mascotasAliadas[posicionBuey].setAtaque(2 * buey.getNivel());
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAumenta su ataque en: " + (buey.getNivel() * 2);
+                    String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                            + "\n\tAumenta su ataque en: " + (buey.getNivel() * 2);
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }
             }

@@ -14,10 +14,10 @@ public class HabilidadLeopardo extends Habilidad {
 
     @Override
     public void activarHabilidad(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota[] mascotasTienda, int nivel) {
-        activarHabilidadLeopardo(mascotasEnemigas,nivel);
+
     }
 
-    public void activarHabilidadLeopardo(Mascota[] mascotasEnemigas, int nivel){
+    public void activarHabilidadLeopardo(Mascota[] mascotasEnemigas, int nivel, String nombreJugador){
         try {
             int cantMascotas = Util.cantidadMascotas(mascotasEnemigas);
             if (cantMascotas != -1) {
@@ -30,7 +30,8 @@ public class HabilidadLeopardo extends Habilidad {
                 if (nivel == 1) {
                     double danio = mascotasEnemigas[mascotaSeleccionada1].getNivel()*0.5;
                     mascotasEnemigas[mascotaSeleccionada1].setVida(-danio);
-                    mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nLe quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
+                    mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+
+                            "\n\tLe quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
                             "  una vida de "+ danio;
 
                 } else if (nivel == 2) {
@@ -39,7 +40,8 @@ public class HabilidadLeopardo extends Habilidad {
                     mascotasEnemigas[mascotaSeleccionada1].setVida(-danio1);
                     mascotasEnemigas[mascotaSeleccionada2].setVida(-danio2);
 
-                    mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nLe quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
+                    mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+
+                            "\n\tLe quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
                             " una vida de "+ danio1 + " y a "+ mascotasEnemigas[mascotaSeleccionada2] +" una vida de "+danio2;
 
 
@@ -52,12 +54,13 @@ public class HabilidadLeopardo extends Habilidad {
                     mascotasEnemigas[Util.mascotaEnemigaAleatoria(mascotasEnemigas)].setVida(-danio2);
                     mascotasEnemigas[Util.mascotaEnemigaAleatoria(mascotasEnemigas)].setVida(-danio3);
 
-                    mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nLe quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
+                    mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad: "+getNombreHabilidad()
+                            +"\n\tLe quita a " + mascotasEnemigas[mascotaSeleccionada1].getNombre()+
                             " una vida de "+ danio1 + " y a "+ mascotasEnemigas[mascotaSeleccionada2] +" una vida de "+danio2 +
                             " y tambien a " + mascotasEnemigas[mascotaSeleccionada3].getNombre() + " una vida de "+danio3;
 
                 }
-                Archivos.mensajeEfecto(mensajeEfecto);
+                Archivos.mensajeEfectosInicio(mensajeEfecto);
             }
         }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 

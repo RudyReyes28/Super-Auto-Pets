@@ -32,7 +32,7 @@ public class HabilidadDelfin extends Habilidad {
         }
     }
 
-    public void activarHabilidadDelfin(Mascota[] mascotasEnemigas,Mascota delfin){
+    public void activarHabilidadDelfin(Mascota[] mascotasEnemigas,Mascota delfin, String nombreJugador){
         int posicionMascotaEnemiga=0;
         double vidaMascotaEnemigo= 20;
         for(int i=0; i<mascotasEnemigas.length;i++){
@@ -46,9 +46,10 @@ public class HabilidadDelfin extends Habilidad {
 
         if(mascotasEnemigas[posicionMascotaEnemiga]!=null){
             mascotasEnemigas[posicionMascotaEnemiga].setVida(-5*delfin.getNivel());
-            String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nHace daño a " + mascotasEnemigas[posicionMascotaEnemiga].getNombre()+
+            String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre()+" activa la habilidad "+getNombreHabilidad()
+                    +"\n\tHace daño a " + mascotasEnemigas[posicionMascotaEnemiga].getNombre()+
                     " le quita una vida de: -"+(delfin.getNivel()*5);
-            Archivos.mensajeEfecto(mensajeEfecto);
+            Archivos.mensajeEfectosInicio(mensajeEfecto);
         }
     }
 }

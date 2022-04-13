@@ -11,7 +11,7 @@ public class SinCampo extends Campo {
     }
 
     @Override
-    public void activarCampo(Mascota[] mascotas) {
+    public void activarCampo(Mascota[] mascotas, String nombreJugador) {
         int cant = cantidadSolitarios(mascotas);
         if(cant==1){
             for(int i=0; i<= Util.cantidadMascotas(mascotas);i++){
@@ -21,6 +21,9 @@ public class SinCampo extends Campo {
 
                             mascotas[i].setAtaque(3);
                             mascotas[i].setVida(3);
+
+                            System.out.println("La mascota "+mascotas[i].getNombre()+" del jugador "+nombreJugador
+                                    + " tiene un buff de +3 de ataque y de vida por estar en el campo "+this.getNombreCampo());
 
                         }
                     }

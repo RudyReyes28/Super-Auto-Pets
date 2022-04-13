@@ -19,9 +19,15 @@ public class Archivos {
     private static String mensajeDanioRealizado="";
     private static String mensajeDanioRecibido="";
     private static String mensajeFinalDePartida="";
+    private static String mensajeEfectosInicioDePartida = "";
+    private static String mensajeInicioDePartida = "";
 
     public static void mensajeEfecto(String efecto){
         mensajeEfectos += efecto+"\n";
+    }
+
+    public static void mensajeEfectosInicio(String efecto){
+        mensajeEfectosInicioDePartida += efecto+"\n";
     }
 
     public static void mensajeDanioRealizado(String danio){
@@ -41,11 +47,22 @@ public class Archivos {
         return  mensajeEntreBatallas;
     }
 
+    public static String mensajeInicioDePartida(){
+        mensajeInicioDePartida+= cyan+"HABILIDADES ACTIVADAS AL INCIO DE PARTIDA: \n"+reset+mensajeEfectosInicioDePartida;
+
+        return mensajeInicioDePartida;
+    }
+
     public static void reiniciarMensajeEntreBatallas(){
         mensajeEntreBatallas = "";
         mensajeDanioRecibido = "";
         mensajeDanioRealizado = "";
         mensajeEfectos = "";
+    }
+
+    public static void reinicarMensajeInicioDePartida(){
+        mensajeEfectosInicioDePartida="";
+        mensajeInicioDePartida="";
     }
 
     public static void mensajeFinalDePartida(){

@@ -44,7 +44,7 @@ public class HabilidadSapo extends Habilidad {
 
     }
 
-    public void activarHabilidadSapo(Mascota [] mascotasAliadas){
+    public void activarHabilidadSapo(Mascota [] mascotasAliadas, String nombreJugador){
         int posicionSapo=0;
         int posicionMascota=0;
         double vidaMayor = 0;
@@ -68,9 +68,10 @@ public class HabilidadSapo extends Habilidad {
         if(mascotasAliadas[posicionSapo]!=null){
             mascotasAliadas[posicionSapo].setVida(vidaMayor);
 
-            String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nCopia de " + mascotasAliadas[posicionMascota].getNombre()+
+            String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad "+getNombreHabilidad()
+                    +"\n\tCopia de " + mascotasAliadas[posicionMascota].getNombre()+
                     " una vida: "+vidaMayor;
-            Archivos.mensajeEfecto(mensajeEfecto);
+            Archivos.mensajeEfectosInicio(mensajeEfecto);
         }
     }
 }

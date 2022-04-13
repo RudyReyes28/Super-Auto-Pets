@@ -10,13 +10,13 @@ public class Chile extends Comida {
         super("Chile", true, 4);
     }
 
-    public void activarEfecto(Mascota [] mascotasEnemigas,Mascota mascota){
+    public void activarEfecto(Mascota [] mascotasEnemigas,Mascota mascota, String nombreJugador){
         int cantMascotas = Util.cantidadMascotas(mascotasEnemigas);
 
         if(cantMascotas>0){
             if( mascotasEnemigas[cantMascotas-1]!=null) {
                 mascotasEnemigas[cantMascotas - 1].setVida(-5);
-                System.out.println("La mascota "+mascota.getNombre()+" activa efecto de la comida y hace 5 de daño a "+
+                System.out.println("La mascota "+mascota.getNombre()+" del jugador "+nombreJugador+" activa efecto de la comida y hace 5 de daño a "+
                         mascotasEnemigas[cantMascotas-1].getNombre());
             }
 

@@ -35,7 +35,7 @@ public class HabilidadBallena extends Habilidad {
         }
     }
     
-    public void activarHabilidadBallena(Mascota[] mascotasAliadas, Mascota ballena, int posicionBallena){
+    public void activarHabilidadBallena(Mascota[] mascotasAliadas, Mascota ballena, int posicionBallena, String nombreJugador){
         try{
             if(posicionBallena!=-1) {
                 if (mascotasAliadas[posicionBallena + 1] != null) {
@@ -44,8 +44,8 @@ public class HabilidadBallena extends Habilidad {
                     mascotasAliadas[posicionBallena+1]=mascotasAliadas[posicionBallena];
                     mascotasAliadas[posicionBallena] = tmp;
 
-                    String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad();
-                    Archivos.mensajeEfecto(mensajeEfecto);
+                    String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre()+" activa la habilidad "+getNombreHabilidad();
+                    Archivos.mensajeEfectosInicio(mensajeEfecto);
                 }
             }
 

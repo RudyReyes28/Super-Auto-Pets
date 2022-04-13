@@ -62,7 +62,7 @@ public class HabilidadPulpo extends Habilidad {
         }
     }
 
-    public void activarHabilidadPulo(Mascota[] mascotasAliadas, int nivel){
+    public void activarHabilidadPulo(Mascota[] mascotasAliadas, int nivel, String nombreJugador){
 
         int posicionPulpo = Util.posicionMascota(mascotasAliadas, this.getNombre());
 
@@ -71,18 +71,22 @@ public class HabilidadPulpo extends Habilidad {
                 if (nivel == 1) {
                     mascotasAliadas[posicionPulpo].setVida(8);
                     mascotasAliadas[posicionPulpo].setAtaque(8);
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nGana 8 de daño y de vida";
-                    Archivos.mensajeEfecto(mensajeEfecto);
+                    String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa la habilidad: " + getNombreHabilidad()
+                            + "\n\tGana 8 de daño y de vida";
+
+                    System.out.println(Util.rojo+mensajeEfecto+Util.reset);
+                    //Archivos.mensajeEfecto(mensajeEfecto);
                 }
                 if (nivel == 2) {
 
                     mascotasAliadas[posicionPulpo].setVida(8);
                     mascotasAliadas[posicionPulpo].setAtaque(8);
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad: " + getNombreHabilidad() + "\nGana 8 de daño y de vida";
+                    String mensajeEfecto ="La mascota del jugador "+nombreJugador+" ---> "+ this.getNombre() + " activa la habilidad: " + getNombreHabilidad()
+                            + "\n\tGana 8 de daño y de vida";
 
-
-                    Archivos.mensajeEfecto(mensajeEfecto);
+                    System.out.println(Util.rojo+mensajeEfecto+Util.reset);
+                    //Archivos.mensajeEfecto(mensajeEfecto);
                 }
             }
         }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
@@ -90,15 +94,16 @@ public class HabilidadPulpo extends Habilidad {
         }
     }
 
-    public void activarHabilidadNivel3Pulpo(Mascota[] mascotasEnemigas, int nivel){
+    public void activarHabilidadNivel3Pulpo(Mascota[] mascotasEnemigas, int nivel, String nombreJugador){
         if(nivel == 3){
             for(int i=0; i<mascotasEnemigas.length; i++){
                 if(mascotasEnemigas[i]!=null){
                     mascotasEnemigas[i].setVida(-5);
 
-                    String mensajeEfecto = this.getNombre()+" activa la habilidad: "+getNombreHabilidad()+"\nHace daño a " + mascotasEnemigas[i].getNombre()+
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad: "+getNombreHabilidad()
+                            +"\n\tHace daño a " + mascotasEnemigas[i].getNombre()+
                             " quitandole 5 de vida";
-                    Archivos.mensajeEfecto(mensajeEfecto);
+                    Archivos.mensajeEfectosInicio(mensajeEfecto);
                 }
             }
         }

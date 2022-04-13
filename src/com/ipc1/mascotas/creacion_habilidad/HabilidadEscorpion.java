@@ -32,7 +32,7 @@ public class HabilidadEscorpion extends Habilidad {
 
     }
 
-    public void activarHabilidadEscorpion(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas){
+    public void activarHabilidadEscorpion(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, String nombreJugador){
          int cantMasacotasAliadas = Util.cantidadMascotas(mascotasAliadas);
          int mascotaEnemiga = Util.cantidadMascotas(mascotasEnemigas);
 
@@ -43,7 +43,8 @@ public class HabilidadEscorpion extends Habilidad {
 
                      mascotasEnemigas[mascotaEnemiga].setVida(-ataque);
 
-                     String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nAtaca a " + mascotasEnemigas[mascotaEnemiga].getNombre() +
+                     String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                             + "\n\tAtaca a " + mascotasEnemigas[mascotaEnemiga].getNombre() +
                              " quitandole una vida de: -" + ataque;
                      Archivos.mensajeEfecto(mensajeEfecto);
                  }

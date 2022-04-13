@@ -12,12 +12,15 @@ public class Sabana extends Campo {
     }
 
     @Override
-    public void activarCampo(Mascota[] mascotas) {
+    public void activarCampo(Mascota[] mascotas, String nombreJugador) {
         if(mascotas[posicion]!=null){
             for(int i=0; i<mascotas[posicion].getTipo().length; i++){
                 if(mascotas[posicion].getTipo(i)!=null){
                     if(mascotas[posicion].getTipo(i).equalsIgnoreCase("desertico")){
                         mascotas[posicion].setVida(1);
+
+                        System.out.println("La mascota "+mascotas[i].getNombre()+" del jugador "+nombreJugador
+                                + " tiene un buff de +1 de vida por estar en el campo "+this.getNombreCampo());
                     }
                 }
             }

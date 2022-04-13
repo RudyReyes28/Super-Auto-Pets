@@ -1,7 +1,9 @@
 package com.ipc1.batallas.menu_batallas;
 
+import com.ipc1.comida.caracter.Comida;
 import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.Mascotas;
+import com.ipc1.mascotas.activacion_habilidad.ActivarHabilidades;
 import com.ipc1.mascotas.caracter.Mascota;
 import com.ipc1.util.Util;
 
@@ -10,9 +12,9 @@ public class CompraMascotas {
     Mascotas mascotas = new Mascotas();
     Mascotas mascotasBotTienda = new Mascotas();
 
-    public void ComprarMascotas(Mascota [] mascotasTienda, Jugador jugador){
+    public void ComprarMascotas(Mascota [] mascotasTienda, Jugador jugador, Comida [] comidaTienda){
 
-        mostrarMascotasTienda(mascotasTienda, jugador);
+        mostrarMascotasTienda(mascotasTienda, jugador, comidaTienda);
 
     }
 
@@ -20,7 +22,7 @@ public class CompraMascotas {
         return mascotas.getMascotas();
     }
 
-    private void mostrarMascotasTienda(Mascota[] mascotasTienda, Jugador jugador) {
+    private void mostrarMascotasTienda(Mascota[] mascotasTienda, Jugador jugador, Comida[] comidaTienda) {
         System.out.println("Usted tiene las siguientes mascotas en su mazo: ");
         Util.mostrarMascotas(jugador);
         System.out.println("\n\t************* BIENVENIDO A LA TIENDA DE MASCOTAS ***********");
@@ -44,6 +46,7 @@ public class CompraMascotas {
                         jugador.setMascota(mascotasTienda[opcionCompra]);
 
                         //AQUI IRIA LAS HABILIDADES DE COMPRA
+                        ActivarHabilidades.habilidadesAlComprarse(jugador.getMascotas(), comidaTienda, mascotasTienda[opcionCompra], jugador.getNombre() );
 
                         jugador.setOro(-3);
                         mascotasTienda[opcionCompra] = null;

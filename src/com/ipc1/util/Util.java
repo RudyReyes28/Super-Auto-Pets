@@ -191,7 +191,7 @@ public class Util {
         System.out.println("");
     }
 
-    public static void verMascotas(Mascota [] mascotasTienda){
+    public static void verMascotasTienda(Mascota [] mascotasTienda){
         verificarMascotas(mascotasTienda);
         System.out.println("Mascotas de la tienda \n");
         for(int i=0; i<mascotasTienda.length;i++){

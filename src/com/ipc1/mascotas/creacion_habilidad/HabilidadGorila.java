@@ -18,7 +18,7 @@ public class HabilidadGorila extends Habilidad {
         //ESCUDO DE COCO
     }
 
-    public void activarHabilidadGorilla(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota gorila){
+    public void activarHabilidadGorilla(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota gorila, String nombreJugador){
 
         int posicionGorilla = Util.cantidadMascotas(mascotasAliadas);
         int posicionEnemigo = Util.cantidadMascotas(mascotasEnemigas);
@@ -30,7 +30,7 @@ public class HabilidadGorila extends Habilidad {
 
                     mascotasAliadas[posicionGorilla].setVida(vida);
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad();
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad();
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }
                 turno++;

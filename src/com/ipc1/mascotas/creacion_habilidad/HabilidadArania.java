@@ -28,7 +28,7 @@ public class HabilidadArania extends Habilidad {
         }
     }
 
-    public void activarHabilidadArania(Mascota[] mascotasAliadas, Mascota arania){
+    public void activarHabilidadArania(Mascota[] mascotasAliadas, Mascota arania, String nombreJugador){
         Mascotas mascotasInvocadas = new Mascotas();
         int mascotaAleatoria = Util.generarRandom(0,mascotasInvocadas.getMascotas().length-1);
         int totalMascotas = Util.cantidadMascotas(mascotasAliadas);
@@ -39,7 +39,8 @@ public class HabilidadArania extends Habilidad {
                     mascotasInvocadas.getMascota(mascotaAleatoria).setNivel(arania.getNivel());
                     mascotasAliadas[totalMascotas + 1] = mascotasInvocadas.getMascota(mascotaAleatoria);
 
-                    String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nInvoca " + mascotasInvocadas.getMascota(mascotaAleatoria).getNombre();
+                    String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                            + "\n\tInvoca " + mascotasInvocadas.getMascota(mascotaAleatoria).getNombre();
 
                     Archivos.mensajeEfecto(mensajeEfecto);
                 }

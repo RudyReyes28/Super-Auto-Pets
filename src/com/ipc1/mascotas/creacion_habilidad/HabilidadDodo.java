@@ -39,7 +39,7 @@ public class HabilidadDodo extends Habilidad {
         }
     }
 
-    public void activarHabilidadDodo(Mascota [] mascotasAliadas, int posicion, Mascota dodo){
+    public void activarHabilidadDodo(Mascota [] mascotasAliadas, int posicion, Mascota dodo, String nombreJugador){
 
         try {
 
@@ -60,9 +60,10 @@ public class HabilidadDodo extends Habilidad {
                         break;
                 }
 
-                String mensajeEfecto = this.getNombre() + " activa la habilidad " + getNombreHabilidad() + "\nOtorga a " + mascotasAliadas[posicion + 1].getNombre() +
+                String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre() + " activa la habilidad " + getNombreHabilidad()
+                        + "\n\tOtorga a " + mascotasAliadas[posicion + 1].getNombre() +
                         " un ataque de : " + ataque;
-                Archivos.mensajeEfecto(mensajeEfecto);
+                Archivos.mensajeEfectosInicio(mensajeEfecto);
             }
         }catch (NullPointerException | ArrayIndexOutOfBoundsException ignore){
 
