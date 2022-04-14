@@ -26,7 +26,31 @@ public class Batallas {
             System.out.println("\t\t PUEDE JUGAR LOS SIGUIENTES MODOS DE JUEGO: ");
             System.out.println("1. Modo Arena\t2. Modo Versus\t3. Modo Creativo\t4. Salir del juego");
             opcion = Util.solicitarNumero("Dijite una opcion: ",1,4);
-            switch (opcion){
+
+            if(opcion==1){
+                String nombreJugador = Util.solicitarString("Escriba el nombre del jugador: ");
+                ModoArena batallaArena = new ModoArena(nombreJugador);
+                batallaArena.batalla();
+
+            }else if(opcion==2){
+                String nombreJugador1 = Util.solicitarString("Escriba el nombre del jugador 1: ");
+                String nombreJugador2 = Util.solicitarString("Escriba el nombre del jugador 2: ");
+                ModoVersus batallaVersus = new ModoVersus(nombreJugador1,nombreJugador2);
+                batallaVersus.batalla();
+
+            }else if(opcion == 3){
+                String nombreJugadorCreativo1 = Util.solicitarString("Escriba el nombre del jugador 1: ");
+                String nombreJugadorCreativo2 = Util.solicitarString("Escriba el nombre del jugador 2: ");
+                ModoCreativo batallaCreativo = new ModoCreativo(nombreJugadorCreativo1,nombreJugadorCreativo2);
+                batallaCreativo.batalla();
+            }else{
+                System.out.println("VUELVA PRONTO");
+            }
+
+
+        }while(opcion!=4);
+
+/*switch (opcion){
                 case 1:
                     String nombreJugador = Util.solicitarString("Escriba el nombre del jugador: ");
                     ModoArena batallaArena = new ModoArena(nombreJugador);
@@ -46,11 +70,10 @@ public class Batallas {
 
                     break;
                 default:
-                    System.out.println("VUELVA PRONTO");
-            }
-        }while(opcion!=4);
-        ModoArena batallaArena = new ModoArena("Rudy");
-        batallaArena.batalla();
+                    System.out.println("VUELVA PRONTO");*/
+        //}
+
+
 
 
 

@@ -1,14 +1,16 @@
 package com.ipc1.batallas.menu_batallas;
 
+import com.ipc1.comida.caracter.Comida;
 import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.Mascotas;
+import com.ipc1.mascotas.activacion_habilidad.ActivarHabilidades;
 import com.ipc1.mascotas.caracter.Mascota;
 import com.ipc1.util.Util;
 
 public class CompraModoCreativo {
 
 
-    public static void comprarMascotas(Mascota[] mascotas, Jugador jugador) {
+    public static void comprarMascotas(Mascota[] mascotas, Jugador jugador, Comida[] comidasTienda) {
         int opcion = 0;
 
         do {
@@ -19,13 +21,13 @@ public class CompraModoCreativo {
 
             switch (opcion) {
                 case 1:
-
+                    comprarPorTier(mascotas, jugador, comidasTienda);
                     break;
                 case 2:
-                    ordenarPorVida(mascotas, jugador);
+                    comprarPorVida(mascotas, jugador, comidasTienda);
                     break;
                 case 3:
-                    ordenarPorDanio(mascotas, jugador);
+                    comprarPorDanio(mascotas, jugador, comidasTienda);
                     break;
                 default:
                     System.out.println("VUELVA PRONTO");
@@ -33,12 +35,15 @@ public class CompraModoCreativo {
         }while (opcion!=4);
     }
 
-    public static void ordenarPorDanio(Mascota[] mascotas, Jugador jugador) {
+    public static void comprarPorDanio(Mascota[] mascotas, Jugador jugador, Comida [] comidaTienda) {
         ordenarMascotasPorDanio(mascotas);
 
         int salir = 0;
         do {
-            System.out.println("******** ORDENANDO LAS MASCOTAS POR DANÑO ************");
+            Util.verMascotas(jugador);
+            System.out.println();
+
+            System.out.println("******** ORDENANDO LAS MASCOTAS POR DAÑO ************");
             System.out.println("Seleccione la manera de ordenar las mascotas: ");
             System.out.println("1. De menor a mayor daño\t\t2. De mayor a menor daño");
             int opcion = Util.solicitarNumero("Ingrese la opcion: ", 1, 2);
@@ -51,24 +56,40 @@ public class CompraModoCreativo {
             }
 
             int indice = Util.solicitarNumero("Ingrese el indice de la mascota a adquirir: ", 0, mascotas.length - 1);
-            jugador.setMascota(mascotas[indice]);
+
+
+            if (Util.cantidadMascotas(jugador.getMascotas()) < 4) {
+                jugador.setMascota(mascotas[indice]);
+
+                //AQUI IRIA LAS HABILIDADES DE COMPRA
+                ActivarHabilidades.habilidadesAlComprarse(jugador.getMascotas(), comidaTienda, mascotas[indice], jugador.getNombre() );
+
+
+            } else {
+                System.out.println("Ya no tiene espacio para mas mascotas");
+            }
+
+            Util.verMascotas(jugador);
+            System.out.println();
 
             System.out.println("¿Desea seguir adquiriendo más mascotas?\n\t1. Si\t2. No");
-            salir = Util.solicitarNumero("Digite la opcion", 1, 2);
+            salir = Util.solicitarNumero("Digite la opcion: ", 1, 2);
         } while (salir != 2);
 
     }
 
-    public static void ordenarPorVida(Mascota[] mascotas, Jugador jugador) {
+    public static void comprarPorVida(Mascota[] mascotas, Jugador jugador,  Comida [] comidaTienda) {
         ordenarMascotasPorVida(mascotas);
         int salir = 0;
 
         do {
+            Util.verMascotas(jugador);
+            System.out.println();
+
             System.out.println("******** ORDENANDO LAS MASCOTAS POR VIDA ************");
             System.out.println("Seleccione la manera de ordenar las mascotas: ");
             System.out.println("1. De menor a mayor vida\t\t2. De mayor a menor vida");
             int opcion = Util.solicitarNumero("Ingrese la opcion: ", 1, 2);
-
 
             if (opcion == 1) {
                 imprimirMascotasCrecienteDecreciente(mascotas, 1);
@@ -77,12 +98,57 @@ public class CompraModoCreativo {
             }
 
             int indice = Util.solicitarNumero("Ingrese el indice de la mascota a adquirir: ", 0, mascotas.length - 1);
-            jugador.setMascota(mascotas[indice]);
+
+            if (Util.cantidadMascotas(jugador.getMascotas()) < 4) {
+                jugador.setMascota(mascotas[indice]);
+
+                //AQUI IRIA LAS HABILIDADES DE COMPRA
+                ActivarHabilidades.habilidadesAlComprarse(jugador.getMascotas(), comidaTienda, mascotas[indice], jugador.getNombre() );
+
+
+            } else {
+                System.out.println("Ya no tiene espacio para mas mascotas");
+            }
+            Util.verMascotas(jugador);
+            System.out.println();
 
             System.out.println("¿Desea seguir adquiriendo más mascotas?\n\t1. Si\t2. No");
-            salir = Util.solicitarNumero("Digite la opcion", 1, 2);
+            salir = Util.solicitarNumero("Digite la opcion: ", 1, 2);
         } while (salir != 2);
 
+    }
+
+    public static void comprarPorTier(Mascota[] mascotas, Jugador jugador, Comida [] comidaTienda){
+        int salir =0;
+
+        do{
+            Util.verMascotas(jugador);
+            System.out.println();
+            System.out.println("******** ORDENANDO LAS MASCOTAS POR TIER ************");
+            int tier = Util.solicitarNumero("Digite el tier de la mascota: ",1,7);
+            Mascota[] mascotasTier = ordenarMascotasPorTier(mascotas,tier);
+
+            imprimirMascotasPorTier(mascotasTier);
+
+
+            int indice = Util.solicitarNumero("Ingrese el indice de la mascota a adquirir: ", 0, Util.cantidadMascotas(mascotasTier));
+
+            if (Util.cantidadMascotas(jugador.getMascotas()) < 4) {
+                jugador.setMascota(mascotasTier[indice]);
+
+                //AQUI IRIA LAS HABILIDADES DE COMPRA
+                ActivarHabilidades.habilidadesAlComprarse(jugador.getMascotas(), comidaTienda, mascotasTier[indice], jugador.getNombre() );
+
+
+            } else {
+                System.out.println("Ya no tiene espacio para mas mascotas");
+            }
+            Util.verMascotas(jugador);
+            System.out.println();
+
+            System.out.println("¿Desea seguir adquiriendo más mascotas?\n\t1. Si\t2. No");
+            salir = Util.solicitarNumero("Digite la opcion: ", 1, 2);
+        }while(salir!=2);
     }
 
 
@@ -114,10 +180,28 @@ public class CompraModoCreativo {
         }
     }
 
-    public static Mascota[] ordenarMascotasPorTier(Mascota[] mascotasJugador){
-        Mascota [] mascotasTier = new Mascota[20];
+    public static Mascota[] ordenarMascotasPorTier(Mascota[] mascotasJugador, int tier){
+        Mascota [] mascotasTier = new Mascota[54];
 
+        for(int i=0; i< mascotasJugador.length; i++){
+
+            if(mascotasJugador[i].getTierMascota() == tier){
+                mascotasTier[i] = mascotasJugador[i];
+            }
+        }
+        Util.verificarMascotas(mascotasTier);
         return mascotasTier;
+    }
+
+    public static void imprimirMascotasPorTier(Mascota[] mascotasTier){
+        for(int i=0; i<=(Util.cantidadMascotas(mascotasTier)); i++){
+            if (i % 5 == 0) {
+                System.out.println(" ");
+            }
+
+            System.out.print(i + "-" + mascotasTier[i].toString() + "\t\t");
+        }
+        System.out.println();
     }
 
     public static void imprimirMascotasCrecienteDecreciente(Mascota[] mascotasJugador, int opcionCreciente) {

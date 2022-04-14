@@ -18,7 +18,7 @@ public class HabilidadSerpiente extends Habilidad {
 
         try{
             if(enemigoAleatorio!=-1){
-                mascotasEnemigas[enemigoAleatorio].setAtaque(-5*nivel);
+                mascotasEnemigas[enemigoAleatorio].setVida(-5*nivel);
 
                 String mensajeEfecto = this.getNombre()+" activa la habilidad "+getNombreHabilidad()+"\nAtaca a " + mascotasEnemigas[enemigoAleatorio].getNombre()+
                         " quitandole una vida de: -"+(5*nivel);

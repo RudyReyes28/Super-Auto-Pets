@@ -17,7 +17,6 @@ import java.util.Scanner;
 
 public class ModoVersus {
 
-    private Scanner entrada = new Scanner(System.in);
     private Jugador jugador1;
     private Jugador jugador2;
     
@@ -80,7 +79,7 @@ public class ModoVersus {
 
             System.out.println("\t"+jugador1.getNombre()+" SELECCIONE UN CAMPO PARA EMPEZAR LA BATALLA: ");
             seleccionarCampo(1);
-            System.out.println("\n\t"+jugador1.getNombre()+" SELECCIONE UN CAMPO PARA EMPEZAR LA BATALLA: ");
+            System.out.println("\n\t"+jugador2.getNombre()+" SELECCIONE UN CAMPO PARA EMPEZAR LA BATALLA: ");
             seleccionarCampo(2);
             System.out.println();
 
@@ -172,8 +171,6 @@ public class ModoVersus {
         comprasJugador.llenarMascotasTienda(ronda,tier,mascotasTienda);
 
         CompraComida.llenarComida(comidasTienda,tier);
-
-
 
         jugador.reiniciarMascotas(copiaMascotas);
 
