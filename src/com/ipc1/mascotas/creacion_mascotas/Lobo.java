@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadLobo;
 public class Lobo extends Mascota {
 
     public Lobo() {
-        super("Lobo", 3, 4, "solitario", "terrestre", null, new HabilidadLobo());
+        super("Lobo", 3, 4, "solitario", "terrestre", null, new HabilidadLobo(),3);
     }
 }

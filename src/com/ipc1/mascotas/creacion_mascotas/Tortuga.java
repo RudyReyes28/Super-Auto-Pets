@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadTortuga;
 public class Tortuga extends Mascota {
 
     public Tortuga() {
-        super("Tortuga", 1, 2, "reptil", null, null, new HabilidadTortuga());
+        super("Tortuga", 1, 2, "reptil", null, null, new HabilidadTortuga(),3);
     }
 }

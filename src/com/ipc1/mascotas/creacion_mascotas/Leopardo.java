@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadLeopardo;
 public class Leopardo extends Mascota {
 
     public Leopardo() {
-        super("Leopardo", 10, 4, "mamifero", "terrestre", null, new HabilidadLeopardo());
+        super("Leopardo", 10, 4, "mamifero", "terrestre", null, new HabilidadLeopardo(),6);
     }
 }

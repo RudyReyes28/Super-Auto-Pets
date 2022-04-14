@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadVenado;
 public class Venado extends Mascota {
 
     public Venado() {
-        super("Venado", 1, 1, "mamifero", null, null, new HabilidadVenado());
+        super("Venado", 1, 1, "mamifero", null, null, new HabilidadVenado(),4);
     }
 }

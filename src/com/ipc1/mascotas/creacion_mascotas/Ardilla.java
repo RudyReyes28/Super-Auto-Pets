@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadArdilla;
 public class Ardilla extends Mascota {
 
     public Ardilla() {
-        super("Ardilla", 2, 5, "domestico", null, null, new HabilidadArdilla());
+        super("Ardilla", 2, 5, "domestico", null, null, new HabilidadArdilla(),4);
     }
 }

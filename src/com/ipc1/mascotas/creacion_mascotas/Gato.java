@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadGato;
 public class Gato extends Mascota {
 
     public Gato() {
-        super("Gato", 4, 5, "mamifero", "domestico", null, new HabilidadGato());
+        super("Gato", 4, 5, "mamifero", "domestico", null, new HabilidadGato(),6);
     }
 }

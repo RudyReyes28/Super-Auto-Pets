@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadDelfin;
 public class Delfin extends Mascota {
 
     public Delfin() {
-        super("Delfin", 4, 6, "acuatico", null, null, new HabilidadDelfin());
+        super("Delfin", 4, 6, "acuatico", null, null, new HabilidadDelfin(),4);
     }
 }

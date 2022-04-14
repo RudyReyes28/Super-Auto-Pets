@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadVaca;
 public class Vaca extends Mascota {
 
     public Vaca() {
-        super("Vaca", 4, 6, "mamifero", "terrestre", null, new HabilidadVaca());
+        super("Vaca", 4, 6, "mamifero", "terrestre", null, new HabilidadVaca(),5);
     }
 }

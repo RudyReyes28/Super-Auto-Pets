@@ -8,6 +8,6 @@ public class Escarabajo extends Mascota {
 
 
     public Escarabajo() {
-        super("Escarabajo", 2, 3, "insecto", null, null, new HabilidadEscarabajo());
+        super("Escarabajo", 2, 3, "insecto", null, null, new HabilidadEscarabajo(),1);
     }
 }

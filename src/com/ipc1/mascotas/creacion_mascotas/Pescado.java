@@ -8,7 +8,7 @@ public class Pescado extends Mascota {
 
 
     public Pescado() {
-        super("Pescado", 2, 3, "acuatico", null, null, new HabilidadPescado());
+        super("Pescado", 2, 3, "acuatico", null, null, new HabilidadPescado(),1);
     }
 
 

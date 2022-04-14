@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadCaracol;
 public class Caracol extends Mascota {
 
     public Caracol() {
-        super("Caracol", 2, 2, "insecto", "solitario", null, new HabilidadCaracol());
+        super("Caracol", 2, 2, "insecto", "solitario", null, new HabilidadCaracol(),3);
     }
 }

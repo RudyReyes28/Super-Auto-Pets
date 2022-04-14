@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadSerpiente;
 public class Serpiente extends Mascota {
 
     public Serpiente() {
-        super("Serpiente", 6, 6, "reptil", "terrestre", "desertico", new HabilidadSerpiente());
+        super("Serpiente", 6, 6, "reptil", "terrestre", "desertico", new HabilidadSerpiente(),6);
     }
 }

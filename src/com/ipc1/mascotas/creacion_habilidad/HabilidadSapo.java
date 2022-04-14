@@ -66,7 +66,7 @@ public class HabilidadSapo extends Habilidad {
             }
         }
         if(mascotasAliadas[posicionSapo]!=null){
-            mascotasAliadas[posicionSapo].setVida(vidaMayor);
+            mascotasAliadas[posicionSapo].reiniciarVida(vidaMayor);
 
             String mensajeEfecto = "La mascota del jugador "+nombreJugador+" ---> "+this.getNombre()+" activa la habilidad "+getNombreHabilidad()
                     +"\n\tCopia de " + mascotasAliadas[posicionMascota].getNombre()+

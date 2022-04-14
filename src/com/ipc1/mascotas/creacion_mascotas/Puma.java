@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadPuma;
 public class Puma extends Mascota {
 
     public Puma() {
-        super("Puma", 3, 7, "mamifero", "terrestre", null, new HabilidadPuma());
+        super("Puma", 3, 7, "mamifero", "terrestre", null, new HabilidadPuma(),4);
     }
 }

@@ -13,8 +13,9 @@ public class  Mascota {
     private int exp;
     private Habilidad habilidad;
     private Comida efectoComida;
+    private int tierMascota;
 
-    public Mascota(String nombre, double ataque, double vida, String tipo1, String tipo2, String tipo3, Habilidad habilidad) {
+    public Mascota(String nombre, double ataque, double vida, String tipo1, String tipo2, String tipo3, Habilidad habilidad, int tierMascota) {
         this.nombre = nombre;
         this.ataque = ataque;
         this.vida = vida;
@@ -25,6 +26,7 @@ public class  Mascota {
         this.exp = 0;
         this.habilidad = habilidad;
         efectoComida = null;
+        this.tierMascota = tierMascota;
     }
 
     public Mascota(Mascota mascota) {
@@ -38,6 +40,7 @@ public class  Mascota {
         this.exp = mascota.getExp();
         this.habilidad = mascota.getHabilidad();
         efectoComida = null;
+        this.tierMascota = mascota.getTierMascota();
     }
 
     public String getNombre() {
@@ -130,6 +133,10 @@ public class  Mascota {
             System.out.println("Esta mascota está a nivel maximo");
             this.exp = 0;
         }
+    }
+
+    public int getTierMascota() {
+        return tierMascota;
     }
 
     public Habilidad getHabilidad(){

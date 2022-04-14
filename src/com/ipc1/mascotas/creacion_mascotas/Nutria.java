@@ -8,6 +8,6 @@ public class Nutria extends Mascota {
 
 
     public Nutria() {
-        super("Nutria", 1, 2, "mamifero", null, null, new HabilidadNutria());
+        super("Nutria", 1, 2, "mamifero", null, null, new HabilidadNutria(),1);
     }
 }

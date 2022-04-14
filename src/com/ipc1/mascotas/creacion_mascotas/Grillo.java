@@ -9,7 +9,7 @@ public class Grillo extends Mascota {
 
 
     public Grillo() {
-        super("Grillo", 1, 2, "insecto", null, null, new HabilidadGrillo());
+        super("Grillo", 1, 2, "insecto", null, null, new HabilidadGrillo(),1);
 
     }
 

@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadPuercoEspin;
 public class PuercoEspin extends Mascota {
 
     public PuercoEspin() {
-        super("Puerco Espin", 3, 2, "solitario", "terrestre", null, new HabilidadPuercoEspin());
+        super("Puerco Espin", 3, 2, "solitario", "terrestre", null, new HabilidadPuercoEspin(),2);
     }
 }

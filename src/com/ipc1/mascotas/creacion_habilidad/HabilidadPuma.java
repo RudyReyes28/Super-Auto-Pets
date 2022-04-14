@@ -15,7 +15,7 @@ public class HabilidadPuma extends Habilidad {
 
     @Override
     public void activarHabilidad(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota[] mascotasTienda, int nivel) {
-        Mascota pumita = new Mascota("Pumita",1,1,"mamifero","terrestre",null,new Habilidad("Pumita"," "));
+        Mascota pumita = new Mascota("Pumita",1,1,"mamifero","terrestre",null,new Habilidad("Pumita"," "),4);
 
         int cantidadMascota = Util.cantidadMascotas(mascotasAliadas);
 
@@ -44,7 +44,7 @@ public class HabilidadPuma extends Habilidad {
     }
 
     public void activarHabilidadPuma(Mascota[] mascotasAliadas, Mascota puma, String nombreJugador){
-        Mascota pumita = new Mascota("Pumita",1,1,"mamifero","terrestre",null,new Habilidad("Pumita"," "));
+        Mascota pumita = new Mascota("Pumita",1,1,"mamifero","terrestre",null,new Habilidad("Pumita"," "),4);
 
         int cantidadMascota = Util.cantidadMascotas(mascotasAliadas);
 

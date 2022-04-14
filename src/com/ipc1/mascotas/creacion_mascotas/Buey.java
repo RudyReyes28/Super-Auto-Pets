@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadBuey;
 public class Buey extends Mascota {
 
     public Buey() {
-        super("Buey", 1, 4, "mamifero", null, null, new HabilidadBuey());
+        super("Buey", 1, 4, "mamifero", null, null, new HabilidadBuey(),3);
     }
 }

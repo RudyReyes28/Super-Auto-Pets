@@ -39,6 +39,11 @@ public class Batallas {
                     batallaVersus.batalla();
                     break;
                 case 3:
+                    String nombreJugadorCreativo1 = Util.solicitarString("Escriba el nombre del jugador 1: ");
+                    String nombreJugadorCreativo2 = Util.solicitarString("Escriba el nombre del jugador 2: ");
+                    ModoCreativo batallaCreativo = new ModoCreativo(nombreJugadorCreativo1,nombreJugadorCreativo2);
+                    batallaCreativo.jugar();
+
                     break;
                 default:
                     System.out.println("VUELVA PRONTO");

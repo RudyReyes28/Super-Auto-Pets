@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadChompipe;
 public class Chompipe extends Mascota {
 
     public Chompipe() {
-        super("Chompipe", 3, 4, "terrestre", "volador", null, new HabilidadChompipe());
+        super("Chompipe", 3, 4, "terrestre", "volador", null, new HabilidadChompipe(),5);
     }
 }

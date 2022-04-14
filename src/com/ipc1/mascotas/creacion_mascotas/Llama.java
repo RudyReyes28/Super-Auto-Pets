@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadLlama;
 public class Llama extends Mascota {
 
     public Llama() {
-        super("Llama", 3, 6, "terrestre", null, null, new HabilidadLlama());
+        super("Llama", 3, 6, "terrestre", null, null, new HabilidadLlama(),4);
     }
 }

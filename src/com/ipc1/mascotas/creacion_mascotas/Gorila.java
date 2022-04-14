@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadGorila;
 public class Gorila extends Mascota {
 
     public Gorila() {
-        super("Gorila", 6, 9, "mamifero", "terrestre", null, new HabilidadGorila());
+        super("Gorila", 6, 9, "mamifero", "terrestre", null, new HabilidadGorila(),6);
     }
 }

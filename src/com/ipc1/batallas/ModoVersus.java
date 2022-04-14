@@ -11,6 +11,7 @@ import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.activacion_habilidad.ActivarHabilidades;
 import com.ipc1.mascotas.caracter.Mascota;
 import com.ipc1.util.Util;
+import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.Scanner;
 
@@ -70,12 +71,18 @@ public class ModoVersus {
 
     public void iniciarBatalla(){
         System.out.println("*********** MENU DE BATALLAS DEL JUGADOR "+ jugador1.getNombre()+" *****************");
-        menuEntreBatallas(jugador1,comprasJugador1,mascotasTiendaJugador1,comidasTiendaJugador1,copiaMascotaJugador1, 1);
+        menuEntreBatallas(jugador1,comprasJugador1,mascotasTiendaJugador1,comidasTiendaJugador1,copiaMascotaJugador1);
 
         System.out.println("*********** MENU DE BATALLAS DEL JUGADOR "+ jugador2.getNombre()+" *****************");
-        menuEntreBatallas(jugador2,comprasJugador2,mascotasTiendaJugador2,comidasTiendaJugador2,copiaMascotaJugador2, 2);
+        menuEntreBatallas(jugador2,comprasJugador2,mascotasTiendaJugador2,comidasTiendaJugador2,copiaMascotaJugador2);
 
         if(Util.cantidadMascotas(jugador1.getMascotas())>=0 && Util.cantidadMascotas(jugador2.getMascotas())>=0){
+
+            System.out.println("\t"+jugador1.getNombre()+" SELECCIONE UN CAMPO PARA EMPEZAR LA BATALLA: ");
+            seleccionarCampo(1);
+            System.out.println("\n\t"+jugador1.getNombre()+" SELECCIONE UN CAMPO PARA EMPEZAR LA BATALLA: ");
+            seleccionarCampo(2);
+            System.out.println();
 
             boolean peleaTerminada = true;
             int pelea = 1;
@@ -159,14 +166,14 @@ public class ModoVersus {
         }
     }
 
-    public void menuEntreBatallas(Jugador jugador, CompraMascotas comprasJugador, Mascota[] mascotasTienda, Comida[] comidasTienda, Mascota[] copiaMascotas, int campoJugador){
+    public void menuEntreBatallas(Jugador jugador, CompraMascotas comprasJugador, Mascota[] mascotasTienda, Comida[] comidasTienda, Mascota[] copiaMascotas){
         int opcion = 0;
 
         comprasJugador.llenarMascotasTienda(ronda,tier,mascotasTienda);
 
         CompraComida.llenarComida(comidasTienda,tier);
 
-        seleccionarCampo(campoJugador);
+
 
         jugador.reiniciarMascotas(copiaMascotas);
 

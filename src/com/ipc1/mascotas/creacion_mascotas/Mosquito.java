@@ -8,7 +8,7 @@ import com.ipc1.util.Util;
 public class Mosquito extends Mascota {
 
     public Mosquito() {
-        super("Mosquito", 2, 2, "volador", null, null, new HabilidadMosquito());
+        super("Mosquito", 2, 2, "volador", null, null, new HabilidadMosquito(),1);
     }
 
 

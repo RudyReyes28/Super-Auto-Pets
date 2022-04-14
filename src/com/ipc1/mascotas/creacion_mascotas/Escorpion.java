@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadEscorpion;
 public class Escorpion extends Mascota {
 
     public Escorpion() {
-        super("Escorpion", 1, 1, "desertico", "solitario", null, new HabilidadEscorpion());
+        super("Escorpion", 1, 1, "desertico", "solitario", null, new HabilidadEscorpion(),5);
     }
 }

@@ -13,8 +13,8 @@ public class HabilidadOveja extends Habilidad {
 
     @Override
     public void activarHabilidad(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota[] mascotasTienda, int nivel) {
-        Mascota carnero1 = new Mascota("Carnero",2*nivel,2*nivel,"domestico","terrestre",null,new Habilidad("Carnero"," "));
-        Mascota carnero2 = new Mascota("Carnero",2*nivel,2*nivel,"domestico","terrestre",null,new Habilidad("Carnero"," "));
+        Mascota carnero1 = new Mascota("Carnero",2*nivel,2*nivel,"domestico","terrestre",null,new Habilidad("Carnero"," "),3);
+        Mascota carnero2 = new Mascota("Carnero",2*nivel,2*nivel,"domestico","terrestre",null,new Habilidad("Carnero"," "),3);
 
         int posicionOveja= Util.cantidadMascotas(mascotasAliadas);
 
@@ -33,8 +33,8 @@ public class HabilidadOveja extends Habilidad {
 
     public void activarHabilidadOveja(Mascota[] mascotasAliadas, Mascota oveja, String nombreJugador){
         if(oveja.getVida()<=0){
-            Mascota carnero1 = new Mascota("Carnero",2*oveja.getNivel(),2*oveja.getNivel(),"domestico","terrestre",null,new Habilidad("Carnero"," "));
-            Mascota carnero2 = new Mascota("Carnero",2*oveja.getNivel(),2*oveja.getNivel(),"domestico","terrestre",null,new Habilidad("Carnero"," "));
+            Mascota carnero1 = new Mascota("Carnero",2*oveja.getNivel(),2*oveja.getNivel(),"domestico","terrestre",null,new Habilidad("Carnero"," "),3);
+            Mascota carnero2 = new Mascota("Carnero",2*oveja.getNivel(),2*oveja.getNivel(),"domestico","terrestre",null,new Habilidad("Carnero"," "),3);
 
             int posicionOveja= Util.cantidadMascotas(mascotasAliadas);
 

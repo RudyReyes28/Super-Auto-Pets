@@ -13,7 +13,7 @@ public class HabilidadVenado extends Habilidad {
 
     @Override
     public void activarHabilidad(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota[] mascotasTienda, int nivel) {
-        Mascota camion = new Mascota("Camion",5*nivel,5*nivel,null,null,null,new Habilidad("Camion"," "));
+        Mascota camion = new Mascota("Camion",5*nivel,5*nivel,null,null,null,new Habilidad("Camion"," "),4);
 
         int cantidadMascotas = Util.cantidadMascotas(mascotasAliadas);
 
@@ -29,7 +29,7 @@ public class HabilidadVenado extends Habilidad {
     }
 
     public void activarHabilidadVenado(Mascota[] mascotasAliadas, Mascota venado, String nombreJugador){
-        Mascota camion = new Mascota("Camion",5*venado.getNivel(),5*venado.getNivel(),null,null,null,new Habilidad("Camion"," "));
+        Mascota camion = new Mascota("Camion",5*venado.getNivel(),5*venado.getNivel(),null,null,null,new Habilidad("Camion"," "),4);
 
         int cantidadMascotas = Util.cantidadMascotas(mascotasAliadas);
 

@@ -16,7 +16,7 @@ public class HabilidadMosca extends Habilidad {
     @Override
     public void activarHabilidad(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota[] mascotasTienda, int nivel) {
 
-        Mascota zombieFly = new Mascota("Zombie Fly",5*nivel,5*nivel,"volador","insecto",null,new Habilidad("Zombie FLy", " "));
+        Mascota zombieFly = new Mascota("Zombie Fly",5*nivel,5*nivel,"volador","insecto",null,new Habilidad("Zombie FLy", " "),6);
 
         int posicionMascota = Util.cantidadMascotas(mascotasAliadas);
 
@@ -36,7 +36,7 @@ public class HabilidadMosca extends Habilidad {
     }
 
     public void activarHabilidadMosca(Mascota[] mascotasAliadas, Mascota mosca,String nombreJugador){
-        Mascota zombieFly = new Mascota("Zombie Fly",5* mosca.getNivel(),5* mosca.getNivel(),"volador","insecto",null,new Habilidad("Zombie FLy", " "));
+        Mascota zombieFly = new Mascota("Zombie Fly",5* mosca.getNivel(),5* mosca.getNivel(),"volador","insecto",null,new Habilidad("Zombie FLy", " "),6);
 
         int posicionMascota = Util.cantidadMascotas(mascotasAliadas);
 

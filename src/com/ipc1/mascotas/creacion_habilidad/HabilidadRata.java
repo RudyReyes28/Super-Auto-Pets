@@ -14,9 +14,9 @@ public class HabilidadRata extends Habilidad{
 
     @Override
     public void activarHabilidad(Mascota[] mascotasAliadas, Mascota[] mascotasEnemigas, Mascota[] mascotasTienda, int nivel) {
-        Mascota rata1 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "));
-        Mascota rata2 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "));
-        Mascota rata3 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "));
+        Mascota rata1 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "),2);
+        Mascota rata2 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "),2);
+        Mascota rata3 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "),2);
 
         int posicionRata = Util.cantidadMascotas(mascotasAliadas);
 
@@ -41,9 +41,9 @@ public class HabilidadRata extends Habilidad{
     }
 
     public void activarHabilidadRata(Mascota[] mascotasAliadas, Mascota rata, String nombreJugador){
-        Mascota rata1 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "));
-        Mascota rata2 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "));
-        Mascota rata3 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "));
+        Mascota rata1 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "),2);
+        Mascota rata2 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "),2);
+        Mascota rata3 = new Mascota("Dirty Rat",1,1,"terrestre","solitario",null,new Habilidad("Dirty Rat"," "),2);
 
         int posicionRata = Util.cantidadMascotas(mascotasAliadas);
 

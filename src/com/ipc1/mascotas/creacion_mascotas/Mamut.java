@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadMamut;
 public class Mamut extends Mascota {
 
     public Mamut() {
-        super("Mamut", 3, 10, "mamifero", "terrestre", "solitario", new HabilidadMamut());
+        super("Mamut", 3, 10, "mamifero", "terrestre", "solitario", new HabilidadMamut(),6);
     }
 }

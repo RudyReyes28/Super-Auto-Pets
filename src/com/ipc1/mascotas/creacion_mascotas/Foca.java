@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadFoca;
 public class Foca extends Mascota {
 
     public Foca() {
-        super("Foca", 3, 8, "acuatico", "mamifero", null, new HabilidadFoca());
+        super("Foca", 3, 8, "acuatico", "mamifero", null, new HabilidadFoca(),5);
     }
 }

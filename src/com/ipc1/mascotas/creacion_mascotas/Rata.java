@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadRata;
 public class Rata extends Mascota {
 
     public Rata() {
-        super("Rata", 4, 5, "terrestre", "solitario", null, new HabilidadRata());
+        super("Rata", 4, 5, "terrestre", "solitario", null, new HabilidadRata(),2);
     }
 }

@@ -7,6 +7,6 @@ import com.ipc1.mascotas.creacion_habilidad.HabilidadMosca;
 public class Mosca extends Mascota {
 
     public Mosca() {
-        super("Mosca", 5, 5, "volador", "insecto", null, new HabilidadMosca());
+        super("Mosca", 5, 5, "volador", "insecto", null, new HabilidadMosca(),6);
     }
 }

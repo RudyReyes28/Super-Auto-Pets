@@ -15,7 +15,7 @@ public class Miel extends Comida {
     }
 
     public void efectoMascota(Mascota [] mascotasAliadas, Mascota mascota, String nombreJugador){
-        Mascota abeja = new Mascota("Abeja",1,1,"volador",null,null,new Habilidad("Abeja",""));
+        Mascota abeja = new Mascota("Abeja",1,1,"volador",null,null,new Habilidad("Abeja",""),1);
 
         int cantMascotas = Util.cantidadMascotas(mascotasAliadas);
 
