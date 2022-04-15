@@ -1,5 +1,6 @@
 package com.ipc1.batallas;
 
+import com.ipc1.archivos.ArchivoInformacionBatalla;
 import com.ipc1.archivos.Archivos;
 import com.ipc1.batallas.menu_batallas.CompraComida;
 import com.ipc1.batallas.menu_batallas.CompraMascotas;
@@ -40,12 +41,16 @@ public class ModoVersus {
     private Campo campoJugador1;
     private Campo campoJugador2;
 
+    private ArchivoInformacionBatalla infoBatallas;
+
     public ModoVersus(String nombreJugador1, String nombreJugador2) {
 
         jugador1 = new Jugador(nombreJugador1);
         jugador2 = new Jugador(nombreJugador2);
         comprasJugador1=new CompraMascotas();
         comprasJugador2 = new CompraMascotas();
+
+        infoBatallas = new ArchivoInformacionBatalla("InformacionBatallasVersus.txt");
     }
 
     public void batalla(){
@@ -56,6 +61,9 @@ public class ModoVersus {
             iniciarBatalla();
 
             if(jugador1.getVictorias()>=10 || jugador2.getVictorias()>=10){
+                infoBatallas.escribirLasBatallas(Archivos.mostrarMensajeFinalDePartida());
+                Archivos.reiniciarMensajeFinalDePartida();
+
                 batallaCompletada = false;
                 if(jugador1.getVictorias()>=10){
                     System.out.println("Jugador: "+jugador1.getNombre()+" \t\tVictorias: "+jugador1.getVictorias());
@@ -69,6 +77,8 @@ public class ModoVersus {
     }
 
     public void iniciarBatalla(){
+        Archivos.llenarRonda(ronda);
+
         System.out.println("*********** MENU DE BATALLAS DEL JUGADOR "+ jugador1.getNombre()+" *****************");
         menuEntreBatallas(jugador1,comprasJugador1,mascotasTiendaJugador1,comidasTiendaJugador1,copiaMascotaJugador1);
 
@@ -95,7 +105,6 @@ public class ModoVersus {
             ActivarHabilidades.habilidadesAlIncioDeBatalla(jugador2.getMascotas(),jugador1.getMascotas(), jugador2.getNombre());
 
             System.out.println(Archivos.mensajeInicioDePartida());
-            Archivos.reinicarMensajeInicioDePartida();
 
             do{
                 System.out.println("\n************************* PELEA " + pelea + " *************************");
@@ -119,7 +128,7 @@ public class ModoVersus {
 
 
                 Util.mostrarMascotasBatalla(jugador1, jugador2);
-                System.out.println(Archivos.MensajeEntreBatallas());
+                System.out.println(Archivos.MensajeEntreBatallas(pelea));
 
                 Archivos.reiniciarMensajeEntreBatallas();
 

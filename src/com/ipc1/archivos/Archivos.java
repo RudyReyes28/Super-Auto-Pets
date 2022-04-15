@@ -21,6 +21,11 @@ public class Archivos {
     private static String mensajeFinalDePartida="";
     private static String mensajeEfectosInicioDePartida = "";
     private static String mensajeInicioDePartida = "";
+    private static int ronda=1;
+    private static String mascotasEnBatalla = " ";
+
+    private static String copiaMensajeEntreBatallas= "";
+    private static String copiaMensajeInicioDePartida = "";
 
     public static void mensajeEfecto(String efecto){
         mensajeEfectos += efecto+"\n";
@@ -38,38 +43,54 @@ public class Archivos {
         mensajeDanioRecibido+= danioRecibido+"\n";
     }
 
-    public static String MensajeEntreBatallas(){
+    public static String MensajeEntreBatallas(int pelea){
         mensajeEntreBatallas+= cyan+"EFECTOS PRODUCIDOS:\n"+reset+mensajeEfectos+rojo+"\nDAÑO REALIZADO POR CADA MASCOTA:\n"
                 +reset+mensajeDanioRealizado+azul+"\nDAÑO RECIBIDO POR CADA MASCOTA\n"+reset+mensajeDanioRecibido;
 
-        mensajeFinalDePartida();
+        copiaMensajeEntreBatallas = "EFECTOS PRODUCIDOS:\n"+mensajeEfectos+"\nDAÑO REALIZADO POR CADA MASCOTA:\n"
+                +mensajeDanioRealizado+"\nDAÑO RECIBIDO POR CADA MASCOTA\n"+mensajeDanioRecibido;
+
+
+        mensajeFinalDePartida += mascotasEnBatalla+"\n"+"\n************** PELEA: "+ pelea+" *******************\n"
+                +copiaMensajeInicioDePartida+"\n"+copiaMensajeEntreBatallas;
 
         return  mensajeEntreBatallas;
+    }
+
+    public static void llenarMascotasEnBatalla(String mascotas){
+        mascotasEnBatalla = mascotas;
     }
 
     public static String mensajeInicioDePartida(){
         mensajeInicioDePartida+= cyan+"HABILIDADES ACTIVADAS AL INCIO DE PARTIDA: \n"+reset+mensajeEfectosInicioDePartida;
 
+        copiaMensajeInicioDePartida = "HABILIDADES ACTIVADAS AL INCIO DE PARTIDA: \n"+mensajeEfectosInicioDePartida;
         return mensajeInicioDePartida;
     }
 
     public static void reiniciarMensajeEntreBatallas(){
+        mensajeEfectosInicioDePartida="";
+        mensajeInicioDePartida="";
         mensajeEntreBatallas = "";
         mensajeDanioRecibido = "";
         mensajeDanioRealizado = "";
         mensajeEfectos = "";
+        mascotasEnBatalla = " ";
+        copiaMensajeInicioDePartida="";
+        copiaMensajeEntreBatallas = "";
     }
 
-    public static void reinicarMensajeInicioDePartida(){
-        mensajeEfectosInicioDePartida="";
-        mensajeInicioDePartida="";
+
+    public static void llenarRonda(int ronda){
+        mensajeFinalDePartida+= "\n\n****************** RONDA "+ronda+"****************\n\n";
     }
 
-    public static void mensajeFinalDePartida(){
-        mensajeFinalDePartida+="\n"+mensajeEntreBatallas;
-    }
 
     public static String mostrarMensajeFinalDePartida(){
         return mensajeFinalDePartida;
+    }
+
+    public static void reiniciarMensajeFinalDePartida(){
+        mensajeFinalDePartida= "";
     }
 }

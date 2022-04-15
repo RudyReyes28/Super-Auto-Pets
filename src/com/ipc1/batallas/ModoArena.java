@@ -1,5 +1,6 @@
 package com.ipc1.batallas;
 
+import com.ipc1.archivos.ArchivoInformacionBatalla;
 import com.ipc1.archivos.Archivos;
 import com.ipc1.batallas.menu_batallas.CompraComida;
 import com.ipc1.batallas.menu_batallas.CompraMascotas;
@@ -30,10 +31,14 @@ public class ModoArena {
     private Campo campoJugador;
     private Campo campoBot;
 
+    private ArchivoInformacionBatalla infoBatallas;
+
 
     public ModoArena(String nombre) {
         this.jugador1 = new Jugador(nombre);
         compra = new CompraMascotas();
+
+        infoBatallas = new ArchivoInformacionBatalla("InformacionBatallasArena.txt");
     }
 
     public void batalla(){
@@ -44,6 +49,10 @@ public class ModoArena {
             iniciarBatalla();
 
             if(jugador1.getVida()<=0 || jugador1.getVictorias()>=10){
+
+                infoBatallas.escribirLasBatallas(Archivos.mostrarMensajeFinalDePartida());
+                System.out.println(Archivos.mostrarMensajeFinalDePartida());
+                Archivos.reiniciarMensajeFinalDePartida();
                 batallaCompletada = false;
                 if(jugador1.getVida()<=0){
                     System.out.println("Jugador: "+jugador1.getNombre()+"\tVida: "+jugador1.getVida()+"\t\tOro: "
@@ -59,7 +68,9 @@ public class ModoArena {
     }
 
     public void iniciarBatalla(){
+        Archivos.llenarRonda(ronda);
         menuEntreBatallas();
+
 
 
 
@@ -70,13 +81,14 @@ public class ModoArena {
             campoJugador.activarCampo(jugador1.getMascotas(), jugador1.getNombre());
             campoBot.activarCampo(bot.getMascotas(), bot.getNombre());
 
+            Archivos.llenarMascotasEnBatalla(Util.textoMascotasEnBatalla(jugador1,bot));
             //MASCOTAS DEL JUGADOR 1
             ActivarHabilidades.habilidadesAlIncioDeBatalla(jugador1.getMascotas(),bot.getMascotas(), jugador1.getNombre());
             //MASCOTAS DEL BOT
             ActivarHabilidades.habilidadesAlIncioDeBatalla(bot.getMascotas(),jugador1.getMascotas(), bot.getNombre());
 
             System.out.println(Archivos.mensajeInicioDePartida());
-            Archivos.reinicarMensajeInicioDePartida();
+
 
             do {
                 System.out.println("\n************************* PELEA " + pelea + " *************************");
@@ -99,7 +111,8 @@ public class ModoArena {
 
 
                 Util.mostrarMascotasBatalla(jugador1, bot);
-                System.out.println(Archivos.MensajeEntreBatallas());
+
+                System.out.println(Archivos.MensajeEntreBatallas(pelea));
 
                 Archivos.reiniciarMensajeEntreBatallas();
 
@@ -125,7 +138,7 @@ public class ModoArena {
                         System.out.println("\t\tEMPATE\n");
                     }
 
-                    //System.out.println(Archivos.mostrarMensajeFinalDePartida());
+
                 }else{
                     Util.solicitarString("Digite cualquier letra para continuar: ");
                     pelea++;

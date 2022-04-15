@@ -263,4 +263,25 @@ public class Util {
             }
         }
     }
+
+    public static String textoMascotasEnBatalla(Jugador jugador1, Jugador jugador2){
+        verificarMascotas(jugador1.getMascotas());
+        String mascotasEnBatalla = " ";
+
+        for(int i=0; i<jugador1.getMascotas().length;i++){
+            if(jugador1.getMascota(i)!= null){
+                mascotasEnBatalla += jugador1.getMascota(i).toString()+"|";
+            }
+        }
+
+        verificarMascotas(jugador2.getMascotas());
+        mascotasEnBatalla+= "\t\t";
+        for(int i=(jugador2.getMascotas().length-1); i>=0 ;i--){
+            if(jugador2.getMascota(i)!= null){
+               mascotasEnBatalla += jugador2.getMascota(i).toString()+"|";
+            }
+        }
+
+        return mascotasEnBatalla;
+    }
 }

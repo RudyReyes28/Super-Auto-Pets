@@ -1,5 +1,6 @@
 package com.ipc1.batallas;
 
+import com.ipc1.archivos.ArchivoInformacionBatalla;
 import com.ipc1.archivos.Archivos;
 import com.ipc1.batallas.menu_batallas.CompraComida;
 import com.ipc1.batallas.menu_batallas.CompraMascotas;
@@ -36,6 +37,8 @@ public class ModoCreativo {
     private Campo campoJugador1;
     private Campo campoJugador2;
 
+    private ArchivoInformacionBatalla infoBatallas;
+
 
     public ModoCreativo(String nombreJugador1, String nombreJugador2) {
         jugador1 = new Jugador(nombreJugador1);
@@ -43,17 +46,24 @@ public class ModoCreativo {
 
         llenarMascotas(mascotasTiendaJugador1);
         llenarMascotas(mascotasTiendaJugador2);
+
+        infoBatallas = new ArchivoInformacionBatalla("InformacionBatallasCreativo.txt");
     }
 
     public void batalla(){
         boolean batallaCompletada = true;
         do{
+
             System.out.println("\n***************** RONDA "+ronda+" *****************");
 
             iniciarBatalla();
 
             if(jugador1.getVictorias()>=10 || jugador2.getVictorias()>=10){
                 batallaCompletada = false;
+
+                infoBatallas.escribirLasBatallas(Archivos.mostrarMensajeFinalDePartida());
+                Archivos.reiniciarMensajeFinalDePartida();
+
                 if(jugador1.getVictorias()>=10){
                     System.out.println("Jugador: "+jugador1.getNombre()+" \t\tVictorias: "+jugador1.getVictorias());
                     System.out.println(Util.rojo+"El jugador "+jugador1.getNombre()+" ha perdido"+Util.reset);
@@ -95,7 +105,6 @@ public class ModoCreativo {
             ActivarHabilidades.habilidadesAlIncioDeBatalla(jugador2.getMascotas(),jugador1.getMascotas(), jugador2.getNombre());
 
             System.out.println(Archivos.mensajeInicioDePartida());
-            Archivos.reinicarMensajeInicioDePartida();
 
             do{
                 System.out.println("\n************************* PELEA " + pelea + " *************************");
@@ -119,7 +128,7 @@ public class ModoCreativo {
 
 
                 Util.mostrarMascotasBatalla(jugador1, jugador2);
-                System.out.println(Archivos.MensajeEntreBatallas());
+                System.out.println(Archivos.MensajeEntreBatallas(pelea));
 
                 Archivos.reiniciarMensajeEntreBatallas();
 
