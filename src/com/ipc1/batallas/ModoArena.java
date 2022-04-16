@@ -53,15 +53,20 @@ public class ModoArena {
                 infoBatallas.escribirLasBatallas(Archivos.mostrarMensajeFinalDePartida());
                 System.out.println(Archivos.mostrarMensajeFinalDePartida());
                 Archivos.reiniciarMensajeFinalDePartida();
+
                 batallaCompletada = false;
                 if(jugador1.getVida()<=0){
                     System.out.println("Jugador: "+jugador1.getNombre()+"\tVida: "+jugador1.getVida()+"\t\tOro: "
                             +jugador1.getOro()+"\t\tVictorias: "+jugador1.getVictorias());
                     System.out.println(Util.rojo+"El jugador "+jugador1.getNombre()+" ha perdido"+Util.reset);
+
+                    infoBatallas.escribirLasBatallas("\n\t\tEl jugador "+jugador1.getNombre()+" ha perdido");
                 }else if(jugador1.getVictorias()>=10){
                     System.out.println("Jugador: "+jugador1.getNombre()+"\tVida: "+jugador1.getVida()+"\t\tOro: "
                             +jugador1.getOro()+"\t\tVictorias: "+jugador1.getVictorias());
                     System.out.println(Util.verde+"Felicidades, el jugador "+jugador1.getNombre()+" ha ganado"+Util.reset);
+
+                    infoBatallas.escribirLasBatallas("\n\t\tEl jugador "+jugador1.getNombre()+" ha ganado");
                 }
             }
         }while (batallaCompletada);
@@ -78,6 +83,7 @@ public class ModoArena {
             boolean peleaTerminada = true;
             int pelea = 1;
 
+            seleccionarCampo();
             campoJugador.activarCampo(jugador1.getMascotas(), jugador1.getNombre());
             campoBot.activarCampo(bot.getMascotas(), bot.getNombre());
 
@@ -87,13 +93,15 @@ public class ModoArena {
             //MASCOTAS DEL BOT
             ActivarHabilidades.habilidadesAlIncioDeBatalla(bot.getMascotas(),jugador1.getMascotas(), bot.getNombre());
 
-            System.out.println(Archivos.mensajeInicioDePartida());
+
 
 
             do {
                 System.out.println("\n************************* PELEA " + pelea + " *************************");
                 System.out.println(campoJugador.imprimirCampo(jugador1.getNombre())+"\t\t"+campoBot.imprimirCampo(bot.getNombre()));
                 Util.mostrarMascotasBatalla(jugador1, bot);
+
+                System.out.println(Archivos.mensajeInicioDePartida());
                 System.out.println("\nPelea iniciada");
                 jugador1.pelear(bot);
                 bot.pelear(jugador1);
@@ -128,11 +136,13 @@ public class ModoArena {
                     jugador1.reiniciarOro();
 
                     if(Util.cantidadMascotas(jugador1.getMascotas())>=0 && Util.cantidadMascotas(bot.getMascotas())<0){
-                        System.out.println("\t\tEl jugador "+ jugador1.getNombre()+ " ha ganado esta ronda\n");
+                        //System.out.println("\t\tEl jugador "+ jugador1.getNombre()+ " ha ganado esta ronda\n");
+                        Util.mensajeInformativoRonda(jugador1);
                         jugador1.setVictorias();
                     }else if(Util.cantidadMascotas(jugador1.getMascotas())<0 && Util.cantidadMascotas(bot.getMascotas())>=0){
                         //GANO EL BOT
-                        System.out.println("\t\tEl jugador "+ bot.getNombre()+ " ha ganado esta ronda\n");
+                        //System.out.println("\t\tEl jugador "+ bot.getNombre()+ " ha ganado esta ronda\n");
+                        Util.mensajeInformativoRonda(bot);
                         jugadorPierde();
                     }else{
                         System.out.println("\t\tEMPATE\n");
@@ -157,7 +167,7 @@ public class ModoArena {
         compra.llenarMascotasBot(ronda,tier, bot.getMascotas());
         CompraComida.llenarComida(comidasTienda,tier);
 
-        seleccionarCampo();
+
         //VOLVEMOS A REINICIAR LAS MASCOTAS DEL JUGADOR
         jugador1.reiniciarMascotas(copiaMascotaJugador);
 

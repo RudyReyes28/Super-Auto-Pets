@@ -14,7 +14,7 @@ public class CompraModoCreativo {
         int opcion = 0;
 
         do {
-            System.out.println("************** BIENVENIDO AQUI PUEDE ARMAR EL MAZO LEGENDARIO QUE DESEE");
+            System.out.println("************** BIENVENIDO AQUI PUEDE ARMAR EL MAZO MÁS PRO QUE DESEE *****************");
             System.out.println("Antes de empezar, por mayor facilidad elija ordenar las mascotas de la siguiente manera: ");
             System.out.println("\t1. Ordenar por tier\t\t2. Ordenar por vida\t\t3. Ordenar por daño\t\t4. Salir");
             opcion = Util.solicitarNumero("Digite la opcion: ", 0, 4);

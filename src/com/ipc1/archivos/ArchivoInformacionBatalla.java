@@ -26,7 +26,9 @@ public class ArchivoInformacionBatalla {
         try {
             FileWriter escribir= new FileWriter(archivoBatalla,true);
 
-            escribir.write(informacionBatallas);
+            escribir.write(informacionBatallas+"\r\n");
+            escribir.close();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

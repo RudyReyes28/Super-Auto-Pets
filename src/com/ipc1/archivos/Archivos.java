@@ -82,7 +82,7 @@ public class Archivos {
 
 
     public static void llenarRonda(int ronda){
-        mensajeFinalDePartida+= "\n\n****************** RONDA "+ronda+"****************\n\n";
+        mensajeFinalDePartida+= "\n\n****************** RONDA "+ronda+" ****************\n\n";
     }
 
 

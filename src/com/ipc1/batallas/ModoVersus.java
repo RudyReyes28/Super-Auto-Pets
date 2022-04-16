@@ -1,6 +1,7 @@
 package com.ipc1.batallas;
 
 import com.ipc1.archivos.ArchivoInformacionBatalla;
+import com.ipc1.archivos.ArchivoInformacionMascotas;
 import com.ipc1.archivos.Archivos;
 import com.ipc1.batallas.menu_batallas.CompraComida;
 import com.ipc1.batallas.menu_batallas.CompraMascotas;
@@ -11,6 +12,8 @@ import com.ipc1.comida.caracter.Comida;
 import com.ipc1.jugador.Jugador;
 import com.ipc1.mascotas.activacion_habilidad.ActivarHabilidades;
 import com.ipc1.mascotas.caracter.Mascota;
+import com.ipc1.util.CargarMascotasComida;
+import com.ipc1.util.ExtraerInformacionArchivos;
 import com.ipc1.util.Util;
 import jdk.swing.interop.SwingInterOpUtils;
 
@@ -43,6 +46,9 @@ public class ModoVersus {
 
     private ArchivoInformacionBatalla infoBatallas;
 
+    private ArchivoInformacionMascotas infoMascotasJugador1;
+    private ArchivoInformacionMascotas infoMascotasJugador2;
+
     public ModoVersus(String nombreJugador1, String nombreJugador2) {
 
         jugador1 = new Jugador(nombreJugador1);
@@ -51,6 +57,16 @@ public class ModoVersus {
         comprasJugador2 = new CompraMascotas();
 
         infoBatallas = new ArchivoInformacionBatalla("InformacionBatallasVersus.txt");
+        infoMascotasJugador1 = new ArchivoInformacionMascotas();
+        infoMascotasJugador2 = new ArchivoInformacionMascotas();
+
+        //if(infoMascotasJugador1.getArchivoMascotas().exists()){
+            cargarDatos(jugador1,"mascotasJugador1Versus.csv",infoMascotasJugador1,1);
+        //}
+
+        //if(infoMascotasJugador2.getArchivoMascotas().exists()){
+            cargarDatos(jugador2,"mascotasJugador2Versus.csv",infoMascotasJugador2,2);
+        //}
     }
 
     public void batalla(){
@@ -67,10 +83,14 @@ public class ModoVersus {
                 batallaCompletada = false;
                 if(jugador1.getVictorias()>=10){
                     System.out.println("Jugador: "+jugador1.getNombre()+" \t\tVictorias: "+jugador1.getVictorias());
-                    System.out.println(Util.rojo+"El jugador "+jugador1.getNombre()+" ha perdido"+Util.reset);
+                    System.out.println(Util.rojo+"El jugador "+jugador1.getNombre()+" ha ganado"+Util.reset);
+
+                    infoBatallas.escribirLasBatallas("\n\t\tEl jugador "+jugador1.getNombre()+" ha ganado");
                 }else if(jugador2.getVictorias()>=10){
                     System.out.println("Jugador: "+jugador2.getNombre()+" \t\tVictorias: "+jugador2.getVictorias());
                     System.out.println(Util.verde+"Felicidades, el jugador "+jugador2.getNombre()+" ha ganado"+Util.reset);
+
+                    infoBatallas.escribirLasBatallas("\n\t\tEl jugador "+jugador2.getNombre()+" ha ganado");
                 }
             }
         }while (batallaCompletada);
@@ -80,15 +100,16 @@ public class ModoVersus {
         Archivos.llenarRonda(ronda);
 
         System.out.println("*********** MENU DE BATALLAS DEL JUGADOR "+ jugador1.getNombre()+" *****************");
-        menuEntreBatallas(jugador1,comprasJugador1,mascotasTiendaJugador1,comidasTiendaJugador1,copiaMascotaJugador1);
+        menuEntreBatallas(jugador1,comprasJugador1,mascotasTiendaJugador1,comidasTiendaJugador1,copiaMascotaJugador1,"mascotasJugador1Versus.csv",infoMascotasJugador1);
 
         System.out.println("*********** MENU DE BATALLAS DEL JUGADOR "+ jugador2.getNombre()+" *****************");
-        menuEntreBatallas(jugador2,comprasJugador2,mascotasTiendaJugador2,comidasTiendaJugador2,copiaMascotaJugador2);
+        menuEntreBatallas(jugador2,comprasJugador2,mascotasTiendaJugador2,comidasTiendaJugador2,copiaMascotaJugador2,"mascotasJugador2Versus.csv",infoMascotasJugador2);
 
         if(Util.cantidadMascotas(jugador1.getMascotas())>=0 && Util.cantidadMascotas(jugador2.getMascotas())>=0){
 
             System.out.println("\t"+jugador1.getNombre()+" SELECCIONE UN CAMPO PARA EMPEZAR LA BATALLA: ");
             seleccionarCampo(1);
+
             System.out.println("\n\t"+jugador2.getNombre()+" SELECCIONE UN CAMPO PARA EMPEZAR LA BATALLA: ");
             seleccionarCampo(2);
             System.out.println();
@@ -96,21 +117,27 @@ public class ModoVersus {
             boolean peleaTerminada = true;
             int pelea = 1;
 
+            //ACTIVAMOS LOS CAMPOS
             campoJugador1.activarCampo(jugador1.getMascotas(), jugador1.getNombre());
             campoJugador2.activarCampo(jugador2.getMascotas(), jugador2.getNombre());
+            //COLOCAMOS EL CAMPO EN LOS ARCHIVOS
+            infoMascotasJugador1.escribirCampo(campoJugador1);
+            infoMascotasJugador2.escribirCampo(campoJugador2);
 
+            Archivos.llenarMascotasEnBatalla(Util.textoMascotasEnBatalla(jugador1,jugador2));
             //MASCOTAS DEL JUGADOR 1
             ActivarHabilidades.habilidadesAlIncioDeBatalla(jugador1.getMascotas(),jugador2.getMascotas(), jugador1.getNombre());
             //MASCOTAS DEL JUGADOR 2
             ActivarHabilidades.habilidadesAlIncioDeBatalla(jugador2.getMascotas(),jugador1.getMascotas(), jugador2.getNombre());
 
-            System.out.println(Archivos.mensajeInicioDePartida());
+
 
             do{
                 System.out.println("\n************************* PELEA " + pelea + " *************************");
                 System.out.println(campoJugador1.imprimirCampo(jugador1.getNombre())+"\t\t"+campoJugador2.imprimirCampo(jugador2.getNombre()));
                 Util.mostrarMascotasBatalla(jugador1, jugador2);
 
+                System.out.println(Archivos.mensajeInicioDePartida());
                 System.out.println("\nPelea iniciada");
                 jugador1.pelear(jugador2);
                 jugador2.pelear(jugador1);
@@ -160,7 +187,6 @@ public class ModoVersus {
                         System.out.println("\t\tEMPATE\n");
                     }
 
-                    //System.out.println(Archivos.mostrarMensajeFinalDePartida());
                 }else{
                     Util.solicitarString("Digite cualquier letra para continuar: ");
                     pelea++;
@@ -174,7 +200,7 @@ public class ModoVersus {
         }
     }
 
-    public void menuEntreBatallas(Jugador jugador, CompraMascotas comprasJugador, Mascota[] mascotasTienda, Comida[] comidasTienda, Mascota[] copiaMascotas){
+    public void menuEntreBatallas(Jugador jugador, CompraMascotas comprasJugador, Mascota[] mascotasTienda, Comida[] comidasTienda, Mascota[] copiaMascotas, String nombreArchivo, ArchivoInformacionMascotas inforMascotas){
         int opcion = 0;
 
         comprasJugador.llenarMascotasTienda(ronda,tier,mascotasTienda);
@@ -215,6 +241,11 @@ public class ModoVersus {
 
                 default:
                     System.out.println("SUERTE !!!\n");
+                    if(Util.cantidadMascotas(jugador.getMascotas())>=0){
+                        inforMascotas.crearArchivo(nombreArchivo);
+                        inforMascotas.escribirLasMascotas(jugador.getMascotas());
+                        inforMascotas.escribirLaComida(jugador.getMascotas());
+                    }
             }
         }while(opcion!=6);
     }
@@ -251,14 +282,32 @@ public class ModoVersus {
         }
     }
 
-    public void jugadorPierde(Jugador jugador){
-        if(ronda<= 3){
-            jugador.setVida(-1);
-        }else if(ronda<=6){
-            jugador.setVida(-2);
-        }else{
-            jugador.setVida(-3);
+    public void cargarDatos(Jugador jugador, String nombreArchivo, ArchivoInformacionMascotas archivoMascotas, int campoSeleccion){
+        System.out.println("\n"+jugador.getNombre()+" desea cargar los datos de la partida anterior?: \n\t1. Si\n\t2. No");
+        int opcion = Util.solicitarNumero("Seleccione la opcion: ",1,2);
+
+        if(opcion==1) {
+            String[][] infoMascotas = new String[12][3];
+            archivoMascotas.leerArchivosMascotas(infoMascotas,nombreArchivo);
+
+            String [] mascotasACargar = new String[5];
+            String [] campoACargar = new String[2];
+            String [][] comidaACargar = new String[5][2];
+
+            ExtraerInformacionArchivos.extraerMascotas(infoMascotas,mascotasACargar);
+            ExtraerInformacionArchivos.extraerComida(infoMascotas,comidaACargar);
+            ExtraerInformacionArchivos.extraerCampo(infoMascotas,campoACargar);
+
+            CargarMascotasComida.cargarMascotas(jugador,mascotasACargar);
+            CargarMascotasComida.cargarComida(jugador,comidaACargar);
+
+            if(campoSeleccion==1){
+                campoJugador1 = CargarMascotasComida.cargarCampo(campoACargar);
+            }else{
+                campoJugador2 = CargarMascotasComida.cargarCampo(campoACargar);
+            }
         }
+
     }
 
 

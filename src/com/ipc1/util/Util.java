@@ -123,7 +123,7 @@ public class Util {
         int posicion=0;
         for(int i=0; i<mascotas.length; i++){
             if(mascotas[i]!=null){
-                if(mascotas[i].getNombre().equals(nombreMascota)){
+                if(mascotas[i].getNombre().equalsIgnoreCase(nombreMascota)){
                     posicion=i;
                     break;
                 }
@@ -283,5 +283,13 @@ public class Util {
         }
 
         return mascotasEnBatalla;
+    }
+
+    public static void mensajeInformativoRonda(Jugador jugador){
+        System.out.println("\t\tEl jugador "+ jugador.getNombre()+ " ha ganado esta ronda\n");
+        System.out.println("\t\tMascotas que quedaron con vida: "+(cantidadMascotas(jugador.getMascotas())+1));
+        System.out.println("\t\tInformación de las mascotas con vida: ");
+        System.out.print("\t\t");
+        mostrarMascotas(jugador);
     }
 }
