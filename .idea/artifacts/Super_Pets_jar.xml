@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Super Pets:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Super_Pets_jar</output-path>
+    <root id="archive" name="Super Pets.jar">
+      <element id="module-output" name="Super Pets" />
+    </root>
+  </artifact>
+</component>
