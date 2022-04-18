@@ -73,6 +73,7 @@ public class OrdenarVenderMascotas {
             fusionTienda(jugador,mascotasTienda);
         }
     }
+
     private static void fusionTienda(Jugador jugador, Mascota[] mascotasTienda){
         Util.verMascotas(jugador);
         System.out.println();

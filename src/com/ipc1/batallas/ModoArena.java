@@ -77,8 +77,6 @@ public class ModoArena {
         menuEntreBatallas();
 
 
-
-
         if(Util.cantidadMascotas(jugador1.getMascotas())>=0) {
             boolean peleaTerminada = true;
             int pelea = 1;

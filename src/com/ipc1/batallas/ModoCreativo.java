@@ -182,7 +182,7 @@ public class ModoCreativo {
                         //System.out.println("\t\tEl jugador "+ jugador1.getNombre()+ " ha ganado esta ronda\n");
 
                         Util.mensajeInformativoRonda(jugador1);
-                        
+
                         jugador1.setVictorias();
                         //jugadorPierde(jugador2);
 
@@ -190,7 +190,7 @@ public class ModoCreativo {
                         //GANO EL JUGADOR 2
                         //System.out.println("\t\tEl jugador "+ jugador2.getNombre()+ " ha ganado esta ronda\n");
 
-                        Util.mensajeInformativoRonda(jugador1);
+                        Util.mensajeInformativoRonda(jugador2);
                         jugador2.setVictorias();
                         //jugadorPierde(jugador1);
                     }else{
@@ -250,6 +250,7 @@ public class ModoCreativo {
                     break;
 
                 default:
+                    copiarMascotas(jugador,copiaMascotas);
                     System.out.println("SUERTE !!!\n");
                     if(Util.cantidadMascotas(jugador.getMascotas())>=0){
                         inforMascotas.crearArchivo(nombreArchivo);

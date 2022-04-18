@@ -15,6 +15,7 @@ public class  Mascota {
     private Comida efectoComida;
     private int tierMascota;
 
+
     public Mascota(String nombre, double ataque, double vida, String tipo1, String tipo2, String tipo3, Habilidad habilidad, int tierMascota) {
         this.nombre = nombre;
         this.ataque = ataque;
@@ -27,6 +28,8 @@ public class  Mascota {
         this.habilidad = habilidad;
         efectoComida = null;
         this.tierMascota = tierMascota;
+
+
     }
 
     public Mascota(Mascota mascota) {
@@ -41,6 +44,7 @@ public class  Mascota {
         this.habilidad = mascota.getHabilidad();
         efectoComida = null;
         this.tierMascota = mascota.getTierMascota();
+
     }
 
     public String getNombre() {
@@ -161,4 +165,5 @@ public class  Mascota {
     public void setEfectoComida(Comida efectoComida) {
         this.efectoComida = efectoComida;
     }
+
 }

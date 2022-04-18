@@ -14,6 +14,7 @@ public class Jugador {
     private Mascota[] mascotas = new Mascota[10];
     private int contadorMascotas;
 
+
     public Jugador(String nombre) {
         this.vida = 10;
         this.oro = 10;

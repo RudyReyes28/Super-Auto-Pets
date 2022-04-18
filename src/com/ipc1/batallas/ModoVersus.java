@@ -174,13 +174,18 @@ public class ModoVersus {
                     if(Util.cantidadMascotas(jugador1.getMascotas())>=0 && Util.cantidadMascotas(jugador2.getMascotas())<0){
                         //GANO EL JUGADOR 1
 
-                        System.out.println("\t\tEl jugador "+ jugador1.getNombre()+ " ha ganado esta ronda\n");
+                        //System.out.println("\t\tEl jugador "+ jugador1.getNombre()+ " ha ganado esta ronda\n");
+
+                        Util.mensajeInformativoRonda(jugador1);
+
                         jugador1.setVictorias();
                         //jugadorPierde(jugador2);
 
                     }else if(Util.cantidadMascotas(jugador1.getMascotas())<0 && Util.cantidadMascotas(jugador2.getMascotas())>=0){
                         //GANO EL JUGADOR 2
-                        System.out.println("\t\tEl jugador "+ jugador2.getNombre()+ " ha ganado esta ronda\n");
+                        //System.out.println("\t\tEl jugador "+ jugador2.getNombre()+ " ha ganado esta ronda\n");
+
+                        Util.mensajeInformativoRonda(jugador2);
                         jugador2.setVictorias();
                         //jugadorPierde(jugador1);
                     }else{
@@ -240,6 +245,7 @@ public class ModoVersus {
                     break;
 
                 default:
+                    copiarMascotas(jugador,copiaMascotas);
                     System.out.println("SUERTE !!!\n");
                     if(Util.cantidadMascotas(jugador.getMascotas())>=0){
                         inforMascotas.crearArchivo(nombreArchivo);
